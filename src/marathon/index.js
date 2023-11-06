@@ -36,43 +36,7 @@ registerBlockType("cinemarathon/marathon", {
         },
         movies: {
             type: "array",
-			default: [
-                {
-                    watched: true,
-                    rewatch: true,
-                    available: true,
-                    bonus: false,
-                    title: "1964 - A Fistful of Dollars"
-                },
-                {
-                    watched: true,
-                    rewatch: true,
-                    available: true,
-                    bonus: false,
-                    title: "1965 - For a Few Dollars More"
-                },
-                {
-                    watched: false,
-                    rewatch: true,
-                    available: true,
-                    bonus: false,
-                    title: "1966 - The Good, the Bad and the Ugly"
-                },
-                {
-                    watched: false,
-                    rewatch: false,
-                    available: false,
-                    bonus: false,
-                    title: "1968 - Hang 'Em High"
-                },
-                {
-                    watched: false,
-                    rewatch: true,
-                    available: true,
-                    bonus: true,
-                    title: "1958 - Lafayette Escadrille"
-                },
-            ]
+			default: []
         }
     },
     icon: Cinemarathon,

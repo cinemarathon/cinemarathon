@@ -249,99 +249,115 @@ const Edit = ( { attributes, setAttributes } ) => {
 						</tr>
 					</thead>
 					<tbody>
-						{ attributes.movies.map( ( movie, index ) => (
-							<tr key={ index } id={ movie.hash }>
-								<td className="column-watched check-column">
-									<CheckboxControl
-										checked={ movie.watched }
-										onChange={ value => update( index, 'watched', value ) }
-									/>
-								</td>
-								<td className="column-rewatch check-column">
-									<CheckboxControl
-										checked={ movie.rewatch }
-										onChange={ value => update( index, 'rewatch', value ) }
-									/>
-								</td>
-								<td className="column-available check-column">
-									<CheckboxControl
-										checked={ movie.available }
-										onChange={ value => update( index, 'available', value ) }
-									/>
-								</td>
-								<td className="column-bonus check-column">
-									<CheckboxControl
-										checked={ movie.bonus }
-										onChange={ value => update( index, 'bonus', value ) }
-									/>
-								</td>
-								<td className="column-title text-column">
-									<TextControl
-										value={ movie.title }
-										onChange={ value => update( index, 'title', value ) }
-									/>
-								</td>
-								<td className={ `column-actions check-column ${ editing.includes( movie.hash ) ? 'show-actions' : ''}` }>
+					 	{ attributes.movies.length ? (
+							<>
+								{ attributes.movies.map( ( movie, index ) => (
+									<tr key={ index } id={ movie.hash }>
+										<td className="column-watched check-column">
+											<CheckboxControl
+												checked={ movie.watched }
+												onChange={ value => update( index, 'watched', value ) }
+											/>
+										</td>
+										<td className="column-rewatch check-column">
+											<CheckboxControl
+												checked={ movie.rewatch }
+												onChange={ value => update( index, 'rewatch', value ) }
+											/>
+										</td>
+										<td className="column-available check-column">
+											<CheckboxControl
+												checked={ movie.available }
+												onChange={ value => update( index, 'available', value ) }
+											/>
+										</td>
+										<td className="column-bonus check-column">
+											<CheckboxControl
+												checked={ movie.bonus }
+												onChange={ value => update( index, 'bonus', value ) }
+											/>
+										</td>
+										<td className="column-title text-column">
+											<TextControl
+												value={ movie.title }
+												onChange={ value => update( index, 'title', value ) }
+											/>
+										</td>
+										<td className={ `column-actions check-column ${ editing.includes( movie.hash ) ? 'show-actions' : ''}` }>
+											<Button
+												size="small"
+												onClick={ () => toggleEditing( movie.hash ) }
+											>
+												<Icon
+													icon={ moreVertical }
+													size={ 20 }
+												/>
+											</Button>
+											<div className="actions">
+												<Button
+													label={ __( "Move Up", "cinemarathon" ) }
+													size="small"
+													showTooltip={ true }
+													disabled={ '' == movie.hash }
+													onClick={ () => moveUp( index ) }
+												>
+													<Icon
+														icon={ arrowUp }
+														size={ 20 }
+													/>
+												</Button>
+												<Button
+													label={ __( "Move Down", "cinemarathon" ) }
+													size="small"
+													showTooltip={ true }
+													disabled={ '' == movie.hash }
+													onClick={ () => moveDown( index ) }
+												>
+													<Icon
+														icon={ arrowDown }
+														size={ 20 }
+													/>
+												</Button>
+												<Button
+													label={ __( "Duplicate", "cinemarathon" ) }
+													size="small"
+													showTooltip={ true }
+													onClick={ () => duplicate( index ) }
+												>
+													<Icon
+														icon={ copy }
+														size={ 20 }
+													/>
+												</Button>
+												<Button
+													label={ __( "Remove", "cinemarathon" ) }
+													size="small"
+													showTooltip={ true }
+													onClick={ () => remove( index ) }
+												>
+													<Icon
+														icon={ trash }
+														size={ 20 }
+													/>
+												</Button>
+											</div>
+										</td>
+									</tr>
+								) ) }
+							</>
+						) : (
+							<tr>
+								<td colSpan={ 6 }>
+									<Text>{ __( "This marathon does not have any movie yet.", "cinemarathon" ) }</Text>
 									<Button
-										size="small"
-										onClick={ () => toggleEditing( movie.hash ) }
+										variant="link"
+										onClick={ add }
 									>
-										<Icon
-											icon={ moreVertical }
-											size={ 20 }
-										/>
+										{ __( "Start by adding one!", "cinemarathon" ) }
 									</Button>
-									<div className="actions">
-										<Button
-											label={ __( "Move Up", "cinemarathon" ) }
-											size="small"
-											showTooltip={ true }
-											disabled={ '' == movie.hash }
-											onClick={ () => moveUp( index ) }
-										>
-											<Icon
-												icon={ arrowUp }
-												size={ 20 }
-											/>
-										</Button>
-										<Button
-											label={ __( "Move Down", "cinemarathon" ) }
-											size="small"
-											showTooltip={ true }
-											disabled={ '' == movie.hash }
-											onClick={ () => moveDown( index ) }
-										>
-											<Icon
-												icon={ arrowDown }
-												size={ 20 }
-											/>
-										</Button>
-										<Button
-											label={ __( "Duplicate", "cinemarathon" ) }
-											size="small"
-											showTooltip={ true }
-											onClick={ () => duplicate( index ) }
-										>
-											<Icon
-												icon={ copy }
-												size={ 20 }
-											/>
-										</Button>
-										<Button
-											label={ __( "Remove", "cinemarathon" ) }
-											size="small"
-											showTooltip={ true }
-											onClick={ () => remove( index ) }
-										>
-											<Icon
-												icon={ trash }
-												size={ 20 }
-											/>
-										</Button>
-									</div>
 								</td>
 							</tr>
-						) ) }
+						) }
 					</tbody>
 					<tfoot>
 						<tr>
