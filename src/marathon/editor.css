@@ -122,6 +122,12 @@
 				height: 3rem;
 				position: relative;
 
+				&.dragging {
+					background-color: #fff !important;
+					box-shadow: 0 1px 3px rgba( 0, 0, 0, .75 );
+					z-index: 1;
+				}
+
 				.list-item-column {
 					align-items: center;
 					display: flex;
@@ -264,6 +270,7 @@
 			align-items: center;
 			border-top: 1px solid #c3c4c7;
 			display: flex;
+			height: 2rem;
 
 			.footer-content {
 				align-items: center;

@@ -18,13 +18,37 @@ import {
     chevronDown
 } from "@wordpress/icons"
 import { __ } from "@wordpress/i18n"
+import { useSortable } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
 
-const ListItem = ( { index, itemsHandler, movie } ) => {
+const ListItem = ( { itemsHandler, movie } ) => {
+
+    const {
+        index,
+        isDragging,
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition
+    } = useSortable( { id: movie.hash } )
+
+    const style = {
+        transition,
+        transform: CSS.Transform.toString(transform)
+    }
 
     return (
-        <div className="list-item" key={ index } id={ movie.hash }>
+        <div
+            id={ movie.hash }
+            ref={ setNodeRef }
+            style={ style }
+            className={ `list-item ${ isDragging ? 'dragging' : '' }` }
+        >
             <div className="list-item-column column-draghandle draghandle-column">
                 <Button
+                    {...listeners}
+                    {...attributes}
                     size="small"
                     variant="icon"
                 >
@@ -87,7 +111,7 @@ const ListItem = ( { index, itemsHandler, movie } ) => {
                                     icon={ arrowUp }
                                     iconPosition="right"
                                     onClick={ () => {
-                                        itemsHandler.moveBottom( index )
+                                        itemsHandler.moveTop( index )
                                         onClose()
                                     } }
                                 />
@@ -114,7 +138,7 @@ const ListItem = ( { index, itemsHandler, movie } ) => {
                                     icon={ arrowDown }
                                     iconPosition="right"
                                     onClick={ () => {
-                                        itemsHandler.moveTop( index )
+                                        itemsHandler.moveBottom( index )
                                         onClose()
                                     } }
                                 />

@@ -54,7 +54,7 @@ const Edit = ( { attributes, setAttributes } ) => {
 
 	const move = ( index, destination ) => {
 		let movies = [ ...attributes.movies ]
-		if ( index < 0 ||  index >= movies.length || destination < 0 || destination >= movies.length ) {
+		if ( index < 0 || index >= movies.length || destination < 0 || destination >= movies.length ) {
 			return
 		}
 		movies.splice( destination, 0, movies.splice( index, 1 ).pop() )
@@ -64,6 +64,10 @@ const Edit = ( { attributes, setAttributes } ) => {
 	const moveDown = index => move( index, index + 1 )
 	
 	const moveUp = index => move( index, index - 1 )
+
+	const moveTop = index => move( index, 0 )
+
+	const moveBottom = index => move( index, attributes.movies.length -1 )
 
 	const duplicate = index =>
 		setAttributes( {
@@ -84,6 +88,8 @@ const Edit = ( { attributes, setAttributes } ) => {
 		move,
 		moveDown,
 		moveUp,
+		moveTop,
+		moveBottom,
 		duplicate
 	}
 

@@ -17,12 +17,6 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 
     const [advancedEditingMode, setAdvancedEditingMode] = useState( false )
 
-    const props = {
-        advancedEditingMode: advancedEditingMode,
-        setAdvancedEditingMode: setAdvancedEditingMode,
-        
-    }
-
     return (
         <div className="editor">
             <div className="editor-header">
@@ -31,6 +25,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                         delay={ 0 }
                         placement="left"
                         text={ __( "Just watched it!", "cinemarathon" ) }
+                        onClick={ () => alert(':)') }
                     >
                         <div>
                             <Icon icon={ Check } />
