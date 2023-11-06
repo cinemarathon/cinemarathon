@@ -32,7 +32,7 @@ import { __, _n, sprintf } from "@wordpress/i18n"
 
 import hash from "object-hash"
 
-import { Available, Check, Cinemarathon, DoubleCheck } from "../icons"
+import { Available, Bonus, Check, Cinemarathon, DoubleCheck } from "../icons"
 
 import "./editor.css"
 
@@ -224,6 +224,17 @@ const Edit = ( { attributes, setAttributes } ) => {
 									</div>
 								</Tooltip>
 							</th>
+							<th className="manage-column column-bonus check-column">
+								<Tooltip
+									delay={ 0 }
+									placement="top"
+									text={ __( "Bonus movie, not mandatory to watch", "cinemarathon" ) }
+								>
+									<div>
+										<Icon icon={ Bonus } />
+									</div>
+								</Tooltip>
+							</th>
 							<th className="manage-column column-title text-column">{ __( "Movie Title", "cinemarathon" ) }</th>
 							<th className="manage-column column-actions check-column"></th>
 						</tr>
@@ -247,6 +258,12 @@ const Edit = ( { attributes, setAttributes } ) => {
 									<CheckboxControl
 										checked={ movie.available }
 										onChange={ value => update( index, 'available', value ) }
+									/>
+								</td>
+								<td className="column-bonus check-column">
+									<CheckboxControl
+										checked={ movie.bonus }
+										onChange={ value => update( index, 'bonus', value ) }
 									/>
 								</td>
 								<td className="column-title text-column">
@@ -319,7 +336,7 @@ const Edit = ( { attributes, setAttributes } ) => {
 					</tbody>
 					<tfoot>
 						<tr>
-							<td className="manage-column column-text text-column" colSpan={ 4 }>
+							<td className="manage-column column-text text-column" colSpan={ 5 }>
 								<Text>
 									{ sprintf( _n( '%s Movie', '%s Movies', attributes.movies.length ), attributes.movies.length ) }
 								</Text>

@@ -26,7 +26,21 @@
             <div class="marathon-items">
                 <h3><?php _e( 'Full List', 'cinemarathon' ); ?></h3>
                 <ul>
-<?php foreach ( $block->attributes['movies'] as $movie ) : ?>
+<?php foreach ( $block->data['movies'] as $movie ) : ?>
+                    <li>
+                        <?php echo $movie['watched'] ? '🟢' : ( $movie['rewatch'] ? '🟠' : '🔴' ); ?>
+                        &nbsp;&ndash;&nbsp;
+                        <?php echo $movie['available'] ? '📀' : '💸'; ?>
+                        &nbsp;&ndash;&nbsp;
+                        <?php echo esc_html( $movie['title'] ); ?>
+                    </li>
+<?php endforeach; ?>
+                </ul>
+            </div>
+            <div class="marathon-bonus">
+                <h3><?php _e( 'Bonus List', 'cinemarathon' ); ?></h3>
+                <ul>
+<?php foreach ( $block->data['bonuses'] as $movie ) : ?>
                     <li>
                         <?php echo $movie['watched'] ? '🟢' : ( $movie['rewatch'] ? '🟠' : '🔴' ); ?>
                         &nbsp;&ndash;&nbsp;
