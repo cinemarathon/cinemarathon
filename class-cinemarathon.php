@@ -142,6 +142,11 @@ final class Cinemarathon {
 
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_styles' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
+
+        add_action( 'admin_init', [ $this, 'register_settings' ] );
+        add_action( 'admin_menu', [ $this, 'register_admin_pages' ] );
+
+        add_action( 'plugin_action_links_' . CINEMARATHON_PLUGIN, [ $this, 'plugin_action_links' ] );
     }
 
     /**
@@ -186,10 +191,7 @@ final class Cinemarathon {
      * @since 1.0.0
      * @access private
      */
-    private function register_scripts() {
-
-        //
-    }
+    private function register_scripts() {}
 
     /**
      * Register public-side scripts.
@@ -255,6 +257,87 @@ final class Cinemarathon {
     }
 
     /**
+     * Register plugin settings.
+     * 
+     * @since 1.0.0
+     * @access public
+     */
+    public function register_settings() {
+
+        $settings = get_option( 'cinemarathon_options' );
+
+        register_setting( 'cinemarathon', 'cinemarathon_options' );
+
+        add_settings_section( 'cinemarathon_options', __( 'General Settings', 'cinemarathon' ), '__return_null', 'cinemarathon' );
+
+        add_settings_field(
+            'supported_post_types',
+            'Supported Post Types',
+            function() use ($settings) {
+                $post_types = get_post_types( [ 'public' => true ], 'objects' );
+                $supported_post_types = $settings['supported_post_types'] ?? [ 'page' ];
+                require_once CINEMARATHON_PATH . 'templates/dashboard/settings/fields/post-types.php';
+            },
+            'cinemarathon',
+            'cinemarathon_options'
+        );
+
+        add_settings_field(
+            'hide_settings_page',
+            'Hide Settings Page',
+            function() use ($settings) {
+                $post_types = get_post_types( [ 'public' => true ], 'objects' );
+                $hide_settings_page = $settings['hide_settings_page'] ?? [ 'page' ];
+                require_once CINEMARATHON_PATH . 'templates/dashboard/settings/fields/hide-settings-page.php';
+            },
+            'cinemarathon',
+            'cinemarathon_options'
+        );
+    }
+
+    /**
+     * Register plugin admin pages.
+     * 
+     * @since 1.0.0
+     * @access public
+     */
+    public function register_admin_pages() {
+
+        $settings = get_option( 'cinemarathon_options', [] );
+        $parent_slug = '1' !== $settings['hide_settings_page'] ? 'options-general.php' : false;
+
+        add_submenu_page( $parent_slug, 'Cinemarathon Settings', 'Cinemarathon', 'manage_options', 'cinemarathon', [ $this, 'settings_page' ] );
+    }
+
+    /**
+     * Settings page callback.
+     * 
+     * @since 1.0.0
+     * @access public
+     */
+    public function settings_page() {
+
+        // check user capabilities
+        if ( current_user_can( 'manage_options' ) ) {
+            require_once CINEMARATHON_PATH . 'templates/dashboard/settings/settings.php';
+        }
+    }
+
+    /**
+     * Add new links to the Plugins Page
+     *
+     * @since 1.0.0
+     * @access public
+     * 
+     * @param  array
+     * @return array
+     */
+    public function plugin_action_links( $links ) {
+
+        return $links + [ sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=cinemarathon' ), __( 'Settings', 'cinemarathon' ) ) ];
+    }
+
+    /**
      * Register custom blocks.
      * 
      * @since 1.0.0
@@ -281,54 +364,6 @@ final class Cinemarathon {
                 'render_callback' => [ $instance, 'render' ],
             ]);
         }
-
-        /*register_block_type( 'cinemarathon/marathon', [
-            'api_version' => 2,
-            'attributes' => [
-                'movies' => [
-                    'type' => 'array',
-                    'default' => [],
-                ],
-            ],
-            'render_callback' => function( $attributes = [], $content = null ) {
-
-                ob_start();
-                require CINEMARATHON_PATH . 'includes/templates/marathon.php';
-                $content = ob_get_clean();
-
-                return $content;
-            }
-        ]);
-
-        register_block_type( 'cinemarathon/marathons', [
-            'api_version' => 2,
-            'attributes' => [
-                'number' => [
-                    'type' => 'integer',
-                    'default' => 6,
-                ],
-            ],
-            'render_callback' => function( $attributes = [], $content = null ) {
-
-                global $wpdb;
-
-                $ids = $wpdb->get_col(
-                    $wpdb->prepare(
-                        "SELECT ID FROM {$wpdb->posts} WHERE post_type IN ( 'page', 'post' ) AND post_status = 'publish' AND post_content LIKE '%s'",
-                        '% wp:cinemarathon/marathon {%'
-                    )
-                );
-
-                $items = [];
-                // foreach ( $items as $post_id ) {}
-
-                ob_start();
-                require CINEMARATHON_PATH . 'includes/templates/marathons.php';
-                $content = ob_get_clean();
-
-                return $content;
-            }
-        ]);*/
     }
 
     /**

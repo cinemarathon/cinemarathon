@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'CINEMARATHON_PLUGIN',  plugin_basename( __FILE__ ) );
 define( 'CINEMARATHON_VERSION', '1.0.0' );
 define( 'CINEMARATHON_PATH',    trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CINEMARATHON_URL',     trailingslashit( plugin_dir_url( __FILE__ ) ) );

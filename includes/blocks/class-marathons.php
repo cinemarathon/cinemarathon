@@ -54,23 +54,29 @@ class Marathons extends Block {
 
         global $wpdb;
 
-        $posts = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT ID, post_content FROM {$wpdb->posts} WHERE post_type IN ( 'page', 'post' ) AND post_status = 'publish' AND post_content LIKE '%s'",
-                '% wp:cinemarathon/marathon {%'
-            )
-        );
+        $settings = get_option( 'cinemarathon_options', [] );
+
+        // Prepare supported post types for query.
+        $supported_post_types = array_map( function( $supported_post_type ) use ($wpdb) {
+            return $wpdb->prepare( "post_type = '%s'", $supported_post_type );
+        }, $settings['supported_post_types'] ?? [ 'page' ] );
+        $condition = implode( ' OR ', $supported_post_types );
+
+        $query = "SELECT ID, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s'";
+        $posts = $wpdb->get_results( $wpdb->prepare( $query, '% wp:cinemarathon/marathon {%' ) );
 
         $items = [];
         foreach ( $posts as $post ) {
-
+            // Parse post content.
             $blocks = parse_blocks( $post->post_content );
 
+            // Retrieve marathon blocks.
             $block = match_block_recursive( 'cinemarathon/marathon', $blocks );
             if ( empty( $block ) || empty( $block['attrs'] ) ) {
                 continue;
             }
 
+            // Default data.
             $item = [
                 'id' => $post->ID,
                 'image' => CINEMARATHON_URL . 'assets/images/default-image.jpg',
@@ -79,10 +85,12 @@ class Marathons extends Block {
                 'progress' => 0,
             ];
 
+            // Use block's image if one is set.
             if ( ! empty( $block['attrs']['image'] ) ) {
                 $item['image'] = wp_get_attachment_image_url( (int) $block['attrs']['image'], 'large' );
             }
 
+            // Calculate some data about the marathon.
             if ( ! empty( $block['attrs']['movies'] ) ) {
                 $item['current'] = count( wp_filter_object_list( $block['attrs']['movies'], [ 'watched' => 1 ] ) );
                 $item['total'] = count( $block['attrs']['movies'] );
