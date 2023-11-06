@@ -1,0 +1,3 @@
+    <input type="number" size="4" step="1" min="0" max="23" name="cinemarathons_options[journal][default_time][hour]" value="<?php echo esc_attr( $default_time['hour'] ?? '' ); ?>" />
+    <input type="number" size="4" step="1" min="0" max="59" name="cinemarathons_options[journal][default_time][minute]" value="<?php echo esc_attr( $default_time['minute'] ?? '' ); ?>" />
+    <p class="description"><small><?php _e( 'You can define a default time for new "journal" entries. If no default time is set the plugin will use the current time. You can always edit this before publishing, or later if needed.', 'cinemarathons' ) ?></small></p>

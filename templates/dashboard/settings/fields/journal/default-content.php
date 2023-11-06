@@ -1,0 +1,1 @@
+    <?php wp_editor( $default_content, 'cinemarathons_options[journal][default_content]', [ 'media_buttons' => false, 'rows' => 4 ] ); ?>
