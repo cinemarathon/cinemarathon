@@ -1,14 +1,14 @@
 
 .wp-block-cinemarathons-marathons {
 
-	&.mode-list {
+	& > .marathons-list {
 
 		.marathon {
 			display: list-item;
 		}
 	}
 
-	&.mode-grid {
+	& > .marathons-grid {
 		display: grid;
 		grid-gap: 10px;
 
@@ -60,13 +60,38 @@
 			}
 		}
 
-		@for $i from 1 to 4 {
-			&[data-grid-columns="$i"] {
-				grid-template-columns: repeat($i, 1fr);
-				.marathon {
-					a {
-						font-size: calc( 180% - calc( $i * .125em ) );
-					}
+		&[data-grid-columns="1"] {
+			grid-template-columns: repeat( 1, 1fr );
+			.marathon {
+				a {
+					font-size: calc( 180% - calc( 1 * .125em ) );
+				}
+			}
+		}
+
+		&[data-grid-columns="2"] {
+			grid-template-columns: repeat( 2, 1fr);
+			.marathon {
+				a {
+					font-size: calc( 180% - calc( 2 * .125em ) );
+				}
+			}
+		}
+
+		&[data-grid-columns="3"] {
+			grid-template-columns: repeat( 3, 1fr );
+			.marathon {
+				a {
+					font-size: calc( 180% - calc( 3 * .125em ) );
+				}
+			}
+		}
+
+		&[data-grid-columns="4"] {
+			grid-template-columns: repeat( 4, 1fr );
+			.marathon {
+				a {
+					font-size: calc( 180% - calc( 4 * .125em ) );
 				}
 			}
 		}
@@ -75,7 +100,7 @@
 
 @media screen and (max-width:960px) {
 	.wp-block-cinemarathons-marathons {
-		&.mode-grid {
+		& > .mode-grid {
 			&[data-grid-columns] {
 				grid-template-columns: repeat(2, 1fr) !important;
 			}
@@ -85,7 +110,7 @@
 
 @media screen and (max-width:768px) {
 	.wp-block-cinemarathons-marathons {
-		&.mode-grid {
+		& > .mode-grid {
 			&[data-grid-columns] {
 				grid-template-columns: repeat(1, 1fr) !important;
 			}

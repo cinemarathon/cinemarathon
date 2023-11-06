@@ -10,7 +10,7 @@ import { Cinemarathons } from "../icons"
 import Settings from "./components/Settings"
 import Editor from "./components/Editor"
 
-import "./editor.css"
+import "./editor.scss"
 
 const Edit = ( { attributes, setAttributes } ) => {
 

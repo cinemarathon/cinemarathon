@@ -103,15 +103,8 @@ final class Cinemarathons {
         // Load helpers.
         require_once CINEMARATHONS_PATH . 'includes/helpers.php';
 
-        // Load core.
-        require_once CINEMARATHONS_PATH . 'includes/core/class-block.php';
-
-        // Load blocks.
-        require_once CINEMARATHONS_PATH . 'includes/blocks/class-marathon.php';
-        require_once CINEMARATHONS_PATH . 'includes/blocks/class-marathons.php';
-
         // Load dashboard.
-        if (is_admin()) {
+        if ( is_admin() ) {
             // Nothing to do here either. Yet.
         }
     }
@@ -136,15 +129,12 @@ final class Cinemarathons {
      */
     public function background() {
 
-        if (!is_admin()) {
+        if ( ! is_admin() ) {
             return false;
         }
 
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_styles' ] );
-
-        add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
-        add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 
         add_action( 'admin_init', [ $this, 'register_settings' ] );
         add_action( 'admin_menu', [ $this, 'register_admin_pages' ] );
@@ -184,8 +174,6 @@ final class Cinemarathons {
     public function enqueue_styles() {
 
         $this->register_styles();
-
-        wp_enqueue_style( 'cinemarathons' );
     }
 
     /**
@@ -202,10 +190,7 @@ final class Cinemarathons {
      * @since 1.0.0
      * @access private
      */
-    private function register_styles() {
-
-        wp_register_style( 'cinemarathons', CINEMARATHONS_URL . 'build/style-index.css', [], CINEMARATHONS_VERSION, 'all' );
-    }
+    private function register_styles() {}
 
     /**
      * Enqueue admin-side scripts.
@@ -244,56 +229,6 @@ final class Cinemarathons {
      * @access private
      */
     private function register_admin_styles() {}
-
-    /**
-     * Enqueue block editor scripts.
-     *
-     * @since 1.0.0
-     * @access public
-     */
-    public function enqueue_block_editor_scripts() {
-
-        $this->register_block_editor_scripts();
-
-        wp_enqueue_script( 'cinemarathons' );
-    }
-
-    /**
-     * Enqueue block editor styles.
-     *
-     * @since 1.0.0
-     * @access public
-     */
-    public function enqueue_block_editor_styles() {
-
-        $this->register_block_editor_styles();
-
-        wp_enqueue_style( 'cinemarathons' );
-    }
-
-    /**
-     * Register block editor scripts.
-     *
-     * @since 1.0.0
-     * @access private
-     */
-    private function register_block_editor_scripts() {
-
-        $assets = require_once CINEMARATHONS_PATH . 'build/index.asset.php';
-
-        wp_register_script( 'cinemarathons', CINEMARATHONS_URL . 'build/index.js', $assets['dependencies'] ?? [], $assets['version'] ?? $this->version, true);
-    }
-
-    /**
-     * Register block editor styles.
-     *
-     * @since 1.0.0
-     * @access private
-     */
-    private function register_block_editor_styles() {
-
-        wp_register_style( 'cinemarathons', CINEMARATHONS_URL . 'build/index.css', [], $this->version, 'all' );
-    }
 
     /**
      * Register plugin settings.
@@ -522,23 +457,8 @@ final class Cinemarathons {
      */
     public function register_blocks() {
 
-        if ( ! function_exists( 'register_block_type' ) ) {
-            return;
-        }
-
-        $blocks = [
-            'cinemarathons/marathon' => \Cinemarathons\Blocks\Marathon::class,
-            'cinemarathons/marathons' => \Cinemarathons\Blocks\Marathons::class,
-        ];
-
-        foreach ( $blocks as $slug => $block ) {
-            $instance = new $block;
-            register_block_type( $slug, [
-                'api_version' => 2,
-                'attributes' => $instance->attributes(),
-                'render_callback' => [ $instance, 'render' ],
-            ]);
-        }
+        register_block_type( __DIR__ . '/build/marathon' );
+        register_block_type( __DIR__ . '/build/marathons' );
     }
 
     /**

@@ -12,7 +12,7 @@ import { __ } from "@wordpress/i18n"
 
 import { Cinemarathons } from "../icons"
 
-import "./editor.css"
+import "./editor.scss"
 
 const Edit = ({ attributes, setAttributes }) => {
 
