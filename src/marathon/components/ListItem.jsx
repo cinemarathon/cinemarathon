@@ -66,9 +66,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
     const [ title, setTitle ] = useState( movie.title )
 
     useEffect( () => {
-        if ( entry.id ) {
-            itemsHandler.update( index, 'post_id', entry.id )
-        }
+        itemsHandler.update( index, 'post_id', entry.id )
         return () => {}
     }, [ entry.id ] )
 
@@ -157,7 +155,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                                             />
                                             <MenuItem
                                                 text={ __( "Replace journal entry", "cinemarathons" ) }
-                                                icon={ customLink }
+                                                icon={ post }
                                                 iconPosition="right"
                                                 onClick={ () => {
                                                     openSelectionModal()

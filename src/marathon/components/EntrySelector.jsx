@@ -73,7 +73,6 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
                 _embed: 1,
                 context: "view"
             } ) ?? {}
-            console.log( flatten( ( post._embedded || {} )["wp:term"] || [] ) )
             return {
                 id: post.id,
                 date: post.date,
@@ -86,8 +85,6 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
         }
         return {}
     }, [ postID ] )
-
-    console.log( post )
 
     return (
         <>
@@ -108,71 +105,85 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
                 } }
             />
             { post.id && (
-                <BaseControl
-                    label={ post.id === entry.id
-                        ? __( "Current entry:", "cinemarathons" )
-                        : __( "New entry:", "cinemarathons" )
-                    }
-                >
-                    <div className="post-preview">
-                        { post.image.id && (
-                            <img
-                                src={ post.image.media_details?.sizes?.thumbnail?.source_url }
-                                alt={ post.image.media_details?.image_meta?.caption ?? '' }
-                            />
-                        ) }
-                        <div>
-                            <div className="title">{ post.title }</div>
-                            <div className="meta">
-                                <span
-                                    className="date"
-                                    dangerouslySetInnerHTML={ {
-                                        __html: sprintf(
-                                            __( "Published <strong>%s</strong> at %s", "cinemarathons" ),
-                                            dateI18n( "F j, Y", post.date ),
-                                            date( "H:i", post.date )
-                                        )
-                                    } }
+                <>
+                    <BaseControl
+                        label={ post.id === entry.id
+                            ? __( "Current entry:", "cinemarathons" )
+                            : __( "New entry:", "cinemarathons" )
+                        }
+                    >
+                        <div className="post-preview">
+                            { post.image.id && (
+                                <img
+                                    src={ post.image.media_details?.sizes?.thumbnail?.source_url }
+                                    alt={ post.image.media_details?.image_meta?.caption ?? '' }
                                 />
-                                <span
-                                        className="categories"
-                                    dangerouslySetInnerHTML={ {
-                                        __html: sprintf( __( "In %s", "cinemarathons" ), post.categories.map( category => ( `<strong>${ category.name }</strong>` ) ).join( ', ' ) )
-                                    } }
+                            ) }
+                            <div>
+                                <div className="title">{ post.title }</div>
+                                <div className="meta">
+                                    <span
+                                        className="date"
+                                        dangerouslySetInnerHTML={ {
+                                            __html: sprintf(
+                                                __( "Published <strong>%s</strong> at %s", "cinemarathons" ),
+                                                dateI18n( "F j, Y", post.date ),
+                                                date( "H:i", post.date )
+                                            )
+                                        } }
+                                    />
+                                    <span
+                                            className="categories"
+                                        dangerouslySetInnerHTML={ {
+                                            __html: sprintf( __( "In %s", "cinemarathons" ), post.categories.map( category => ( `<strong>${ category.name }</strong>` ) ).join( ', ' ) )
+                                        } }
+                                    />
+                                </div>
+                                <div
+                                    className="content"
+                                    dangerouslySetInnerHTML={ { __html: post.excerpt } }
                                 />
                             </div>
-                            <div
-                                className="content"
-                                dangerouslySetInnerHTML={ { __html: post.excerpt } }
-                            />
+                            <ButtonGroup>
+                                <Button
+                                    variant="link"
+                                    href={ post.link }
+                                    target="_blank"
+                                    text={ __( "Preview", "cinemarathons" ) }
+                                />
+                                <Button
+                                    variant="link"
+                                    href={ `/wp-admin/post.php?post=${ post.id }&action=edit` }
+                                    target="_blank"
+                                    text={ __( "Edit", "cinemarathons" ) }
+                                />
+                            </ButtonGroup>
                         </div>
-                        <ButtonGroup>
-                            <Button
-                                variant="link"
-                                href={ post.link }
-                                target="_blank"
-                                text={ __( "Preview", "cinemarathons" ) }
-                            />
-                            <Button
-                                variant="link"
-                                href={ `/wp-admin/post.php?post=${ post.id }&action=edit` }
-                                target="_blank"
-                                text={ __( "Edit", "cinemarathons" ) }
-                            />
-                        </ButtonGroup>
-                    </div>
-                </BaseControl>
-            ) }
-            { post.id && post.id !== entry.id && (
-                <Button
-                    text={ __( "Cancel" ) }
-                    variant="secondary"
-                    onClick={ closeModal }
-                    className="cancel-button"
-                />
+                    </BaseControl>
+                    { post.id !== entry.id ? (
+                        <Button
+                            text={ __( "Cancel" ) }
+                            variant="secondary"
+                            onClick={ closeModal }
+                            className="cancel-button"
+                        />
+                    ) : (
+                        <Button
+                            text={ __( "Remove" ) }
+                            variant="secondary"
+                            isDestructive={ true }
+                            onClick={ () => {
+                                setEntry( { ...entry, id: 0 } )
+                                setPostID( 0 )
+                                //closeModal()
+                            } }
+                            className="remove-button"
+                        />
+                    ) }
+                </>
             ) }
             <Button
-                disabled={ post.id === entry.id }
+                disabled={ ! post.id || post.id === entry.id }
                 text={ post.id
                     ? __( "Replace entry", "cinemarathons" )
                     : __( "Set as entry", "cinemarathons" )

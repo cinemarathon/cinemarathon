@@ -442,6 +442,16 @@
 	}
 }
 
+.entry-publication-modal {
+	.components-modal__content {
+		.block-editor-rich-text__editable {
+			border: 1px solid #949494;
+			margin: 0;
+			padding: 6px 8px;
+		}
+	}
+}
+
 .entry-selection-modal {
 	.components-modal__content {
 		.post-preview {

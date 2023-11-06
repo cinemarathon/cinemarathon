@@ -1,10 +1,11 @@
+import { RichText } from "@wordpress/block-editor"
 import {
+    BaseControl,
 	Button,
     Panel,
     PanelBody,
     PanelRow,
     SelectControl,
-    TextareaControl,
 	TextControl,
     TimePicker,
 } from "@wordpress/components"
@@ -66,7 +67,7 @@ const EntryEditor = ( { entry, setEntry, closeModal } ) => {
                 "post",
                 {
                     title: entry.title,
-                    content: entry.content,
+                    content: `<!-- wp:paragraph -->\n<p>${ entry.content }</p>\n<!-- /wp:paragraph -->`,
                     format: entry.format,
                     status: "publish",
                     categories: entry.categories,
@@ -114,11 +115,17 @@ const EntryEditor = ( { entry, setEntry, closeModal } ) => {
                 value={ entry.title }
                 onChange={ value => setEntry( { ...entry, title: value } ) }
             />
-            <TextareaControl
+            <BaseControl
                 label={ __( "Entry Content", "cinemarathons" ) }
-                value={ entry.content }
-                onChange={ value => setEntry( { ...entry, content: value } ) }
-            />
+            >
+                <RichText
+                    label={ __( "Entry Content", "cinemarathons" ) }
+                    tagName="div"
+                    value={ entry.content }
+                    allowedFormats={ [ 'core/bold', 'core/italic' ] }
+                    onChange={ value => setEntry( { ...entry, content: value } ) }
+                />
+            </BaseControl>
             <Panel>
                 <PanelBody
                     title={ __( "Advanced Options", "cinemarathons" ) }
