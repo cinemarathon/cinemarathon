@@ -29,6 +29,200 @@
 
 .wp-block-cinemarathon-marathon {
 
+	.list-editor {
+		border: 1px solid #c3c4c7;
+  		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+		width: 100%;
+
+		.list-header {
+			align-items: center;
+			border-bottom: 1px solid #c3c4c7;
+			display: flex;
+			height: 2.25rem;
+
+			.header-column {
+				align-items: center;
+				display: flex;
+				justify-content: start;
+				padding: 0 .625rem;
+
+				&.check-column {
+					justify-content: center;
+					width: 1rem;
+				}
+
+				&.column-bonus {
+
+					svg {
+						height: 1rem;
+						width: 1rem;
+					}
+				}
+			}
+		}
+
+		.list-content {
+
+			.list-item {
+				align-items: center;
+				display: flex;
+				height: 3rem;
+				position: relative;
+
+				.list-item-column {
+					align-items: center;
+					display: flex;
+					height: 100%;
+					justify-content: start;
+					padding: 0 .625rem;
+
+					.components-base-control__field {
+						margin: 0;
+
+						.components-checkbox-control__input-container {
+							margin: 0;
+						}
+					}
+
+					&.column-title,
+					&.column-title .components-base-control,
+					&.column-title .components-base-control .components-base-control__field,
+					&.column-title .components-base-control .components-base-control__field .components-text-control__input {
+						width: 100%;
+					}
+
+					&.check-column {
+						justify-content: center;
+						width: 1rem;
+					}
+
+					&.column-actions {
+						position: static;
+
+						button {
+							align-items: center;
+							display: flex;
+							justify-content: center;
+							margin: 0;
+							padding: 0;
+							width: 24px;
+						}
+
+						& > button {
+							position: relative;
+							z-index: 10;
+						}
+
+						.actions {
+							align-items: center;
+							background-color: rgba( 255, 255, 255, .85 );
+							bottom: 0;
+							display: none;
+							gap: 4px;
+							justify-content: flex-end;
+							left: 0;
+							padding-right: 40px;
+							position: absolute;
+							right: 0;
+							top: 0;
+						}
+
+						&.show-actions .actions {
+							display: flex;
+						}
+					}
+				}
+			}
+
+			.list-item:nth-child(odd),
+			.placeholder {
+				align-items: center;
+				background-color: #f6f7f7;
+				display: flex;
+			}
+
+			.placeholder {
+				height: 2.25rem;
+				padding: 0 .625rem;
+
+				button {
+					margin-left: .25rem;
+					padding: 0;
+				}
+			}
+
+			.batch-editor {
+				border-top: 1px solid #c3c4c7;
+				padding: .625rem;
+
+				textarea {
+					line-height: 1.375rem;
+				}
+
+				.actions {
+					align-items: center;
+					display: flex;
+
+					.components-text {
+						opacity: .75;
+					}
+
+					button {
+						margin-left: auto;
+					}
+				}
+			}
+		}
+
+		.list-footer {
+			align-items: center;
+			border-top: 1px solid #c3c4c7;
+			display: flex;
+
+			.footer-content {
+				align-items: center;
+				display: flex;
+				padding: 0 .625rem;
+			}
+
+			.footer-actions {
+				align-items: center;
+				display: flex;
+				margin-left: auto;
+
+				button {
+					align-items: center;
+					display: flex;
+					height: 2rem;
+					justify-content: center;
+					margin: 0;
+					padding: 0;
+					width: 2rem;
+
+					&.batch-add {
+
+						svg {
+							height: 1rem;
+							width: 1rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 	table {
 		
 		.check-column {
@@ -51,11 +245,35 @@
 			tr {
 				position: relative;
 
-				td .components-base-control__field {
-					margin: 0;
-
+				td {
+					
 					.components-base-control__field {
 						margin: 0;
+
+						.components-base-control__field {
+							margin: 0;
+						}
+					}
+
+					& > .components-text {
+
+						& + .components-button {
+							margin: 0 4px;
+							padding: 0;
+						}
+					}
+				}
+			}
+		}
+
+		tfoot {
+
+			tr {
+
+				td {
+
+					button {
+						margin: 0 !important;
 					}
 				}
 			}

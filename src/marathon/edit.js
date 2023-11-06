@@ -8,6 +8,7 @@ import {
 import {
 	BaseControl,
 	Button,
+	ButtonGroup,
 	CheckboxControl,
 	Icon,
 	PanelBody,
@@ -18,11 +19,12 @@ import {
 	__experimentalSurface as Surface,
 	__experimentalText as Text
 } from "@wordpress/components"
-import { useEffect, useState } from "@wordpress/element"
+import { useEffect, useRef, useState } from "@wordpress/element"
 import {
 	arrowUp,
 	arrowDown,
 	copy,
+	closeSmall,
 	trash,
 	moreVertical,
 	plus
@@ -32,13 +34,17 @@ import { __, _n, sprintf } from "@wordpress/i18n"
 
 import hash from "object-hash"
 
-import { Available, Bonus, Check, Cinemarathon, DoubleCheck } from "../icons"
+import { Available, Batch, Bonus, Check, Cinemarathon, DoubleCheck } from "../icons"
 
 import "./editor.css"
 
 const Edit = ( { attributes, setAttributes } ) => {
 
 	const blockProps = useBlockProps()
+
+	const [ batchMode, setBatchMode ] = useState( false )
+	const [ batchList, setBatchList ] = useState( "" )
+	const [ batchEditorHeight, setbatchEditorHeight ] = useState( 80 )
 
 	const [ editing, setEditing ] = useState( [] )
 	const [ image, setImage ] = useState( {} )
@@ -61,10 +67,15 @@ const Edit = ( { attributes, setAttributes } ) => {
 
 	const add = () => setAttributes( { movies: [ ...attributes.movies, { ...emptyMovie, hash: generateHash() } ] } )
 
+	const batch = () => {
+		setAttributes( { movies: [ ...attributes.movies, ...batchList.split("\n").map(item => ( { ...emptyMovie, hash: generateHash( item ), title: item } ) ) ] } )
+		setBatchList( "" )
+	}
+
 	const update = ( index, key, value ) => {
         let movies = [ ...attributes.movies ]
         movies[ index ][ key ] = value
-		if ( 'title' === key ) {
+		if ( "title" === key ) {
 			movies[ index ].hash = generateHash( '' !== value ? `${value}-${index}` : value )
 		}
         setAttributes( { movies: movies } )
@@ -125,6 +136,16 @@ const Edit = ( { attributes, setAttributes } ) => {
 		}
 		return () => {}
 	}, [ attributes.image ] )
+
+	useEffect( () => {
+		if ( "" !== batchList ) {
+			const rows = Math.max( 4, batchList.match(/\n/g)?.length ?? 0 )
+			if ( rows ) {
+				setbatchEditorHeight( Math.round( rows * 24 ) )
+			}
+		}
+		return () => {}
+	}, [ batchList ] )
 
 	return (
 		<div { ...blockProps }>
@@ -197,191 +218,219 @@ const Edit = ( { attributes, setAttributes } ) => {
 						</PanelBody>
 					</div>
 				</InspectorControls>
-				<table className="wp-list-table widefat fixed striped">
-					<thead>
-						<tr>
-							<th className="manage-column column-watched check-column">
-								<Tooltip
-									delay={ 0 }
-									placement="left"
-									text={ __( "Just watched it!", "cinemarathon" ) }
-								>
-									<div>
-										<Icon icon={ Check } />
+				<div className="list-editor">
+					<div className="list-header">
+						<div className="header-column column-watched check-column">
+							<Tooltip
+								delay={ 0 }
+								placement="left"
+								text={ __( "Just watched it!", "cinemarathon" ) }
+							>
+								<div>
+									<Icon icon={ Check } />
+								</div>
+							</Tooltip>
+						</div>
+						<div className="header-column column-rewatch check-column">
+							<Tooltip
+								delay={ 0 }
+								placement="top"
+								text={ __( "Seen this one before", "cinemarathon" ) }
+							>
+								<div>
+									<Icon icon={ DoubleCheck } />
+								</div>
+							</Tooltip>
+						</div>
+						<div className="header-column column-available check-column">
+							<Tooltip
+								delay={ 0 }
+								placement="top"
+								text={ __( "I have this movie right here", "cinemarathon" ) }
+							>
+								<div>
+									<Icon icon={ Available } />
+								</div>
+							</Tooltip>
+						</div>
+						<div className="header-column column-bonus check-column">
+							<Tooltip
+								delay={ 0 }
+								placement="top"
+								text={ __( "Bonus movie, not mandatory to watch", "cinemarathon" ) }
+							>
+								<div>
+									<Icon icon={ Bonus } />
+								</div>
+							</Tooltip>
+						</div>
+						<div className="header-column column-title text-column">{ __( "Movie Title", "cinemarathon" ) }</div>
+					</div>
+					{ attributes.movies.length ? (
+						<div className="list-content">
+							{ attributes.movies.map( ( movie, index ) => (
+								<div className="list-item" key={ index } id={ movie.hash }>
+									<div className="list-item-column column-watched check-column">
+										<CheckboxControl
+											checked={ movie.watched }
+											onChange={ value => update( index, 'watched', value ) }
+										/>
 									</div>
-								</Tooltip>
-							</th>
-							<th className="manage-column column-rewatch check-column">
-								<Tooltip
-									delay={ 0 }
-									placement="top"
-									text={ __( "Seen this one before", "cinemarathon" ) }
-								>
-									<div>
-										<Icon icon={ DoubleCheck } />
+									<div className="list-item-column column-rewatch check-column">
+										<CheckboxControl
+											checked={ movie.rewatch }
+											onChange={ value => update( index, 'rewatch', value ) }
+										/>
 									</div>
-								</Tooltip>
-							</th>
-							<th className="manage-column column-available check-column">
-								<Tooltip
-									delay={ 0 }
-									placement="top"
-									text={ __( "I have this movie right here", "cinemarathon" ) }
-								>
-									<div>
-										<Icon icon={ Available } />
+									<div className="list-item-column column-available check-column">
+										<CheckboxControl
+											checked={ movie.available }
+											onChange={ value => update( index, 'available', value ) }
+										/>
 									</div>
-								</Tooltip>
-							</th>
-							<th className="manage-column column-bonus check-column">
-								<Tooltip
-									delay={ 0 }
-									placement="top"
-									text={ __( "Bonus movie, not mandatory to watch", "cinemarathon" ) }
-								>
-									<div>
-										<Icon icon={ Bonus } />
+									<div className="list-item-column column-bonus check-column">
+										<CheckboxControl
+											checked={ movie.bonus }
+											onChange={ value => update( index, 'bonus', value ) }
+										/>
 									</div>
-								</Tooltip>
-							</th>
-							<th className="manage-column column-title text-column">{ __( "Movie Title", "cinemarathon" ) }</th>
-							<th className="manage-column column-actions check-column"></th>
-						</tr>
-					</thead>
-					<tbody>
-					 	{ attributes.movies.length ? (
-							<>
-								{ attributes.movies.map( ( movie, index ) => (
-									<tr key={ index } id={ movie.hash }>
-										<td className="column-watched check-column">
-											<CheckboxControl
-												checked={ movie.watched }
-												onChange={ value => update( index, 'watched', value ) }
+									<div className="list-item-column column-title text-column">
+										<TextControl
+											value={ movie.title }
+											onChange={ value => update( index, 'title', value ) }
+										/>
+									</div>
+									<div className={ `list-item-column column-actions check-column ${ editing.includes( movie.hash ) ? 'show-actions' : ''}` }>
+										<Button
+											size="small"
+											isPressed={ editing.includes( movie.hash ) }
+											onClick={ () => toggleEditing( movie.hash ) }
+										>
+											<Icon
+												icon={ editing.includes( movie.hash ) ? closeSmall : moreVertical }
+												size={ 20 }
 											/>
-										</td>
-										<td className="column-rewatch check-column">
-											<CheckboxControl
-												checked={ movie.rewatch }
-												onChange={ value => update( index, 'rewatch', value ) }
-											/>
-										</td>
-										<td className="column-available check-column">
-											<CheckboxControl
-												checked={ movie.available }
-												onChange={ value => update( index, 'available', value ) }
-											/>
-										</td>
-										<td className="column-bonus check-column">
-											<CheckboxControl
-												checked={ movie.bonus }
-												onChange={ value => update( index, 'bonus', value ) }
-											/>
-										</td>
-										<td className="column-title text-column">
-											<TextControl
-												value={ movie.title }
-												onChange={ value => update( index, 'title', value ) }
-											/>
-										</td>
-										<td className={ `column-actions check-column ${ editing.includes( movie.hash ) ? 'show-actions' : ''}` }>
+										</Button>
+										<div className="actions">
 											<Button
+												label={ __( "Move Up", "cinemarathon" ) }
 												size="small"
-												onClick={ () => toggleEditing( movie.hash ) }
+												showTooltip={ true }
+												disabled={ '' == movie.hash }
+												onClick={ () => moveUp( index ) }
 											>
 												<Icon
-													icon={ moreVertical }
+													icon={ arrowUp }
 													size={ 20 }
 												/>
 											</Button>
-											<div className="actions">
-												<Button
-													label={ __( "Move Up", "cinemarathon" ) }
-													size="small"
-													showTooltip={ true }
-													disabled={ '' == movie.hash }
-													onClick={ () => moveUp( index ) }
-												>
-													<Icon
-														icon={ arrowUp }
-														size={ 20 }
-													/>
-												</Button>
-												<Button
-													label={ __( "Move Down", "cinemarathon" ) }
-													size="small"
-													showTooltip={ true }
-													disabled={ '' == movie.hash }
-													onClick={ () => moveDown( index ) }
-												>
-													<Icon
-														icon={ arrowDown }
-														size={ 20 }
-													/>
-												</Button>
-												<Button
-													label={ __( "Duplicate", "cinemarathon" ) }
-													size="small"
-													showTooltip={ true }
-													onClick={ () => duplicate( index ) }
-												>
-													<Icon
-														icon={ copy }
-														size={ 20 }
-													/>
-												</Button>
-												<Button
-													label={ __( "Remove", "cinemarathon" ) }
-													size="small"
-													showTooltip={ true }
-													onClick={ () => remove( index ) }
-												>
-													<Icon
-														icon={ trash }
-														size={ 20 }
-													/>
-												</Button>
-											</div>
-										</td>
-									</tr>
-								) ) }
-							</>
-						) : (
-							<tr>
-								<td colSpan={ 6 }>
-									<Text>{ __( "This marathon does not have any movie yet.", "cinemarathon" ) }</Text>
-									<Button
-										variant="link"
-										onClick={ add }
-									>
-										{ __( "Start by adding one!", "cinemarathon" ) }
-									</Button>
-								</td>
-							</tr>
-						) }
-					</tbody>
-					<tfoot>
-						<tr>
-							<td className="manage-column column-text text-column" colSpan={ 5 }>
-								<Text>
-									{ sprintf( _n( '%s Movie', '%s Movies', attributes.movies.length ), attributes.movies.length ) }
-								</Text>
-							</td>
-							<td className="manage-column column-actions check-column" colSpan={ 1 }>
+											<Button
+												label={ __( "Move Down", "cinemarathon" ) }
+												size="small"
+												showTooltip={ true }
+												disabled={ '' == movie.hash }
+												onClick={ () => moveDown( index ) }
+											>
+												<Icon
+													icon={ arrowDown }
+													size={ 20 }
+												/>
+											</Button>
+											<Button
+												label={ __( "Duplicate", "cinemarathon" ) }
+												size="small"
+												showTooltip={ true }
+												onClick={ () => duplicate( index ) }
+											>
+												<Icon
+													icon={ copy }
+													size={ 20 }
+												/>
+											</Button>
+											<Button
+												label={ __( "Remove", "cinemarathon" ) }
+												size="small"
+												showTooltip={ true }
+												onClick={ () => remove( index ) }
+											>
+												<Icon
+													icon={ trash }
+													size={ 20 }
+												/>
+											</Button>
+										</div>
+									</div>
+								</div>
+							) ) }
+							{ batchMode && (
+								<div className="batch-editor">
+									<TextareaControl
+										style={ { height: `${ batchEditorHeight }px` } }
+										value={ batchList }
+										onChange={ value => setBatchList( value ) }
+									/>
+									<div className="actions">
+										<Text>
+											{ __( "Type in a list of movies to add, one per line", "cinemarathon" ) }
+										</Text>
+										<Button
+											size="small"
+											variant="primary"
+											text={ __( "Add movies", "cinemarathon" ) }
+											onClick={ batch }
+										/>
+									</div>
+								</div>
+							) }
+						</div>
+					) : (
+						<div className="list-content">
+							<div className="placeholder">
+								<Text>{ __( "This marathon does not have any movie yet.", "cinemarathon" ) }</Text>
 								<Button
-									size="small"
-									label={ __( "Add new movie", "cinemarathon" ) }
-									showTooltip={ true }
+									variant="link"
 									onClick={ add }
 								>
-									<Icon
-										icon={ plus }
-										size={ 20 }
-									/>
+									{ __( "Start by adding one!", "cinemarathon" ) }
 								</Button>
-							</td>
-						</tr>
-					</tfoot>
-				</table>
+							</div>
+						</div>
+					) }
+					<div className="list-footer">
+						<div className="footer-content">
+							{ sprintf( _n( '%s Movie', '%s Movies', attributes.movies.length ), attributes.movies.length ) }
+						</div>
+						<div className="footer-actions">
+							<Button
+								className="batch-add"
+								size="small"
+								variant="icon"
+								label={ __( "Batch add movies", "cinemarathon" ) }
+								showTooltip={ true }
+								onClick={ () => setBatchMode( ! batchMode ) }
+								isPressed={ batchMode }
+							>
+								<Icon
+									icon={ Batch }
+									size={ 32 }
+								/>
+							</Button>
+							<Button
+								className="add-new"
+								size="small"
+								variant="icon"
+								label={ __( "Add new movie", "cinemarathon" ) }
+								showTooltip={ true }
+								onClick={ add }
+							>
+								<Icon
+									icon={ plus }
+									size={ 20 }
+								/>
+							</Button>
+						</div>
+					</div>
+				</div>
 			</Placeholder>
 		</div>
 	)
