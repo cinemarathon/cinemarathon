@@ -72,3 +72,23 @@
 		}
 	}
 }
+
+@media screen and (max-width:960px) {
+	.wp-block-cinemarathon-marathons {
+		&.mode-grid {
+			&[data-grid-columns] {
+				grid-template-columns: repeat(2, 1fr) !important;
+			}
+		}
+	}
+}
+
+@media screen and (max-width:768px) {
+	.wp-block-cinemarathon-marathons {
+		&.mode-grid {
+			&[data-grid-columns] {
+				grid-template-columns: repeat(1, 1fr) !important;
+			}
+		}
+	}
+}
