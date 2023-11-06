@@ -1,4 +1,8 @@
 
-.wp-block-cinemarathon-marathons .components-placeholder__fieldset > div {
-	width: 100%;
+.wp-block-cinemarathon-marathons {
+	.components-placeholder__fieldset {
+		& > div {
+			width: 100%;
+		}
+	}
 }

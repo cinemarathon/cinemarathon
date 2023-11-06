@@ -22,6 +22,7 @@ define( 'CINEMARATHON_VERSION', '1.0.0' );
 define( 'CINEMARATHON_PATH',    trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'CINEMARATHON_URL',     trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
+require_once CINEMARATHON_PATH . 'includes/core/traits/class-singleton.php';
 require_once CINEMARATHON_PATH . 'class-cinemarathon.php';
 
 \Cinemarathon\cinemarathon();

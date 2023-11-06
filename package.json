@@ -15,7 +15,12 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^24.3.0"
+		"@wordpress/scripts": "^24.3.0",
+		"postcss": "^8.4.30",
+		"postcss-for": "^2.1.1",
+		"postcss-import": "^15.1.0",
+		"postcss-nested": "^6.0.1",
+		"postcss-nested-ancestors": "^3.0.0"
 	},
 	"dependencies": {
 		"@wordpress/icons": "^9.32.0",

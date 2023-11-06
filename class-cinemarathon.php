@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class.
  *
@@ -9,6 +8,8 @@
 
 namespace Cinemarathon;
 
+use Cinemarathon\Core\Traits\Singleton;
+
 /**
  * Define the main plugin class.
  *
@@ -16,6 +17,8 @@ namespace Cinemarathon;
  * @author Charlie Merland <charlie@caercam.org>
  */
 final class Cinemarathon {
+
+    use Singleton;
 
     /**
      * @var string
@@ -40,35 +43,6 @@ final class Cinemarathon {
      * @var string
      */
     private $include_url;
-
-    /**
-     * Static class instance.
-     * @var static
-     */
-    private static $instance;
-
-    /**
-     * Get the instance of this class, insantiating it if it doesn't exist yet.
-     *
-     * @since 1.0.0
-     * @static
-     * @access public
-     *
-     * @return static
-     */
-    public static function instance() {
-
-        // Store the instance locally to avoid private static replication.
-        static $instance = null;
-
-        // Only run these methods if they haven't been ran previously.
-        if ( null === $instance ) {
-            $instance = new static;
-        }
-
-        // Always return the instance
-        return $instance;
-    }
 
     /**
      * Constructor.
@@ -126,7 +100,15 @@ final class Cinemarathon {
      */
     public function storyboard() {
 
-        // Nothing to do here. Yet.
+        // Load helpers.
+        require_once CINEMARATHON_PATH . 'includes/helpers.php';
+
+        // Load core.
+        require_once CINEMARATHON_PATH . 'includes/core/class-block.php';
+
+        // Load blocks.
+        require_once CINEMARATHON_PATH . 'includes/blocks/class-marathon.php';
+        require_once CINEMARATHON_PATH . 'includes/blocks/class-marathons.php';
 
         // Load dashboard.
         if (is_admin()) {
@@ -286,7 +268,21 @@ final class Cinemarathon {
             return;
         }
 
-        register_block_type( 'cinemarathon/marathon', [
+        $blocks = [
+            'cinemarathon/marathon' => \Cinemarathon\Blocks\Marathon::class,
+            'cinemarathon/marathons' => \Cinemarathon\Blocks\Marathons::class,
+        ];
+
+        foreach ( $blocks as $slug => $block ) {
+            $instance = new $block;
+            register_block_type( $slug, [
+                'api_version' => 2,
+                'attributes' => $instance->attributes(),
+                'render_callback' => [ $instance, 'render' ],
+            ]);
+        }
+
+        /*register_block_type( 'cinemarathon/marathon', [
             'api_version' => 2,
             'attributes' => [
                 'movies' => [
@@ -297,7 +293,7 @@ final class Cinemarathon {
             'render_callback' => function( $attributes = [], $content = null ) {
 
                 ob_start();
-                require CINEMARATHON_PATH . 'templates/marathon.php';
+                require CINEMARATHON_PATH . 'includes/templates/marathon.php';
                 $content = ob_get_clean();
 
                 return $content;
@@ -316,20 +312,23 @@ final class Cinemarathon {
 
                 global $wpdb;
 
-                $items = $wpdb->get_col(
+                $ids = $wpdb->get_col(
                     $wpdb->prepare(
                         "SELECT ID FROM {$wpdb->posts} WHERE post_type IN ( 'page', 'post' ) AND post_status = 'publish' AND post_content LIKE '%s'",
                         '% wp:cinemarathon/marathon {%'
                     )
                 );
 
+                $items = [];
+                // foreach ( $items as $post_id ) {}
+
                 ob_start();
-                require CINEMARATHON_PATH . 'templates/marathons.php';
+                require CINEMARATHON_PATH . 'includes/templates/marathons.php';
                 $content = ob_get_clean();
 
                 return $content;
             }
-        ]);
+        ]);*/
     }
 
     /**

@@ -1,6 +1,15 @@
 
 .wp-block-cinemarathon-marathon {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+	
+	.marathon-header {
+
+		img {
+			aspect-ratio: 2.35;
+			display: block;
+			height: 100%;
+			margin-bottom: 1rem;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
 }
