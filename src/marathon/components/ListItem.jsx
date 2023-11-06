@@ -20,8 +20,7 @@ import {
     chevronDown,
     post,
     customLink,
-    external,
-    linkOff
+    external
 } from "@wordpress/icons"
 
 import { __ } from "@wordpress/i18n"
@@ -64,10 +63,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
         tags: [],
     } )
 
-    const style = {
-        transition,
-        transform: CSS.Transform.toString(transform)
-    }
+    const [ title, setTitle ] = useState( movie.title )
 
     useEffect( () => {
         if ( entry.id ) {
@@ -81,7 +77,10 @@ const ListItem = ( { itemsHandler, movie } ) => {
             <div
                 id={ movie.hash }
                 ref={ setNodeRef }
-                style={ style }
+                style={ {
+                    transition,
+                    transform: CSS.Transform.toString(transform)
+                } }
                 className={ `list-item ${ isDragging ? 'dragging' : '' }` }
             >
                 <div className="list-item-column column-draghandle draghandle-column">
@@ -123,8 +122,9 @@ const ListItem = ( { itemsHandler, movie } ) => {
                 </div>
                 <div className="list-item-column column-title text-column">
                     <TextControl
-                        value={ movie.title }
-                        onChange={ value => itemsHandler.update( index, 'title', value ) }
+                        value={ title }
+                        onChange={ setTitle }
+                        onBlur={ () => itemsHandler.update( index, 'title', title ) }
                     />
                 </div>
                 <div className="list-item-column column-actions check-column">
