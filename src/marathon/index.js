@@ -2,14 +2,14 @@ import { registerBlockType } from "@wordpress/blocks"
 
 import { __ } from "@wordpress/i18n"
 
-import { Cinemarathon } from "../icons"
+import { Cinemarathons } from "../icons"
 import Edit from "./edit"
 
-registerBlockType("cinemarathon/marathon", {
+registerBlockType("cinemarathons/marathon", {
     apiVersion: 2,
-    title: __( "Cinemarathon", "cinemarathon" ),
-    description: __( "Displays a list of movies you plan to watch along with a few options to add more fun to the fun.", "cinemarathon" ),
-    category: "cinemarathon",
+    title: __( "Cinemarathons", "cinemarathons" ),
+    description: __( "Displays a list of movies you plan to watch along with a few options to add more fun to the fun.", "cinemarathons" ),
+    category: "cinemarathons",
     attributes: {
         id: {
             type: "integer",
@@ -43,6 +43,6 @@ registerBlockType("cinemarathon/marathon", {
             default: false
         }
     },
-    icon: Cinemarathon,
+    icon: Cinemarathons,
     edit: Edit,
 });

@@ -2,15 +2,15 @@
 /**
  * The file that defines the plugin marathons block class.
  *
- * @link https://wordpress.org/plugins/cinemarathon
- * @package Cinemarathon
+ * @link https://cinemarathons.com
+ * @package Cinemarathons
  */
 
-namespace Cinemarathon\Blocks;
+namespace Cinemarathons\Blocks;
 
-use Cinemarathon\Core\Block;
+use Cinemarathons\Core\Block;
 
-use function Cinemarathon\match_blocks_recursive;
+use function Cinemarathons\match_blocks_recursive;
 
 /**
  * Define the marathons block class.
@@ -53,7 +53,7 @@ class Marathons extends Block {
 
         global $wpdb;
 
-        $settings = get_option( 'cinemarathon_options', [] );
+        $settings = get_option( 'cinemarathons_options', [] );
 
         // Prepare supported post types for query.
         $supported_post_types = array_map( function( $supported_post_type ) use ($wpdb) {
@@ -62,7 +62,7 @@ class Marathons extends Block {
         $condition = implode( ' OR ', $supported_post_types );
 
         $query = "SELECT ID, post_title, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s' LIMIT 0, %d";
-        $posts = $wpdb->get_results( $wpdb->prepare( $query, '% wp:cinemarathon/marathon {%', $this->attributes['number'] ) );
+        $posts = $wpdb->get_results( $wpdb->prepare( $query, '% wp:cinemarathons/marathon {%', $this->attributes['number'] ) );
 
         $items = [];
         foreach ( $posts as $post ) {
@@ -70,7 +70,7 @@ class Marathons extends Block {
             $blocks = parse_blocks( $post->post_content );
 
             // Retrieve marathon blocks.
-            $matches = match_blocks_recursive( 'cinemarathon/marathon', $blocks );
+            $matches = match_blocks_recursive( 'cinemarathons/marathon', $blocks );
 
             foreach ( $matches as $block ) {
 
@@ -82,7 +82,7 @@ class Marathons extends Block {
                 $item = [
                     'id' => $post->ID,
                     'title' => $post->post_title,
-                    'image' => CINEMARATHON_URL . 'assets/images/default-image.jpg',
+                    'image' => CINEMARATHONS_URL . 'assets/images/default-image.jpg',
                     'url' => get_the_permalink( $post->ID ),
                     'current' => 0,
                     'total' => 0,

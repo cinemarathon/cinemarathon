@@ -2,13 +2,13 @@
 /**
  * The file that defines the core plugin class.
  *
- * @link https://wordpress.org/plugins/cinemarathon
- * @package Cinemarathon
+ * @link https://cinemarathons.com
+ * @package Cinemarathons
  */
 
-namespace Cinemarathon;
+namespace Cinemarathons;
 
-use Cinemarathon\Core\Traits\Singleton;
+use Cinemarathons\Core\Traits\Singleton;
 
 /**
  * Define the main plugin class.
@@ -16,7 +16,7 @@ use Cinemarathon\Core\Traits\Singleton;
  * @since 1.0.0
  * @author Charlie Merland <charlie@caercam.org>
  */
-final class Cinemarathon {
+final class Cinemarathons {
 
     use Singleton;
 
@@ -52,7 +52,7 @@ final class Cinemarathon {
      */
     private function __construct() {
 
-        $this->version = CINEMARATHON_VERSION;
+        $this->version = CINEMARATHONS_VERSION;
 
         $this->plugin_dir = plugin_dir_path( __FILE__ );
         $this->plugin_url = plugin_dir_url( __FILE__ );
@@ -72,16 +72,16 @@ final class Cinemarathon {
         add_action( 'plugins_loaded', [ $this, 'run' ]) ;
 
         // i18n
-        add_action( 'cinemarathon/run', [ $this, 'translate' ] );
+        add_action( 'cinemarathons/run', [ $this, 'translate' ] );
 
         // Let's get to work.
-        add_action( 'cinemarathon/run', [ $this, 'storyboard' ] );
-        add_action( 'cinemarathon/run', [ $this, 'rehearsal' ] );
-        add_action( 'cinemarathon/run', [ $this, 'background' ] );
-        add_action( 'cinemarathon/run', [ $this, 'foreground' ] );
+        add_action( 'cinemarathons/run', [ $this, 'storyboard' ] );
+        add_action( 'cinemarathons/run', [ $this, 'rehearsal' ] );
+        add_action( 'cinemarathons/run', [ $this, 'background' ] );
+        add_action( 'cinemarathons/run', [ $this, 'foreground' ] );
 
         // Plugin activation hook.
-        register_activation_hook( CINEMARATHON_PATH, [ $this, 'activate' ] );
+        register_activation_hook( CINEMARATHONS_PATH, [ $this, 'activate' ] );
     }
 
     /**
@@ -101,14 +101,14 @@ final class Cinemarathon {
     public function storyboard() {
 
         // Load helpers.
-        require_once CINEMARATHON_PATH . 'includes/helpers.php';
+        require_once CINEMARATHONS_PATH . 'includes/helpers.php';
 
         // Load core.
-        require_once CINEMARATHON_PATH . 'includes/core/class-block.php';
+        require_once CINEMARATHONS_PATH . 'includes/core/class-block.php';
 
         // Load blocks.
-        require_once CINEMARATHON_PATH . 'includes/blocks/class-marathon.php';
-        require_once CINEMARATHON_PATH . 'includes/blocks/class-marathons.php';
+        require_once CINEMARATHONS_PATH . 'includes/blocks/class-marathon.php';
+        require_once CINEMARATHONS_PATH . 'includes/blocks/class-marathons.php';
 
         // Load dashboard.
         if (is_admin()) {
@@ -149,7 +149,7 @@ final class Cinemarathon {
         add_action( 'admin_init', [ $this, 'register_settings' ] );
         add_action( 'admin_menu', [ $this, 'register_admin_pages' ] );
 
-        add_action( 'plugin_action_links_' . CINEMARATHON_PLUGIN, [ $this, 'plugin_action_links' ] );
+        add_action( 'plugin_action_links_' . CINEMARATHONS_PLUGIN, [ $this, 'plugin_action_links' ] );
     }
 
     /**
@@ -185,7 +185,7 @@ final class Cinemarathon {
 
         $this->register_styles();
 
-        wp_enqueue_style( 'cinemarathon' );
+        wp_enqueue_style( 'cinemarathons' );
     }
 
     /**
@@ -204,7 +204,7 @@ final class Cinemarathon {
      */
     private function register_styles() {
 
-        wp_register_style( 'cinemarathon', CINEMARATHON_URL . 'build/style-index.css', [], CINEMARATHON_VERSION, 'all' );
+        wp_register_style( 'cinemarathons', CINEMARATHONS_URL . 'build/style-index.css', [], CINEMARATHONS_VERSION, 'all' );
     }
 
     /**
@@ -255,7 +255,7 @@ final class Cinemarathon {
 
         $this->register_block_editor_scripts();
 
-        wp_enqueue_script( 'cinemarathon' );
+        wp_enqueue_script( 'cinemarathons' );
     }
 
     /**
@@ -268,7 +268,7 @@ final class Cinemarathon {
 
         $this->register_block_editor_styles();
 
-        wp_enqueue_style( 'cinemarathon' );
+        wp_enqueue_style( 'cinemarathons' );
     }
 
     /**
@@ -279,9 +279,9 @@ final class Cinemarathon {
      */
     private function register_block_editor_scripts() {
 
-        $assets = require_once CINEMARATHON_PATH . 'build/index.asset.php';
+        $assets = require_once CINEMARATHONS_PATH . 'build/index.asset.php';
 
-        wp_register_script( 'cinemarathon', CINEMARATHON_URL . 'build/index.js', $assets['dependencies'] ?? [], $assets['version'] ?? $this->version, true);
+        wp_register_script( 'cinemarathons', CINEMARATHONS_URL . 'build/index.js', $assets['dependencies'] ?? [], $assets['version'] ?? $this->version, true);
     }
 
     /**
@@ -292,7 +292,7 @@ final class Cinemarathon {
      */
     private function register_block_editor_styles() {
 
-        wp_register_style( 'cinemarathon', CINEMARATHON_URL . 'build/index.css', [], $this->version, 'all' );
+        wp_register_style( 'cinemarathons', CINEMARATHONS_URL . 'build/index.css', [], $this->version, 'all' );
     }
 
     /**
@@ -303,11 +303,11 @@ final class Cinemarathon {
      */
     public function register_settings() {
 
-        $settings = get_option( 'cinemarathon_options' );
+        $settings = get_option( 'cinemarathons_options' );
 
-        register_setting( 'cinemarathon', 'cinemarathon_options' );
+        register_setting( 'cinemarathons', 'cinemarathons_options' );
 
-        add_settings_section( 'cinemarathon_options', __( 'General Settings', 'cinemarathon' ), '__return_null', 'cinemarathon' );
+        add_settings_section( 'cinemarathons_options', __( 'General Settings', 'cinemarathons' ), '__return_null', 'cinemarathons' );
 
         add_settings_field(
             'supported_post_types',
@@ -315,10 +315,10 @@ final class Cinemarathon {
             function() use ($settings) {
                 $post_types = get_post_types( [ 'public' => true ], 'objects' );
                 $supported_post_types = $settings['supported_post_types'] ?? [ 'page' ];
-                require_once CINEMARATHON_PATH . 'templates/dashboard/settings/fields/post-types.php';
+                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/post-types.php';
             },
-            'cinemarathon',
-            'cinemarathon_options'
+            'cinemarathons',
+            'cinemarathons_options'
         );
 
         add_settings_field(
@@ -327,10 +327,10 @@ final class Cinemarathon {
             function() use ($settings) {
                 $post_types = get_post_types( [ 'public' => true ], 'objects' );
                 $hide_settings_page = $settings['hide_settings_page'] ?? [ 'page' ];
-                require_once CINEMARATHON_PATH . 'templates/dashboard/settings/fields/hide-settings-page.php';
+                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/hide-settings-page.php';
             },
-            'cinemarathon',
-            'cinemarathon_options'
+            'cinemarathons',
+            'cinemarathons_options'
         );
     }
 
@@ -342,10 +342,10 @@ final class Cinemarathon {
      */
     public function register_admin_pages() {
 
-        $settings = get_option( 'cinemarathon_options', [] );
+        $settings = get_option( 'cinemarathons_options', [] );
         $parent_slug = '1' !== $settings['hide_settings_page'] ? 'options-general.php' : false;
 
-        add_submenu_page( $parent_slug, 'Cinemarathon Settings', 'Cinemarathon', 'manage_options', 'cinemarathon', [ $this, 'settings_page' ] );
+        add_submenu_page( $parent_slug, 'Cinemarathons Settings', 'Cinemarathons', 'manage_options', 'cinemarathons', [ $this, 'settings_page' ] );
     }
 
     /**
@@ -358,7 +358,7 @@ final class Cinemarathon {
 
         // check user capabilities
         if ( current_user_can( 'manage_options' ) ) {
-            require_once CINEMARATHON_PATH . 'templates/dashboard/settings/settings.php';
+            require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/settings.php';
         }
     }
 
@@ -373,7 +373,7 @@ final class Cinemarathon {
      */
     public function plugin_action_links( $links ) {
 
-        return $links + [ sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=cinemarathon' ), __( 'Settings', 'cinemarathon' ) ) ];
+        return $links + [ sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=cinemarathons' ), __( 'Settings', 'cinemarathons' ) ) ];
     }
 
     /**
@@ -391,8 +391,8 @@ final class Cinemarathon {
         }
 
         $blocks = [
-            'cinemarathon/marathon' => \Cinemarathon\Blocks\Marathon::class,
-            'cinemarathon/marathons' => \Cinemarathon\Blocks\Marathons::class,
+            'cinemarathons/marathon' => \Cinemarathons\Blocks\Marathon::class,
+            'cinemarathons/marathons' => \Cinemarathons\Blocks\Marathons::class,
         ];
 
         foreach ( $blocks as $slug => $block ) {
@@ -421,8 +421,8 @@ final class Cinemarathon {
             $categories,
             [
                 [
-                    'slug' => 'cinemarathon',
-                    'title' => 'Cinemarathon',
+                    'slug' => 'cinemarathons',
+                    'title' => 'Cinemarathons',
                 ],
             ]
         );
@@ -436,9 +436,9 @@ final class Cinemarathon {
      */
     public function activate() {
 
-        $db_version = get_option( 'CINEMARATHON_VERSION' );
+        $db_version = get_option( 'CINEMARATHONS_VERSION' );
         if ( version_compare( $db_version, $this->version ) ) {
-            update_option( 'CINEMARATHON_VERSION', $this->version );
+            update_option( 'CINEMARATHONS_VERSION', $this->version );
         }
     }
 
@@ -458,7 +458,7 @@ final class Cinemarathon {
          *
          * @param object $this Plugin class instance, passed by reference.
          */
-        do_action_ref_array( 'cinemarathon/run', [ $this ] );
+        do_action_ref_array( 'cinemarathons/run', [ $this ] );
     }
 }
 
@@ -469,12 +469,12 @@ final class Cinemarathon {
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $cinemarathon = cinemarathon(); ?>
+ * Example: <?php $cinemarathons = cinemarathons(); ?>
  *
  * @since 1.0
  *
- * @return Cinemarathon The one true Cinemarathon Instance
+ * @return Cinemarathons The one true Cinemarathons Instance
  */
-function cinemarathon() {
-    return Cinemarathon::instance();
+function cinemarathons() {
+    return Cinemarathons::instance();
 }

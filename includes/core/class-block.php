@@ -3,10 +3,10 @@
  * The file that defines the plugin block class.
  *
  * @link https://wordpress.org/plugins/cinemarathon
- * @package Cinemarathon
+ * @package Cinemarathons
  */
 
-namespace Cinemarathon\Core;
+namespace Cinemarathons\Core;
 
 /**
  * Define the block class.
@@ -102,9 +102,9 @@ abstract class Block {
 
         $this->prepare();
 
-        $template_path = get_theme_file_path( "cinemarathon/blocks/{$this->template}.php" );
+        $template_path = get_theme_file_path( "cinemarathons/blocks/{$this->template}.php" );
         if ( ! file_exists( $template_path ) ) {
-            $template_path = CINEMARATHON_PATH . "templates/blocks/{$this->template}.php";
+            $template_path = CINEMARATHONS_PATH . "templates/blocks/{$this->template}.php";
             if ( ! file_exists( $template_path ) ) {
                 return $this->content;
             }

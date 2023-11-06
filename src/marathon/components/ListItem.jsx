@@ -96,7 +96,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                         <>
                             <MenuGroup>
                                 <MenuItem
-                                    text={ __( "Duplicate Item", "cinemarathon" ) }
+                                    text={ __( "Duplicate Item", "cinemarathons" ) }
                                     icon={ copy }
                                     iconPosition="right"
                                     onClick={ () => {
@@ -107,7 +107,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                             </MenuGroup>
                             <MenuGroup>
                                 <MenuItem
-                                    text={ __( "Move Item to Top", "cinemarathon" ) }
+                                    text={ __( "Move Item to Top", "cinemarathons" ) }
                                     icon={ arrowUp }
                                     iconPosition="right"
                                     onClick={ () => {
@@ -116,7 +116,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                                     } }
                                 />
                                 <MenuItem
-                                    text={ __( "Move Item Up", "cinemarathon" ) }
+                                    text={ __( "Move Item Up", "cinemarathons" ) }
                                     icon={ chevronUp }
                                     iconPosition="right"
                                     onClick={ () => {
@@ -125,7 +125,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                                     } }
                                 />
                                 <MenuItem
-                                    text={ __( "Move Item Down", "cinemarathon" ) }
+                                    text={ __( "Move Item Down", "cinemarathons" ) }
                                     icon={ chevronDown }
                                     iconPosition="right"
                                     onClick={ () => {
@@ -134,7 +134,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                                     } }
                                 />
                                 <MenuItem
-                                    text={ __( "Move Item to Bottom", "cinemarathon" ) }
+                                    text={ __( "Move Item to Bottom", "cinemarathons" ) }
                                     icon={ arrowDown }
                                     iconPosition="right"
                                     onClick={ () => {
@@ -145,7 +145,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
                             </MenuGroup>
                             <MenuGroup>
                                 <MenuItem
-                                    text={ __( "Remove Item", "cinemarathon" ) }
+                                    text={ __( "Remove Item", "cinemarathons" ) }
                                     icon={ trash }
                                     iconPosition="right"
                                     onClick={ () => {

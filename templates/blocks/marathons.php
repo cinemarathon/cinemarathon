@@ -1,7 +1,7 @@
 <?php if ( 'list' === $block->attributes['mode'] ) : ?>
-    <div class="wp-block-cinemarathon-marathons mode-list">
+    <div class="wp-block-cinemarathons-marathons mode-list">
 <?php else : ?>
-    <div class="wp-block-cinemarathon-marathons mode-grid" data-grid-columns="<?php echo esc_attr( $block->attributes['columns'] ); ?>">
+    <div class="wp-block-cinemarathons-marathons mode-grid" data-grid-columns="<?php echo esc_attr( $block->attributes['columns'] ); ?>">
 <?php
 endif;
 

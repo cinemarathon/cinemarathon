@@ -1,5 +1,5 @@
 
-.wp-block-cinemarathon-marathons {
+.wp-block-cinemarathons-marathons {
 
 	&.mode-list {
 
@@ -74,7 +74,7 @@
 }
 
 @media screen and (max-width:960px) {
-	.wp-block-cinemarathon-marathons {
+	.wp-block-cinemarathons-marathons {
 		&.mode-grid {
 			&[data-grid-columns] {
 				grid-template-columns: repeat(2, 1fr) !important;
@@ -84,7 +84,7 @@
 }
 
 @media screen and (max-width:768px) {
-	.wp-block-cinemarathon-marathons {
+	.wp-block-cinemarathons-marathons {
 		&.mode-grid {
 			&[data-grid-columns] {
 				grid-template-columns: repeat(1, 1fr) !important;

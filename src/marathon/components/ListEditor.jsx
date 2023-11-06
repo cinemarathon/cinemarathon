@@ -49,12 +49,12 @@ const ListEditor = ( { attributes, setAttributes, itemsHandler } ) => {
                 </DndContext>
             ) : (
                 <div className="placeholder">
-                    <Text>{ __( "This marathon does not have any movie yet.", "cinemarathon" ) }</Text>
+                    <Text>{ __( "This marathon does not have any movie yet.", "cinemarathons" ) }</Text>
                     <Button
                         variant="link"
                         onClick={ itemsHandler.add }
                     >
-                        { __( "Start by adding one!", "cinemarathon" ) }
+                        { __( "Start by adding one!", "cinemarathons" ) }
                     </Button>
                 </div>
             ) }

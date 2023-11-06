@@ -1,5 +1,5 @@
 
-.cinemarathon-marathon-block-inspector {
+.cinemarathons-marathon-block-inspector {
 	
 	.marathon-featured-image {
 		position: relative;
@@ -68,7 +68,7 @@
 	}
 }
 
-.wp-block-cinemarathon-marathon {
+.wp-block-cinemarathons-marathon {
 
 	.editor {
 		border: 1px solid #c3c4c7;

@@ -1,14 +1,14 @@
 
-.wp-block-cinemarathon-marathons.mode-list .marathon {
+.wp-block-cinemarathons-marathons.mode-list .marathon {
 			display: list-item;
 		}
 
-	.wp-block-cinemarathon-marathons.mode-grid {
+	.wp-block-cinemarathons-marathons.mode-grid {
 		display: grid;
 		grid-gap: 10px;
 	}
 
-	.wp-block-cinemarathon-marathons.mode-grid .marathon {
+	.wp-block-cinemarathons-marathons.mode-grid .marathon {
 			aspect-ratio: 16 / 9;
 			background-image: var(--marathon-featured-image);
 			background-position: center;
@@ -17,7 +17,7 @@
 			position: relative;
 		}
 
-	.wp-block-cinemarathon-marathons.mode-grid .marathon a {
+	.wp-block-cinemarathons-marathons.mode-grid .marathon a {
 				align-items: flex-start;
 				color: #fff;
 				display: flex;
@@ -32,7 +32,7 @@
 				text-decoration: none;
 			}
 
-	.wp-block-cinemarathon-marathons.mode-grid .marathon a::before {
+	.wp-block-cinemarathons-marathons.mode-grid .marathon a::before {
 					transition: all .3s ease-out;
 					background-image: linear-gradient( transparent, rgba( 0, 0, 0, .25 ), rgba( 0, 0, 0, .5 ) );
 					background-position: 100% 0%;
@@ -42,66 +42,66 @@
 					inset: 0;
 				}
 
-	.wp-block-cinemarathon-marathons.mode-grid .marathon a .title {
+	.wp-block-cinemarathons-marathons.mode-grid .marathon a .title {
 					position: relative;
 					z-index: 1;
 				}
 
-	.wp-block-cinemarathon-marathons.mode-grid .marathon a:hover {
+	.wp-block-cinemarathons-marathons.mode-grid .marathon a:hover {
 					opacity: 1;
 				}
 
-	.wp-block-cinemarathon-marathons.mode-grid .marathon a:hover::before {
+	.wp-block-cinemarathons-marathons.mode-grid .marathon a:hover::before {
 						transition: all .15s ease-out;
 						background-position: 100% 100%;
 					}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="1"] {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="1"] {
 				grid-template-columns: repeat(1, 1fr);
 			}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="1"] .marathon a {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="1"] .marathon a {
 						font-size: calc( 180% - calc( 1 * .125em ) );
 					}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="2"] {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="2"] {
 				grid-template-columns: repeat(2, 1fr);
 			}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="2"] .marathon a {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="2"] .marathon a {
 						font-size: calc( 180% - calc( 2 * .125em ) );
 					}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="3"] {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="3"] {
 				grid-template-columns: repeat(3, 1fr);
 			}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="3"] .marathon a {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="3"] .marathon a {
 						font-size: calc( 180% - calc( 3 * .125em ) );
 					}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="4"] {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="4"] {
 				grid-template-columns: repeat(4, 1fr);
 			}
 
-	.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns="4"] .marathon a {
+	.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns="4"] .marathon a {
 						font-size: calc( 180% - calc( 4 * .125em ) );
 					}
 
 @media screen and (max-width:960px) {
-			.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns] {
+			.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns] {
 				grid-template-columns: repeat(2, 1fr) !important;
 			}
 }
 
 @media screen and (max-width:768px) {
-			.wp-block-cinemarathon-marathons.mode-grid[data-grid-columns] {
+			.wp-block-cinemarathons-marathons.mode-grid[data-grid-columns] {
 				grid-template-columns: repeat(1, 1fr) !important;
 			}
 }
 
 
-.wp-block-cinemarathon-marathon .marathon-header img {
+.wp-block-cinemarathons-marathon .marathon-header img {
 			aspect-ratio: 2.35;
 			display: block;
 			height: 100%;

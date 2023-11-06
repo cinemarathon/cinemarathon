@@ -29,7 +29,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                     <Tooltip
                         delay={ 0 }
                         placement="left"
-                        text={ __( "Just watched it!", "cinemarathon" ) }
+                        text={ __( "Just watched it!", "cinemarathons" ) }
                         onClick={ () => alert(':)') }
                     >
                         <div>
@@ -41,7 +41,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                     <Tooltip
                         delay={ 0 }
                         placement="top"
-                        text={ __( "Seen this one before", "cinemarathon" ) }
+                        text={ __( "Seen this one before", "cinemarathons" ) }
                     >
                         <div>
                             <Icon icon={ DoubleCheck } />
@@ -52,7 +52,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                     <Tooltip
                         delay={ 0 }
                         placement="top"
-                        text={ __( "I have this movie right here", "cinemarathon" ) }
+                        text={ __( "I have this movie right here", "cinemarathons" ) }
                     >
                         <div>
                             <Icon icon={ Available } />
@@ -63,17 +63,17 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                     <Tooltip
                         delay={ 0 }
                         placement="top"
-                        text={ __( "Bonus movie, not mandatory to watch", "cinemarathon" ) }
+                        text={ __( "Bonus movie, not mandatory to watch", "cinemarathons" ) }
                     >
                         <div>
                             <Icon icon={ Bonus } />
                         </div>
                     </Tooltip>
                 </div>
-                <div className="header-column column-title text-column">{ __( "Movie Title", "cinemarathon" ) }</div>
+                <div className="header-column column-title text-column">{ __( "Movie Title", "cinemarathons" ) }</div>
                 <div className="header-column column-editing-mode">
                     <ToggleControl
-                        label={ __( "Expert Mode", "cinemarathon" ) }
+                        label={ __( "Expert Mode", "cinemarathons" ) }
                         checked={ advancedEditingMode }
                         onChange={ () => setAdvancedEditingMode( ! advancedEditingMode ) }
                         className="is-reverse is-small"
@@ -108,7 +108,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                             className="add-new"
                             size="small"
                             variant="icon"
-                            label={ __( "Add new movie", "cinemarathon" ) }
+                            label={ __( "Add new movie", "cinemarathons" ) }
                             showTooltip={ true }
                             onClick={ itemsHandler.add }
                         >

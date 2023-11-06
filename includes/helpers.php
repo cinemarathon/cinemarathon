@@ -1,6 +1,6 @@
 <?php
 
-namespace Cinemarathon;
+namespace Cinemarathons;
 
 /**
  * Match blocks recursively.

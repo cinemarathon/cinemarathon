@@ -10,7 +10,7 @@ import { useState } from "@wordpress/element"
 
 import { __ } from "@wordpress/i18n"
 
-import { Cinemarathon } from "../icons"
+import { Cinemarathons } from "../icons"
 
 import "./editor.css"
 
@@ -23,18 +23,18 @@ const Edit = ({ attributes, setAttributes }) => {
 	return (
 		<div { ...blockProps }>
 			<Placeholder
-				icon={ Cinemarathon }
-				label={ __( "Cinemarathons", "cinemarathon" ) }
-				instructions={ __( "Use this block to display a list of your marathons.", "cinemarathon" ) }
+				icon={ Cinemarathons }
+				label={ __( "Cinemarathons", "cinemarathons" ) }
+				instructions={ __( "Use this block to display a list of your marathons.", "cinemarathons" ) }
 			>
 				<div>
 					<TextControl
-						label={ __( "Number of marathons to display", "cinemarathon" ) }
+						label={ __( "Number of marathons to display", "cinemarathons" ) }
 						help={
 							<>
-								<Text>{ __( "Note that this limit will be based on posts count, not marathons per se.", "cinemarathon" ) }</Text>
+								<Text>{ __( "Note that this limit will be based on posts count, not marathons per se.", "cinemarathons" ) }</Text>
 								{ showHelp ? (
-									<Text> { __( "Cinemarathon is able to discover multiple marathons in a single post; As a result this block will query posts containing single 'Cinemarathon' blocks, not the individual 'Cinemarathon' blocks themselves; It means that, if multiple 'Cinemarathon' blocks are present in a single post, the total number of displayed blocks may exceed the specified number.", "cinemarathon" ) }</Text>
+									<Text> { __( "Cinemarathons is able to discover multiple marathons in a single post; As a result this block will query posts containing single 'Marathon' blocks, not the individual 'Marathon' blocks themselves; It means that, if multiple 'Marathon' blocks are present in a single post, the total number of displayed blocks may exceed the specified number.", "cinemarathons" ) }</Text>
 								) : ( '' ) }
 								<Button
 									variant="link"
@@ -52,14 +52,14 @@ const Edit = ({ attributes, setAttributes }) => {
 						onChange={ ( value ) => ( setAttributes( { number: parseInt( value ) } ) ) }
 					/>
 					<SelectControl
-						label={ __( "Display mode", "cinemarathon" ) }
+						label={ __( "Display mode", "cinemarathons" ) }
 						options={ [
 							{
-								label: __( "List", "cinemarathon" ),
+								label: __( "List", "cinemarathons" ),
 								value: 'list'
 							},
 							{
-								label: __( "Grid", "cinemarathon" ),
+								label: __( "Grid", "cinemarathons" ),
 								value: 'grid'
 							}
 						] }
@@ -68,7 +68,7 @@ const Edit = ({ attributes, setAttributes }) => {
 					/>
 					{ 'grid' === attributes.mode && (
 						<TextControl
-							label={ __( "Number of columns", "cinemarathon" ) }
+							label={ __( "Number of columns", "cinemarathons" ) }
 							type="number"
 							min={ 1 }
 							max={ 4 }

@@ -1,7 +1,7 @@
 {
-	"name": "cinemarathon",
+	"name": "cinemarathons",
 	"version": "1.0.0",
-	"description": "Movie list block for movie lovers.",
+	"description": "Movie list blocks for movie lovers.",
 	"author": "Charlie Merland",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",

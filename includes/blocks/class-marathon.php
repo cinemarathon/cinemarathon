@@ -2,13 +2,13 @@
 /**
  * The file that defines the plugin marathon block class.
  *
- * @link https://wordpress.org/plugins/cinemarathon
- * @package Cinemarathon
+ * @link https://cinemarathons.com
+ * @package Cinemarathons
  */
 
-namespace Cinemarathon\Blocks;
+namespace Cinemarathons\Blocks;
 
-use Cinemarathon\Core\Block;
+use Cinemarathons\Core\Block;
 
 /**
  * Define the marathon block class.
@@ -32,7 +32,7 @@ class Marathon extends Block {
     public function prepare() {
 
         $this->data = [
-            'image' => CINEMARATHON_URL . 'assets/images/default-image.jpg',
+            'image' => CINEMARATHONS_URL . 'assets/images/default-image.jpg',
             'current' => 0,
             'total' => 0,
             'progress' => 0,

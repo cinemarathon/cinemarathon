@@ -66,12 +66,12 @@ const BatchEditor = ( { attributes, setAttributes, itemsHandler } ) => {
         <div className="batch-editor">
             <div
                 className="batch-editor-notice"
-                dangerouslySetInnerHTML={ { __html: __( "Use the textarea below to input a list of movies to add to your marathon, one per line. <strong>Be careful!</strong> This will completely replace your current list, <strong>all unsaved changes will be lost!</strong> If you're not sure what you are doing, or you change want to add some new movies to your list, just input the new movies and make sure to check the \"Merge\" toggle next to the \"Update\" button.", "cinemarathon" ) } }
+                dangerouslySetInnerHTML={ { __html: __( "Use the textarea below to input a list of movies to add to your marathon, one per line. <strong>Be careful!</strong> This will completely replace your current list, <strong>all unsaved changes will be lost!</strong> If you're not sure what you are doing, or you change want to add some new movies to your list, just input the new movies and make sure to check the \"Merge\" toggle next to the \"Update\" button.", "cinemarathons" ) } }
             />
             <div
                 ref={ editorRef }
                 className="batch-editor-wrapper"
-                data-title={ __( "Ex: [0,1,1,0] 1968 − The Good, the Bad and the Ugly", "cinemarathon" ) }
+                data-title={ __( "Ex: [0,1,1,0] 1968 − The Good, the Bad and the Ugly", "cinemarathons" ) }
             >
                 <TextareaControl
                     rows={ 1 }
@@ -82,8 +82,8 @@ const BatchEditor = ( { attributes, setAttributes, itemsHandler } ) => {
             <div className="actions">
                 <HStack justify="flex-end">
                     <ToggleControl
-                        label={ __( "Merge", "cinemarathon" ) }
-                        help={ __( "Merge the above list with the current list instead of replacing it", "cinemarathon" ) }
+                        label={ __( "Merge", "cinemarathons" ) }
+                        help={ __( "Merge the above list with the current list instead of replacing it", "cinemarathons" ) }
                         checked={ mergeMode }
                         onChange={ () => setMergeMode( ! mergeMode ) }
                         className="is-reverse is-small"
@@ -91,7 +91,7 @@ const BatchEditor = ( { attributes, setAttributes, itemsHandler } ) => {
                     />
                     <Button
                         variant="primary"
-                        text={ __( "Update", "cinemarathon" ) }
+                        text={ __( "Update", "cinemarathons" ) }
                         onClick={ update }
                     />
                 </HStack>

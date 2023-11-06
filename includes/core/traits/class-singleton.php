@@ -3,10 +3,10 @@
  * The file that defines the plugin singleton trait.
  *
  * @link https://wordpress.org/plugins/cinemarathon
- * @package Cinemarathon
+ * @package Cinemarathons
  */
 
-namespace Cinemarathon\Core\Traits;
+namespace Cinemarathons\Core\Traits;
 
 /**
  * Define the singleton trait.
