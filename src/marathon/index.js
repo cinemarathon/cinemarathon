@@ -11,6 +11,26 @@ registerBlockType("cinemarathon/marathon", {
     description: __( "Displays a list of movies you plan to watch along with a few options to add more fun to the fun.", "cinemarathon" ),
     category: "cinemarathon",
     attributes: {
+        title: {
+            type: "string",
+			default: ""
+        },
+        image: {
+            type: "integer",
+            default: 0
+        },
+        description: {
+            type: "string",
+			default: ""
+        },
+        objectives: {
+            type: "string",
+			default: ""
+        },
+        comments: {
+            type: "string",
+			default: ""
+        },
         movies: {
             type: "array",
 			default: [

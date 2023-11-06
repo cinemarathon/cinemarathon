@@ -1,63 +1,99 @@
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div {
-	width: 100%;
+.cinemarathon-marathon-block-inspector {
+	
+	.media-uploader {
+		
+		img {
+			aspect-ratio: 2;
+			object-fit: cover;
+			width: 100%;
+		}
+
+		& > button {
+			background-color: #f0f0f0;
+			border-radius: 2px;
+			display: block;
+			line-height: 20px;
+			min-height: 90px;
+			padding: 8px 0;
+			text-align: center;
+			width: 100%;
+
+			&:hover {
+				background: #ddd;
+				color: #1e1e1e;
+			}
+		}
+	}
 }
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .check-column {
-	padding: 8px 10px;
-	text-align: center;
-	width: 20px;
-}
+.wp-block-cinemarathon-marathon {
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .check-column .components-checkbox-control__input-container {
-	margin: 0;
-}
+	table {
+		
+		.check-column {
+			padding: 8px 10px;
+			text-align: center;
+			width: 20px;
+			
+			.components-checkbox-control__input-container {
+				margin: 0;
+			}
+		}
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table td {
-	vertical-align: middle;
-}
+		td {
+			vertical-align: middle;
+		}
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table tbody tr {
-	position: relative;
-}
+		tbody {
+			
+			tr {
+				position: relative;
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table tbody td .components-base-control__field {
-	margin: 0;
-}
+				td .components-base-control__field {
+					margin: 0;
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .column-actions {
-	position: static;
-}
+					.components-base-control__field {
+						margin: 0;
+					}
+				}
+			}
+		}
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .column-actions button {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	margin: 0;
-	padding: 0;
-	width: 24px;
-}
+		.column-actions {
+			position: static;
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .column-actions > button {
-	position: relative;
-	z-index: 10;
-}
+			button {
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				margin: 0;
+				padding: 0;
+				width: 24px;
+			}
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .column-actions .actions {
-	align-items: center;
-	background-color: rgba( 255, 255, 255, .85 );
-	bottom: 0;
-	display: none;
-	gap: 4px;
-	justify-content: flex-end;
-	left: 0;
-	padding-right: 40px;
-	position: absolute;
-	right: 0;
-	top: 0;
-}
+			& > button {
+				position: relative;
+				z-index: 10;
+			}
 
-.wp-block-cinemarathon-marathon .components-placeholder__fieldset > div table .column-actions.show-actions .actions {
-	display: flex;
-}
+			.actions {
+				align-items: center;
+				background-color: rgba( 255, 255, 255, .85 );
+				bottom: 0;
+				display: none;
+				gap: 4px;
+				justify-content: flex-end;
+				left: 0;
+				padding-right: 40px;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
 
+			&.show-actions .actions {
+				display: flex;
+			}
+		}
+	}
+}

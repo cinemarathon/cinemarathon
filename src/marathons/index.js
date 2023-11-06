@@ -11,22 +11,6 @@ registerBlockType("cinemarathon/marathons", {
     description: __( "Displays a list of all your cinemarathons.", "cinemarathon" ),
     category: "cinemarathon",
     attributes: {
-        title: {
-            type: "string",
-			default: ""
-        },
-        description: {
-            type: "string",
-			default: ""
-        },
-        objectives: {
-            type: "string",
-			default: ""
-        },
-        comments: {
-            type: "string",
-			default: ""
-        },
         number: {
             type: "integer",
 			default: 6
