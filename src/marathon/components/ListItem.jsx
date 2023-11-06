@@ -30,6 +30,7 @@ import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
 
 import EntryEditor from "./EntryEditor"
+import EntrySelector from "./EntrySelector"
 
 const ListItem = ( { itemsHandler, movie } ) => {
 
@@ -53,7 +54,8 @@ const ListItem = ( { itemsHandler, movie } ) => {
     const openSelectionModal = () => setShowEntrySelectionModal( true )
 
     const [ entry, setEntry ] = useState( {
-        title: movie.title,
+        id: movie.post_id ?? 0,
+        title: movie.title ?? '',
         content: `A vu <em>${ movie.title }</em>`,
         date: "",
         time: "",
@@ -154,11 +156,11 @@ const ListItem = ( { itemsHandler, movie } ) => {
                                                 onClick={ onClose }
                                             />
                                             <MenuItem
-                                                text={ __( "Remove journal entry", "cinemarathons" ) }
-                                                icon={ linkOff }
+                                                text={ __( "Replace journal entry", "cinemarathons" ) }
+                                                icon={ customLink }
                                                 iconPosition="right"
                                                 onClick={ () => {
-                                                    itemsHandler.update( index, 'post_id', null )
+                                                    openSelectionModal()
                                                     onClose()
                                                 } }
                                             />
@@ -255,11 +257,18 @@ const ListItem = ( { itemsHandler, movie } ) => {
             ) }
             { showEntrySelectionModal && (
                 <Modal
-                    title={ __( "Select a Post as Journal Entry", "cinemarathons" ) }
+                    title={ movie.post_id
+                        ? __( "Select a different Post as Journal Entry", "cinemarathons" )
+                        : __( "Select a Post as Journal Entry", "cinemarathons" )
+                    }
                     onRequestClose={ closeSelectionModal }
                     className="entry-selection-modal"
                 >
-                    Hi Mom!
+                    <EntrySelector
+                        entry={ entry }
+                        setEntry={ setEntry }
+                        closeModal={ closeSelectionModal }
+                    />
                 </Modal>
             ) }
         </>

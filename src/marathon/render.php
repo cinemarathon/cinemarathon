@@ -53,7 +53,11 @@ $data['movies'] = array_values( array_diff_assoc( $attributes['movies'] ?? [], $
                         &nbsp;&ndash;&nbsp;
                         <?php echo $movie['available'] ? '📀' : '💸'; ?>
                         &nbsp;&ndash;&nbsp;
+<?php if ( ! empty( $movie['post_id'] ) ) : ?>
+                        <a href="<?php echo esc_html( get_permalink( $movie['post_id'] ) ); ?>"><?php echo esc_html( $movie['title'] ); ?></a>
+<?php else : ?>
                         <?php echo esc_html( $movie['title'] ); ?>
+<?php endif; ?>
                     </li>
 <?php endforeach; ?>
                 </ul>
@@ -67,7 +71,11 @@ $data['movies'] = array_values( array_diff_assoc( $attributes['movies'] ?? [], $
                         &nbsp;&ndash;&nbsp;
                         <?php echo $movie['available'] ? '📀' : '💸'; ?>
                         &nbsp;&ndash;&nbsp;
+<?php if ( ! empty( $movie['post_id'] ) ) : ?>
+                        <a href="<?php echo esc_html( get_permalink( $movie['post_id'] ) ); ?>"><?php echo esc_html( $movie['title'] ); ?></a>
+<?php else : ?>
                         <?php echo esc_html( $movie['title'] ); ?>
+<?php endif; ?>
                     </li>
 <?php endforeach; ?>
                 </ul>

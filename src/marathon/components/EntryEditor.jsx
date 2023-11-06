@@ -161,6 +161,7 @@ const EntryEditor = ( { entry, setEntry, closeModal } ) => {
                 text={ __( "Publish Entry", "cinemarathons" ) }
                 variant="primary"
                 onClick={ publish }
+                className="submit-button"
             />
         </>
     )
