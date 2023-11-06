@@ -140,8 +140,11 @@ final class Cinemarathon {
             return false;
         }
 
-        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_styles' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_styles' ] );
+
+        add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_scripts' ] );
+        add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 
         add_action( 'admin_init', [ $this, 'register_settings' ] );
         add_action( 'admin_menu', [ $this, 'register_admin_pages' ] );
@@ -186,7 +189,7 @@ final class Cinemarathon {
     }
 
     /**
-     * Register public-side styles.
+     * Register public-side scripts.
      *
      * @since 1.0.0
      * @access private
@@ -194,7 +197,7 @@ final class Cinemarathon {
     private function register_scripts() {}
 
     /**
-     * Register public-side scripts.
+     * Register public-side styles.
      *
      * @since 1.0.0
      * @access private
@@ -209,14 +212,10 @@ final class Cinemarathon {
      *
      * @since 1.0.0
      * @access public
-     *
-     * @param string $hook_suffix The current admin page.
      */
-    public function enqueue_admin_styles( $hook_suffix ) {
+    public function enqueue_admin_scripts() {
 
-        $this->register_admin_styles();
-
-        wp_enqueue_style( 'cinemarathon' );
+        $this->register_admin_scripts();
     }
 
     /**
@@ -224,14 +223,10 @@ final class Cinemarathon {
      *
      * @since 1.0.0
      * @access public
-     *
-     * @param string $hook_suffix The current admin page.
      */
-    public function enqueue_admin_scripts( $hook_suffix ) {
+    public function enqueue_admin_styles() {
 
-        $this->register_admin_scripts();
-
-        wp_enqueue_script( 'cinemarathon' );
+        $this->register_admin_styles();
     }
 
     /**
@@ -240,10 +235,7 @@ final class Cinemarathon {
      * @since 1.0.0
      * @access private
      */
-    private function register_admin_styles() {
-
-        wp_register_style( 'cinemarathon', CINEMARATHON_URL . 'build/index.css', [], $this->version, 'all' );
-    }
+    private function register_admin_scripts() {}
 
     /**
      * Register admin-side styles.
@@ -251,9 +243,56 @@ final class Cinemarathon {
      * @since 1.0.0
      * @access private
      */
-    private function register_admin_scripts() {
+    private function register_admin_styles() {}
 
-        wp_register_script( 'cinemarathon', CINEMARATHON_URL . 'build/index.js', [], $this->version, true);
+    /**
+     * Enqueue block editor scripts.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public function enqueue_block_editor_scripts() {
+
+        $this->register_block_editor_scripts();
+
+        wp_enqueue_script( 'cinemarathon' );
+    }
+
+    /**
+     * Enqueue block editor styles.
+     *
+     * @since 1.0.0
+     * @access public
+     */
+    public function enqueue_block_editor_styles() {
+
+        $this->register_block_editor_styles();
+
+        wp_enqueue_style( 'cinemarathon' );
+    }
+
+    /**
+     * Register block editor scripts.
+     *
+     * @since 1.0.0
+     * @access private
+     */
+    private function register_block_editor_scripts() {
+
+        $assets = require_once CINEMARATHON_PATH . 'build/index.asset.php';
+
+        wp_register_script( 'cinemarathon', CINEMARATHON_URL . 'build/index.js', $assets['dependencies'] ?? [], $assets['version'] ?? $this->version, true);
+    }
+
+    /**
+     * Register block editor styles.
+     *
+     * @since 1.0.0
+     * @access private
+     */
+    private function register_block_editor_styles() {
+
+        wp_register_style( 'cinemarathon', CINEMARATHON_URL . 'build/index.css', [], $this->version, 'all' );
     }
 
     /**
