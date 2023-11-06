@@ -10,7 +10,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       cinemarathons
  *
- * @package Cinemarathonss
+ * @package Cinemarathons
  */
 
 // Make sure we don't expose any info if called directly.

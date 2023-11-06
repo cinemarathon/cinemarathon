@@ -2,7 +2,7 @@
 /**
  * The file that defines the plugin singleton trait.
  *
- * @link https://wordpress.org/plugins/cinemarathon
+ * @link https://cinemarathons.com
  * @package Cinemarathons
  */
 
