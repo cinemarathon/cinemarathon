@@ -44,6 +44,7 @@ class Marathon extends Block {
 
         if ( ! empty( $this->attributes['movies'] ) ) {
             $this->data['current'] = count( wp_filter_object_list( $this->attributes['movies'], [ 'watched' => 1 ] ) );
+            $this->data['rewatch'] = count( wp_filter_object_list( $this->attributes['movies'], [ 'rewatch' => 1 ] ) );
             $this->data['total'] = count( $this->attributes['movies'] );
             $this->data['progress'] = round( ( $this->data['current'] / $this->data['total'] ) * 100 );
         }
