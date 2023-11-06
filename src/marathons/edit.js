@@ -30,7 +30,7 @@ const Edit = ({ attributes, setAttributes }) => {
 						max={ 99 }
 						step={ 1 }
 						value={ attributes.number }
-						onChange={ ( value ) => ( setAttributes( { number: value } ) ) }
+						onChange={ ( value ) => ( setAttributes( { number: parseInt( value ) } ) ) }
 					/>
 					<SelectControl
 						label={ __( "Display mode", "cinemarathon" ) }
@@ -55,7 +55,7 @@ const Edit = ({ attributes, setAttributes }) => {
 							max={ 4 }
 							step={ 1 }
 							value={ attributes.columns }
-							onChange={ ( value ) => ( setAttributes( { columns: value } ) ) }
+							onChange={ ( value ) => ( setAttributes( { columns: parseInt( value ) } ) ) }
 						/>
 					) }
 				</div>
