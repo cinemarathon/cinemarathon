@@ -7,7 +7,7 @@ import {
 import { useEffect, useRef, useState } from "@wordpress/element"
 import { __ } from "@wordpress/i18n"
 
-const BatchEditor = ( { attributes, setAttributes, itemsHandler } ) => {
+const BatchEditor = ( { attributes, setAttributes, itemsHandler, setAdvancedEditingMode } ) => {
 
     const editorRef = useRef( null )
 
@@ -22,7 +22,7 @@ const BatchEditor = ( { attributes, setAttributes, itemsHandler } ) => {
                item = {}
         if ( matches[2] ) {
             values = matches[2].split( "," )
-            checks.map( check => item[ check ] = "1" === values.pop() )
+            checks.map( check => item[ check ] = "1" === values.shift() )
         }
         return {
             ...itemsHandler.defaultItem(),
@@ -92,7 +92,10 @@ const BatchEditor = ( { attributes, setAttributes, itemsHandler } ) => {
                     <Button
                         variant="primary"
                         text={ __( "Update", "cinemarathons" ) }
-                        onClick={ update }
+                        onClick={ () => {
+                            update()
+                            setAdvancedEditingMode( false )
+                        } }
                     />
                 </HStack>
             </div>

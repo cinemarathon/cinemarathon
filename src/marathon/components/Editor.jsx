@@ -88,6 +88,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                                 attributes={ attributes }
                                 setAttributes={ setAttributes }
                                 itemsHandler={ itemsHandler }
+                                setAdvancedEditingMode={ setAdvancedEditingMode }
                             />
                         ) : (
                             <ListEditor
