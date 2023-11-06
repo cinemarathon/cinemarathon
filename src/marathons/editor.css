@@ -5,4 +5,17 @@
 			width: 100%;
 		}
 	}
+
+	.components-base-control__help {
+		line-height: 1;
+		.components-text {
+			font-size: 11px;
+		}
+		.components-button {
+			display: inline;
+			font-size: 11px;
+			margin-left: 4px;
+			padding: 0;
+		}
+	}
 }

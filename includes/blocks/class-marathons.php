@@ -61,8 +61,8 @@ class Marathons extends Block {
         }, $settings['supported_post_types'] ?? [ 'page' ] );
         $condition = implode( ' OR ', $supported_post_types );
 
-        $query = "SELECT ID, post_title, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s'";
-        $posts = $wpdb->get_results( $wpdb->prepare( $query, '% wp:cinemarathon/marathon {%' ) );
+        $query = "SELECT ID, post_title, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s' LIMIT 0, %d";
+        $posts = $wpdb->get_results( $wpdb->prepare( $query, '% wp:cinemarathon/marathon {%', $this->attributes['number'] ) );
 
         $items = [];
         foreach ( $posts as $post ) {

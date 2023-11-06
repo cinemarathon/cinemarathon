@@ -1,9 +1,12 @@
 import { useBlockProps } from "@wordpress/block-editor"
 import {
+	Button,
 	Placeholder,
 	SelectControl,
-	TextControl
+	TextControl,
+	__experimentalText as Text
 } from "@wordpress/components"
+import { useState } from "@wordpress/element"
 
 import { __ } from "@wordpress/i18n"
 
@@ -15,6 +18,8 @@ const Edit = ({ attributes, setAttributes }) => {
 
 	const blockProps = useBlockProps()
 
+	const [ showHelp, setShowHelp ] = useState( false )
+
 	return (
 		<div { ...blockProps }>
 			<Placeholder
@@ -25,6 +30,20 @@ const Edit = ({ attributes, setAttributes }) => {
 				<div>
 					<TextControl
 						label={ __( "Number of marathons to display", "cinemarathon" ) }
+						help={
+							<>
+								<Text>{ __( "Note that this limit will be based on posts count, not marathons per se.", "cinemarathon" ) }</Text>
+								{ showHelp ? (
+									<Text> { __( "Cinemarathon is able to discover multiple marathons in a single post; As a result this block will query posts containing single 'Cinemarathon' blocks, not the individual 'Cinemarathon' blocks themselves; It means that, if multiple 'Cinemarathon' blocks are present in a single post, the total number of displayed blocks may exceed the specified number.", "cinemarathon" ) }</Text>
+								) : ( '' ) }
+								<Button
+									variant="link"
+									onClick={ () => setShowHelp( ! showHelp ) }
+								>
+									{ showHelp ? 'Got it!' : 'Learn more' }
+								</Button>
+							</>
+						}
 						type="number"
 						min={ 1 }
 						max={ 99 }
@@ -36,11 +55,11 @@ const Edit = ({ attributes, setAttributes }) => {
 						label={ __( "Display mode", "cinemarathon" ) }
 						options={ [
 							{
-								label: 'Liste',
+								label: __( "List", "cinemarathon" ),
 								value: 'list'
 							},
 							{
-								label: 'Grille',
+								label: __( "Grid", "cinemarathon" ),
 								value: 'grid'
 							}
 						] }
