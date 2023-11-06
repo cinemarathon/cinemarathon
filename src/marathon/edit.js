@@ -17,12 +17,13 @@ const Edit = ( { attributes, setAttributes } ) => {
 	const blockProps = useBlockProps()
 
 	const generateHash = ( value = '' ) =>
-		hash.MD5( '' !== value ? value : Math.random().toString( 36 ) )
+		hash.MD5( value + '-' + Math.random().toString( 36 ) )
 
 	const defaultItem = () => ( {
 		watched: false,
 		rewatch: false,
 		available: false,
+		bonus: false,
 		title: "",
 		tmdb_id: ""
 	} )

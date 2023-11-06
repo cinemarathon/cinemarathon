@@ -111,46 +111,6 @@
 
 				&.column-editing-mode {
 					margin-left: auto;
-
-					.components-flex.components-h-stack {
-						flex-direction: row-reverse;
-					}
-
-					.components-toggle-control {
-						font-size: 12px;
-						margin: 0;
-
-						.components-form-toggle {
-							align-items: center;
-							display: flex;
-
-							.components-form-toggle__track {
-								height: 14px;
-								width: 24px;
-							}
-	
-							.components-form-toggle__thumb {
-								height: 8px;
-								top: 2px;
-								width: 8px;
-							}
-
-							&.is-checked {
-								.components-form-toggle__track {
-									border-width: 6px;
-								}
-
-								.components-form-toggle__thumb {
-									top: 3px;
-									transform: translateX(10px);
-								}
-							}
-						}
-
-						label {
-							margin-top: -2px;
-						}
-					}
 				}
 			}
 		}
@@ -285,25 +245,32 @@
 			}
 
 			.batch-editor {
-				border-top: 1px solid #c3c4c7;
 				padding: .625rem;
+
+				.batch-editor-notice {
+					font-size: .75rem;
+					margin-bottom: .625rem;
+					padding: 0 .25rem;
+				}
+
+				.batch-editor-wrapper {
+					position: relative;
+
+					&::before {
+						content: attr(data-title);
+						cursor: help;
+						left: .625rem;
+						opacity: .5;
+						position: absolute;
+						right: .625rem;
+						top: .325rem;
+					}
+				}
 
 				textarea {
 					line-height: 1.5rem;
 					min-height: 8rem;
-				}
-
-				.actions {
-					align-items: center;
-					display: flex;
-
-					.components-text {
-						opacity: .75;
-					}
-
-					button {
-						margin-left: auto;
-					}
+					padding-top: 1.5rem;
 				}
 			}
 		}
@@ -344,5 +311,52 @@
 				}
 			}
 		}
+	}
+}
+
+.components-toggle-control.is-reverse.is-small {
+	font-size: 12px;
+	margin: 0;
+
+	.components-flex.components-h-stack {
+		flex-direction: row-reverse;
+		column-gap: 8px;
+		justify-content: end;
+
+		.components-form-toggle {
+			align-items: center;
+			display: flex;
+	
+			.components-form-toggle__track {
+				height: 14px;
+				width: 24px;
+			}
+	
+			.components-form-toggle__thumb {
+				height: 8px;
+				top: 2px;
+				width: 8px;
+			}
+	
+			&.is-checked {
+				.components-form-toggle__track {
+					border-width: 6px;
+				}
+	
+				.components-form-toggle__thumb {
+					top: 3px;
+					transform: translateX(10px);
+				}
+			}
+		}
+	
+		label {
+			flex: 0 1 auto;
+		}
+	}
+
+	.components-base-control__help {
+		font-size: 10px;
+		margin-top: -2px;
 	}
 }

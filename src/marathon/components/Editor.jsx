@@ -73,9 +73,10 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                 <div className="header-column column-title text-column">{ __( "Movie Title", "cinemarathon" ) }</div>
                 <div className="header-column column-editing-mode">
                     <ToggleControl
-                        label={ advancedEditingMode ? __( "Back to Easy Mode", "cinemarathon" ) : __( "Expert Mode", "cinemarathon" ) }
+                        label={ __( "Expert Mode", "cinemarathon" ) }
                         checked={ advancedEditingMode }
                         onChange={ () => setAdvancedEditingMode( ! advancedEditingMode ) }
+                        className="is-reverse is-small"
                     />
                 </div>
             </div>
@@ -86,6 +87,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
                             <BatchEditor
                                 attributes={ attributes }
                                 setAttributes={ setAttributes }
+                                itemsHandler={ itemsHandler }
                             />
                         ) : (
                             <ListEditor
