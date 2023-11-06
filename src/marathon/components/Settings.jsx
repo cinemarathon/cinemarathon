@@ -9,7 +9,9 @@ import {
 	Button,
 	PanelBody,
 	TextareaControl,
-	TextControl
+	TextControl,
+    __experimentalHStack as HStack,
+    __experimentalText as Text
 } from "@wordpress/components"
 import { useEffect, useState } from "@wordpress/element"
 import { __ } from "@wordpress/i18n"
@@ -44,33 +46,30 @@ const Settings = ( { attributes, setAttributes } ) => {
                                 allowedTypes={ [ 'image' ] }
                                 onSelect={ ( image ) => setAttributes( { image: image.id } ) }
                                 render={ ( { open } ) => (
-                                    <div className="media-uploader">
+                                    <div className="marathon-featured-image">
+                                        <Button onClick={ open }>
+                                            { attributes.image && image?.media_details?.sizes?.large?.source_url ? (
+                                                <img className="marathon-featured-image__image" src={ image?.media_details?.sizes?.large?.source_url } alt="" />
+                                            ) : (
+                                                <Text className="marathon-featured-image__text">{ __( "Select Media", "cinemarathon" ) }</Text>
+                                            ) }
+                                        </Button>
                                         { attributes.image ? (
-                                            <>
-                                                { image?.media_details?.sizes?.large?.source_url && (
-                                                    <img src={ image?.media_details?.sizes?.large?.source_url } alt="" />
-                                                ) }
-                                                <div className="media-uploader-actions">
-                                                    <Button 
-                                                        size="small"
-                                                        onClick={ open }
-                                                        variant="secondary"
-                                                        text={ __( "Replace Media", "cinemarathon" ) }
-                                                    />
-                                                    <Button
-                                                        size="small"
-                                                        onClick={ () => setAttributes( { image: 0 } ) }
-                                                        isDestructive={ true }
-                                                        text={ __( "Remove Media", "cinemarathon" ) }
-                                                    />
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <Button
-                                                text={ __( "Select Media", "cinemarathon" ) }
-                                                onClick={ open }
-                                            />
-                                        ) }
+                                            <HStack className="marathon-featured-image__actions">
+                                                <Button
+                                                    onClick={ open }
+                                                    variant="secondary"
+                                                    text={ __( "Replace", "cinemarathon" ) }
+                                                    className="marathon-featured-image__button marathon-featured-image__replace"
+                                                />
+                                                <Button
+                                                    onClick={ () => setAttributes( { image: 0 } ) }
+                                                    variant="secondary"
+                                                    text={ __( "Remove", "cinemarathon" ) }
+                                                    className="marathon-featured-image__button marathon-featured-image__remove"
+                                                />
+                                            </HStack>
+                                        ) : ( '' ) }
                                     </div>
                                 ) }
                             />
