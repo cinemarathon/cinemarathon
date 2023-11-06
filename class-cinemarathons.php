@@ -485,6 +485,35 @@ final class Cinemarathons {
     }
 
     /**
+	 * Filter block metadata to override template if the theme supports it.
+	 *
+	 * @since 1.0.0
+	 * @access public
+     * 
+	 * @param  array $attributes
+	 * @param  string $content
+	 * @param  WP_Block $block
+     * @return string
+	 */
+    public function use_theme_block_templates( $attributes, $content, $block ) {
+
+        if ( 'cinemarathons' !== $block->block_type->category ) {
+            return $content;
+        }
+
+        $template_path = get_theme_file_path( "{$block->name}.php" );
+        if ( ! file_exists( $template_path ) ) {
+            return $content;
+        }
+
+        ob_start();
+        require $template_path;
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
+    /**
      * Handle inital installation and upgrading of the plugin.
      *
      * @since 1.0.0
