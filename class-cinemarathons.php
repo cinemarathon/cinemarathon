@@ -45,6 +45,11 @@ final class Cinemarathons {
     private $include_url;
 
     /**
+     * @var array
+     */
+    private $default_settings;
+
+    /**
      * Constructor.
      *
      * @since 1.0.0
@@ -56,6 +61,26 @@ final class Cinemarathons {
 
         $this->plugin_dir = plugin_dir_path( __FILE__ );
         $this->plugin_url = plugin_dir_url( __FILE__ );
+
+        $this->default_settings = [
+            'general' => [
+                'supported_post_types' => [ 'page' ],
+                'disable_journal_mode' => false,
+                'hide_settings_page' => false,
+            ],
+            'journal' => [
+                'default_title' => '%title%',
+                'default_format' => 'status',
+                'default_date' => 'today',
+                'default_time' => '',
+                'default_categories' => [],
+                'default_tags' => [],
+                'default_content' => __( 'Been watching <em>%title%</em>', 'cinemarathons' ),
+            ],
+            'api' => [
+                'tmdb_api_key' => '',
+            ]
+        ];
 
         $this->setup();
     }
@@ -79,9 +104,6 @@ final class Cinemarathons {
         add_action( 'cinemarathons/run', [ $this, 'rehearsal' ] );
         add_action( 'cinemarathons/run', [ $this, 'background' ] );
         add_action( 'cinemarathons/run', [ $this, 'foreground' ] );
-
-        // Plugin activation hook.
-        register_activation_hook( CINEMARATHONS_PATH, [ $this, 'activate' ] );
     }
 
     /**
@@ -117,8 +139,8 @@ final class Cinemarathons {
      */
     public function rehearsal() {
 
-        add_action( 'init',             [ $this, 'register_blocks' ] );
-        add_filter( 'block_categories', [ $this, 'register_block_categories' ], 10, 2 );
+        add_action( 'init',                 [ $this, 'register_blocks' ] );
+        add_filter( 'block_categories_all', [ $this, 'register_block_categories' ], 10, 2 );
     }
 
     /**
@@ -201,6 +223,16 @@ final class Cinemarathons {
     public function enqueue_admin_scripts() {
 
         $this->register_admin_scripts();
+
+        wp_enqueue_script( 'cinemarathons-admin' );
+
+        $options = get_option( 'cinemarathons_options', $this->default_settings );
+        wp_add_inline_script(
+            'cinemarathons-marathon-editor-script',
+            'const cinemarathons_options = ' . json_encode( $options + [
+                'locale' => get_option( 'locale', 'en_US' )
+            ] )
+        );
     }
 
     /**
@@ -212,6 +244,8 @@ final class Cinemarathons {
     public function enqueue_admin_styles() {
 
         $this->register_admin_styles();
+
+        wp_enqueue_style( 'cinemarathons-admin' );
     }
 
     /**
@@ -220,7 +254,10 @@ final class Cinemarathons {
      * @since 1.0.0
      * @access private
      */
-    private function register_admin_scripts() {}
+    private function register_admin_scripts() {
+
+        wp_register_script( 'cinemarathons-admin', CINEMARATHONS_URL . 'assets/js/admin.js', [], $this->version, true );
+    }
 
     /**
      * Register admin-side styles.
@@ -228,7 +265,10 @@ final class Cinemarathons {
      * @since 1.0.0
      * @access private
      */
-    private function register_admin_styles() {}
+    private function register_admin_styles() {
+
+        wp_register_style( 'cinemarathons-admin', CINEMARATHONS_URL . 'assets/css/admin.css', [], $this->version, 'all' );
+    }
 
     /**
      * Register plugin settings.
@@ -238,7 +278,7 @@ final class Cinemarathons {
      */
     public function register_settings() {
 
-        $options = get_option( 'cinemarathons_options' );
+        $options = get_option( 'cinemarathons_options', $this->default_settings );
 
         register_setting( 'cinemarathons', 'cinemarathons_options' );
 
@@ -413,7 +453,11 @@ final class Cinemarathons {
      */
     public function register_admin_pages() {
 
-        $settings = get_option( 'cinemarathons_options', [] );
+        $settings = get_option( 'cinemarathons_options', $this->default_settings );
+        if ( ! isset( $settings['general']['hide_settings_page'] ) ) {
+            $settings['general']['hide_settings_page'] = false;
+        }
+
         $parent_slug = '1' !== $settings['general']['hide_settings_page'] ? 'options-general.php' : false;
 
         add_submenu_page( $parent_slug, 'Cinemarathons Settings', 'Cinemarathons', 'manage_options', 'cinemarathons', [ $this, 'settings_page' ] );
@@ -518,12 +562,18 @@ final class Cinemarathons {
      *
      * @since 1.0.0
      * @access public
+     * @static
      */
-    public function activate() {
+    public static function activate() {
 
-        $db_version = get_option( 'CINEMARATHONS_VERSION' );
-        if ( version_compare( $db_version, $this->version ) ) {
-            update_option( 'CINEMARATHONS_VERSION', $this->version );
+        $db_version = get_option( 'cinemarathons_version' );
+        if ( version_compare( $db_version, CINEMARATHONS_VERSION ) ) {
+            update_option( 'cinemarathons_version', CINEMARATHONS_VERSION );
+        }
+
+        $options = get_option( 'cinemarathons_options', [] );
+        if ( empty( $options ) ) {
+            update_option( 'cinemarathons_options', $this->default_settings );
         }
     }
 
