@@ -304,7 +304,6 @@ final class Cinemarathons {
     public function register_settings() {
 
         $options = get_option( 'cinemarathons_options' );
-        print_r( $options );
 
         register_setting( 'cinemarathons', 'cinemarathons_options' );
 
