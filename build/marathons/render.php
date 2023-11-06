@@ -3,7 +3,7 @@ $items = \Cinemarathons\get_marathons( [
     'number' => $attributes['number'],
 ] );
 ?>
-    <div <?php echo get_block_wrapper_attributes(); ?>>
+    <div <?php echo get_block_wrapper_attributes( [ 'id' => $attributes['anchor'] ?? $attributes['id'] ?? '' ] ); ?>>
 <?php if ( 'list' === $attributes['mode'] ) : ?>
         <div class="marathons marathons-list">
 <?php else : ?>

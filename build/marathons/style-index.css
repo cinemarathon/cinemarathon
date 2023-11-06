@@ -1,1 +1,88 @@
-.wp-block-cinemarathons-marathons>.marathons-list .marathon{display:list-item}.wp-block-cinemarathons-marathons>.marathons-grid{display:grid;grid-gap:10px}.wp-block-cinemarathons-marathons>.marathons-grid .marathon{aspect-ratio:16/9;background-image:var(--marathon-featured-image);background-position:center;background-repeat:no-repeat;background-size:cover;position:relative}.wp-block-cinemarathons-marathons>.marathons-grid .marathon a{align-items:flex-start;color:#fff;display:flex;flex-direction:column;font-weight:500;gap:8px;justify-content:flex-end;inset:0;line-height:1;padding:10%;position:absolute;text-decoration:none}.wp-block-cinemarathons-marathons>.marathons-grid .marathon a::before{transition:all .3s ease-out;background-image:linear-gradient(transparent, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5));background-position:100% 0%;background-size:100% 200%;content:"";position:absolute;inset:0}.wp-block-cinemarathons-marathons>.marathons-grid .marathon a .title{position:relative;z-index:1}.wp-block-cinemarathons-marathons>.marathons-grid .marathon a:hover{opacity:1}.wp-block-cinemarathons-marathons>.marathons-grid .marathon a:hover::before{transition:all .15s ease-out;background-position:100% 100%}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="1"]{grid-template-columns:repeat(1, 1fr)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="1"] .marathon a{font-size:calc(180% - .125em)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="2"]{grid-template-columns:repeat(2, 1fr)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="2"] .marathon a{font-size:calc(180% - .25em)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="3"]{grid-template-columns:repeat(3, 1fr)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="3"] .marathon a{font-size:calc(180% - .375em)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="4"]{grid-template-columns:repeat(4, 1fr)}.wp-block-cinemarathons-marathons>.marathons-grid[data-grid-columns="4"] .marathon a{font-size:calc(180% - .5em)}@media screen and (max-width: 960px){.wp-block-cinemarathons-marathons>.mode-grid[data-grid-columns]{grid-template-columns:repeat(2, 1fr) !important}}@media screen and (max-width: 768px){.wp-block-cinemarathons-marathons>.mode-grid[data-grid-columns]{grid-template-columns:repeat(1, 1fr) !important}}
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/marathons/style.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+.wp-block-cinemarathons-marathons > .marathons-list .marathon {
+  display: list-item;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid {
+  display: grid;
+  grid-gap: 10px;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid .marathon {
+  aspect-ratio: 16/9;
+  background-image: var(--marathon-featured-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid .marathon a {
+  align-items: flex-start;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: flex-end;
+  inset: 0;
+  line-height: 1;
+  padding: 10%;
+  position: absolute;
+  text-decoration: none;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid .marathon a::before {
+  transition: all 0.3s ease-out;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5));
+  background-position: 100% 0%;
+  background-size: 100% 200%;
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid .marathon a .title {
+  position: relative;
+  z-index: 1;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid .marathon a:hover {
+  opacity: 1;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid .marathon a:hover::before {
+  transition: all 0.15s ease-out;
+  background-position: 100% 100%;
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="1"] {
+  grid-template-columns: repeat(1, 1fr);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="1"] .marathon a {
+  font-size: calc(180% - 0.125em);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="2"] .marathon a {
+  font-size: calc(180% - 0.25em);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="3"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="3"] .marathon a {
+  font-size: calc(180% - 0.375em);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="4"] {
+  grid-template-columns: repeat(4, 1fr);
+}
+.wp-block-cinemarathons-marathons > .marathons-grid[data-grid-columns="4"] .marathon a {
+  font-size: calc(180% - 0.5em);
+}
+@media screen and (max-width: 960px) {
+  .wp-block-cinemarathons-marathons > .mode-grid[data-grid-columns] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wp-block-cinemarathons-marathons > .mode-grid[data-grid-columns] {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/

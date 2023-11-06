@@ -1,1 +1,483 @@
-.cinemarathons-marathon-block-inspector .marathon-featured-image{position:relative}.cinemarathons-marathon-block-inspector .marathon-featured-image img{object-fit:cover;width:100%}.cinemarathons-marathon-block-inspector .marathon-featured-image>button{align-items:center;background-color:#f0f0f0;border-radius:2px;display:flex;height:100%;justify-content:center;line-height:20px;padding:0;text-align:center;width:100%}.cinemarathons-marathon-block-inspector .marathon-featured-image>button:hover{background:#ddd;color:#1e1e1e}.cinemarathons-marathon-block-inspector .marathon-featured-image>button .marathon-featured-image__text{align-items:center;display:flex;height:6rem}.cinemarathons-marathon-block-inspector .marathon-featured-image .marathon-featured-image__actions{bottom:0;left:0;opacity:0;padding:.625rem;position:absolute;right:0;transition:opacity 50ms ease-out}.cinemarathons-marathon-block-inspector .marathon-featured-image .marathon-featured-image__actions .marathon-featured-image__button{align-items:center;backdrop-filter:blur(1rem) saturate(180%);background-color:rgba(255,255,255,.75);border:0;box-shadow:0 0 0;display:flex;justify-content:center;width:100%}.cinemarathons-marathon-block-inspector .marathon-featured-image .marathon-featured-image__actions .marathon-featured-image__button:not(:hover){color:var(--wp-components-color-foreground, #1e1e1e)}.cinemarathons-marathon-block-inspector .marathon-featured-image:hover .marathon-featured-image__actions{opacity:1}.wp-block-cinemarathons-marathon .editor{border:1px solid #c3c4c7;box-shadow:0 1px 1px rgba(0,0,0,.04);width:100%}.wp-block-cinemarathons-marathon .editor .editor-header{align-items:center;border-bottom:1px solid #c3c4c7;display:flex;height:2.25rem;padding-left:2rem}.wp-block-cinemarathons-marathon .editor .editor-header .header-column{align-items:center;display:flex;flex-shrink:0;justify-content:start;padding:0 .625rem}.wp-block-cinemarathons-marathon .editor .editor-header .header-column.check-column{justify-content:center;padding:0;width:2rem}.wp-block-cinemarathons-marathon .editor .editor-header .header-column.column-bonus svg{height:1rem;width:1rem}.wp-block-cinemarathons-marathon .editor .editor-header .header-column.column-title{flex-shrink:1;padding:0 .75rem;width:100%}.wp-block-cinemarathons-marathon .editor .editor-header .header-column.column-editing-mode{margin-left:auto}.wp-block-cinemarathons-marathon .editor .editor-content .list-item{align-items:center;display:flex;height:3rem;position:relative}.wp-block-cinemarathons-marathon .editor .editor-content .list-item.dragging{background-color:#fff !important;box-shadow:0 1px 3px rgba(0,0,0,.75);z-index:1}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column{align-items:center;display:flex;flex-shrink:0;height:100%;justify-content:start;padding:0 .625rem}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column .components-base-control__field{margin:0}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column .components-base-control__field .components-checkbox-control__input-container{margin:0}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column .components-base-control__field .components-checkbox-control__input-container input{margin:0}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title,.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title .components-base-control,.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title .components-base-control .components-base-control__field,.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title .components-base-control .components-base-control__field .components-text-control__input{width:100%}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title{flex-shrink:1}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.check-column,.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.draghandle-column{justify-content:center;padding:0;width:2rem}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.draghandle-column button{align-items:center;cursor:move;display:flex;height:2rem;justify-content:center;padding:0;width:2rem}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.draghandle-column button svg{margin-top:1px}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions{position:static}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions button{align-items:center;display:flex;justify-content:center;margin:0;min-width:auto;padding:0;width:1.5rem}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions button svg{height:1.25rem}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions>button{position:relative;z-index:10}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions .actions{align-items:center;background-color:rgba(255,255,255,.85);bottom:0;display:none;gap:4px;justify-content:flex-end;left:0;padding-right:40px;position:absolute;right:0;top:0}.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions.show-actions .actions{display:flex}.wp-block-cinemarathons-marathon .editor .editor-content .list-item:nth-child(odd),.wp-block-cinemarathons-marathon .editor .editor-content .placeholder{align-items:center;background-color:#f6f7f7;display:flex}.wp-block-cinemarathons-marathon .editor .editor-content .placeholder{height:2.25rem;padding:0 .625rem}.wp-block-cinemarathons-marathon .editor .editor-content .placeholder button{margin-left:.25rem;padding:0}.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor{padding:.625rem}.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor .batch-editor-notice{font-size:.75rem;margin-bottom:.625rem;padding:0 .25rem}.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor .batch-editor-wrapper{position:relative}.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor .batch-editor-wrapper::before{content:attr(data-title);cursor:help;left:.625rem;opacity:.5;position:absolute;right:.625rem;top:.325rem}.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor textarea{line-height:1.5rem;min-height:8rem;padding-top:1.5rem}.wp-block-cinemarathons-marathon .editor .editor-footer{align-items:center;border-top:1px solid #c3c4c7;display:flex;height:2rem}.wp-block-cinemarathons-marathon .editor .editor-footer .footer-content{align-items:center;display:flex;padding:0 .625rem}.wp-block-cinemarathons-marathon .editor .editor-footer .footer-actions{align-items:center;display:flex;margin-left:auto}.wp-block-cinemarathons-marathon .editor .editor-footer .footer-actions button{align-items:center;display:flex;height:2rem;justify-content:center;margin:0;padding:0;width:2rem}.wp-block-cinemarathons-marathon .editor .editor-footer .footer-actions button.batch-add svg{height:1rem;width:1rem}.components-toggle-control.is-reverse.is-small{font-size:12px;margin:0}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack{flex-direction:row-reverse;column-gap:8px;justify-content:end}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle{align-items:center;display:flex}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle .components-form-toggle__track{height:14px;width:24px}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle .components-form-toggle__thumb{height:8px;top:2px;width:8px}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle.is-checked .components-form-toggle__track{border-width:6px}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle.is-checked .components-form-toggle__thumb{top:3px;transform:translateX(10px)}.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack label{flex:0 1 auto}.components-toggle-control.is-reverse.is-small .components-base-control__help{font-size:10px;margin-top:-2px}.entry-publication-modal,.entry-selection-modal{width:32rem}.entry-publication-modal .components-panel,.entry-selection-modal .components-panel{border:0;margin-bottom:8px;margin-top:24px}.entry-publication-modal .components-panel .components-panel__body,.entry-selection-modal .components-panel .components-panel__body{border:0;display:flex;flex-direction:column;gap:10px;padding-bottom:0}.entry-publication-modal .components-panel .components-panel__body .components-panel__body-title,.entry-selection-modal .components-panel .components-panel__body .components-panel__body-title{margin-bottom:10px}.entry-publication-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button,.entry-selection-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button{background-color:#fff !important;border-bottom:1px solid #949494 !important;border-top:1px solid #949494 !important;padding:12px 12px 12px 32px}.entry-publication-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow,.entry-selection-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow{left:4px;right:auto;transform:translateY(-50%) rotate(-90deg)}.entry-publication-modal .components-panel .components-panel__body .components-panel__row,.entry-selection-modal .components-panel .components-panel__body .components-panel__row{margin:0 -16px}.entry-publication-modal .components-panel .components-panel__body .components-panel__row>div,.entry-selection-modal .components-panel .components-panel__body .components-panel__row>div{width:100%}.entry-publication-modal .components-panel .components-panel__body .components-panel__row .components-datetime__time,.entry-selection-modal .components-panel .components-panel__body .components-panel__row .components-datetime__time{display:flex}.entry-publication-modal .components-panel .components-panel__body .components-panel__row .components-form-token-field__help,.entry-selection-modal .components-panel .components-panel__body .components-panel__row .components-form-token-field__help{margin-bottom:0}.entry-publication-modal .components-panel .components-panel__body.is-opened .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow,.entry-selection-modal .components-panel .components-panel__body.is-opened .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow{transform:translateY(-50%) rotate(180deg)}
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/marathon/editor.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+.cinemarathons-marathon-block-inspector .search-form {
+  position: relative;
+}
+.cinemarathons-marathon-block-inspector .search-form .search-query {
+  margin-bottom: 0;
+}
+.cinemarathons-marathon-block-inspector .search-form .search-query .components-text-control__input {
+  padding-right: 48px;
+}
+.cinemarathons-marathon-block-inspector .search-form .search-query .components-text-control__input:placeholder-shown {
+  text-overflow: ellipsis;
+}
+.cinemarathons-marathon-block-inspector .search-form .search-type {
+  position: absolute;
+  right: 2px;
+  top: 30px;
+  width: 42px;
+}
+.cinemarathons-marathon-block-inspector .search-form .search-type .components-select-control__input {
+  font-size: 8px;
+  font-weight: 600;
+  height: 24px;
+  padding: 0 2px;
+  text-align: right;
+  text-transform: uppercase;
+}
+.cinemarathons-marathon-block-inspector .search-form .search-type .components-input-control__backdrop {
+  border-color: transparent;
+}
+.cinemarathons-marathon-block-inspector .search-results {
+  gap: 4px;
+  margin-top: -15px;
+  max-height: 200px;
+  overflow: auto;
+}
+.cinemarathons-marathon-block-inspector .search-results li {
+  margin-bottom: 4px;
+}
+.cinemarathons-marathon-block-inspector .search-results .components-button {
+  column-gap: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  height: auto;
+  justify-content: start;
+  min-height: 1rem;
+  padding-bottom: 0;
+  padding-top: 0;
+  row-gap: 0;
+  text-align: left;
+  width: 100%;
+}
+.cinemarathons-marathon-block-inspector .search-results .components-button svg {
+  flex-shrink: 0;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+.cinemarathons-marathon-block-inspector .search-results .components-button .name,
+.cinemarathons-marathon-block-inspector .search-results .components-button .title {
+  font-weight: 500;
+  max-width: calc(100% - 1rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cinemarathons-marathon-block-inspector .search-results .components-button .details,
+.cinemarathons-marathon-block-inspector .search-results .components-button .known-for {
+  display: block;
+  font-size: 0.625rem;
+  margin-left: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image {
+  position: relative;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image img {
+  /*aspect-ratio: 2;*/
+  object-fit: cover;
+  width: 100%;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image > button {
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  line-height: 20px;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image > button:hover {
+  background: #ddd;
+  color: #1e1e1e;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image > button .marathon-featured-image__text {
+  align-items: center;
+  display: flex;
+  height: 6rem;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image .marathon-featured-image__actions {
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  padding: 0.625rem;
+  position: absolute;
+  right: 0;
+  transition: opacity 50ms ease-out;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image .marathon-featured-image__actions .marathon-featured-image__button {
+  align-items: center;
+  backdrop-filter: blur(1rem) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 0;
+  box-shadow: 0 0 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image .marathon-featured-image__actions .marathon-featured-image__button:not(:hover) {
+  color: var(--wp-components-color-foreground, #1e1e1e);
+}
+.cinemarathons-marathon-block-inspector .marathon-featured-image:hover .marathon-featured-image__actions {
+  opacity: 1;
+}
+.wp-block-cinemarathons-marathon .editor {
+  border: 1px solid #c3c4c7;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+.wp-block-cinemarathons-marathon .editor .editor-header {
+  align-items: center;
+  border-bottom: 1px solid #c3c4c7;
+  display: flex;
+  height: 2.25rem;
+  padding-left: 2rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-header .header-column {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: start;
+  padding: 0 0.625rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-header .header-column.check-column {
+  justify-content: center;
+  padding: 0;
+  width: 2rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-header .header-column.column-bonus svg {
+  height: 1rem;
+  width: 1rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-header .header-column.column-title {
+  flex-shrink: 1;
+  padding: 0 0.75rem;
+  width: 100%;
+}
+.wp-block-cinemarathons-marathon .editor .editor-header .header-column.column-editing-mode {
+  margin-left: auto;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item {
+  align-items: center;
+  display: flex;
+  height: 3rem;
+  position: relative;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item.dragging {
+  background-color: #fff !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 100%;
+  justify-content: start;
+  padding: 0 0.625rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column .components-base-control__field {
+  margin: 0;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column .components-base-control__field .components-checkbox-control__input-container {
+  margin: 0;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column .components-base-control__field .components-checkbox-control__input-container input {
+  margin: 0;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title, .wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title .components-base-control, .wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title .components-base-control .components-base-control__field, .wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title .components-base-control .components-base-control__field .components-text-control__input {
+  width: 100%;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-title {
+  flex-shrink: 1;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.check-column, .wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.draghandle-column {
+  justify-content: center;
+  padding: 0;
+  width: 2rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.draghandle-column button {
+  align-items: center;
+  cursor: move;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  padding: 0;
+  width: 2rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.draghandle-column button svg {
+  margin-top: 1px;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions {
+  position: static;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-width: auto;
+  padding: 0;
+  width: 1.5rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions button svg {
+  height: 1.25rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions > button {
+  position: relative;
+  z-index: 10;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions .actions {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  bottom: 0;
+  display: none;
+  gap: 4px;
+  justify-content: flex-end;
+  left: 0;
+  padding-right: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item .list-item-column.column-actions.show-actions .actions {
+  display: flex;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .list-item:nth-child(odd),
+.wp-block-cinemarathons-marathon .editor .editor-content .placeholder {
+  align-items: center;
+  background-color: #f6f7f7;
+  display: flex;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .placeholder {
+  height: 2.25rem;
+  padding: 0 0.625rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .placeholder button {
+  margin-left: 0.25rem;
+  padding: 0;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor {
+  padding: 0.625rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor .batch-editor-notice {
+  font-size: 0.75rem;
+  margin-bottom: 0.625rem;
+  padding: 0 0.25rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor .batch-editor-wrapper {
+  position: relative;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor .batch-editor-wrapper::before {
+  content: attr(data-title);
+  cursor: help;
+  left: 0.625rem;
+  opacity: 0.5;
+  position: absolute;
+  right: 0.625rem;
+  top: 0.325rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-content .batch-editor textarea {
+  line-height: 1.5rem;
+  min-height: 8rem;
+  padding-top: 1.5rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-footer {
+  align-items: center;
+  border-top: 1px solid #c3c4c7;
+  display: flex;
+  height: 2rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-footer .footer-content {
+  align-items: center;
+  display: flex;
+  padding: 0 0.625rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-footer .footer-actions {
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+}
+.wp-block-cinemarathons-marathon .editor .editor-footer .footer-actions button {
+  align-items: center;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 2rem;
+}
+.wp-block-cinemarathons-marathon .editor .editor-footer .footer-actions button.batch-add svg {
+  height: 1rem;
+  width: 1rem;
+}
+.components-toggle-control.is-reverse.is-small {
+  font-size: 12px;
+  margin: 0;
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack {
+  flex-direction: row-reverse;
+  column-gap: 8px;
+  justify-content: end;
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle {
+  align-items: center;
+  display: flex;
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle .components-form-toggle__track {
+  height: 14px;
+  width: 24px;
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle .components-form-toggle__thumb {
+  height: 8px;
+  top: 2px;
+  width: 8px;
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle.is-checked .components-form-toggle__track {
+  border-width: 6px;
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack .components-form-toggle.is-checked .components-form-toggle__thumb {
+  top: 3px;
+  transform: translateX(10px);
+}
+.components-toggle-control.is-reverse.is-small .components-flex.components-h-stack label {
+  flex: 0 1 auto;
+}
+.components-toggle-control.is-reverse.is-small .components-base-control__help {
+  font-size: 10px;
+  margin-top: -2px;
+}
+.entry-publication-modal,
+.entry-selection-modal {
+  min-height: 12rem;
+  width: 32rem;
+}
+.entry-publication-modal .components-modal__header + div > .components-button.cancel-button,
+.entry-selection-modal .components-modal__header + div > .components-button.cancel-button {
+  float: left;
+}
+.entry-publication-modal .components-modal__header + div > .components-button.submit-button,
+.entry-selection-modal .components-modal__header + div > .components-button.submit-button {
+  float: right;
+}
+.entry-publication-modal .components-panel,
+.entry-selection-modal .components-panel {
+  border: 0;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+.entry-publication-modal .components-panel .components-panel__body,
+.entry-selection-modal .components-panel .components-panel__body {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 0;
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__body-title,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__body-title {
+  margin-bottom: 10px;
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button {
+  background-color: #fff !important;
+  border-bottom: 1px solid #949494 !important;
+  border-top: 1px solid #949494 !important;
+  padding: 12px 12px 12px 32px;
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow {
+  left: 4px;
+  right: auto;
+  transform: translateY(-50%) rotate(-90deg);
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__row,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__row {
+  margin: 0 -16px;
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__row > div,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__row > div {
+  width: 100%;
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__row .components-datetime__time,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__row .components-datetime__time {
+  display: flex;
+}
+.entry-publication-modal .components-panel .components-panel__body .components-panel__row .components-form-token-field__help,
+.entry-selection-modal .components-panel .components-panel__body .components-panel__row .components-form-token-field__help {
+  margin-bottom: 0;
+}
+.entry-publication-modal .components-panel .components-panel__body.is-opened,
+.entry-selection-modal .components-panel .components-panel__body.is-opened {
+  border-bottom: 1px solid #949494 !important;
+}
+.entry-publication-modal .components-panel .components-panel__body.is-opened .components-panel__body-title .components-panel__body-toggle.components-button,
+.entry-selection-modal .components-panel .components-panel__body.is-opened .components-panel__body-title .components-panel__body-toggle.components-button {
+  border-bottom: 0 !important;
+}
+.entry-publication-modal .components-panel .components-panel__body.is-opened .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow,
+.entry-selection-modal .components-panel .components-panel__body.is-opened .components-panel__body-title .components-panel__body-toggle.components-button .components-panel__arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+.entry-publication-modal .components-modal__content .block-editor-rich-text__editable {
+  border: 1px solid #949494;
+  margin: 0;
+  padding: 6px 8px;
+}
+.entry-selection-modal .components-modal__content .post-preview {
+  border: 1px solid #949494;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  position: relative;
+}
+.entry-selection-modal .components-modal__content .post-preview > img {
+  height: 4rem;
+  width: 4rem;
+}
+.entry-selection-modal .components-modal__content .post-preview > div .title {
+  font-weight: 600;
+}
+.entry-selection-modal .components-modal__content .post-preview > div .meta {
+  display: flex;
+  font-size: 85%;
+  gap: 2px;
+}
+.entry-selection-modal .components-modal__content .post-preview > div .content {
+  margin-top: 0.5rem;
+}
+.entry-selection-modal .components-modal__content .post-preview > div .content p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.entry-selection-modal .components-modal__content .post-preview > div .content p:last-of-type {
+  margin-bottom: 0;
+}
+.entry-selection-modal .components-modal__content .post-preview > .components-button-group {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  gap: 20px;
+  inset: 1px;
+  justify-content: center;
+  position: absolute;
+}
+.entry-selection-modal .components-modal__content .post-preview > .components-button-group .components-button {
+  color: #fff;
+  text-decoration: none;
+}
+.entry-selection-modal .components-modal__content .post-preview:hover > .components-button-group {
+  display: flex;
+}
+
+/*# sourceMappingURL=index.css.map*/

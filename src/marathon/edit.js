@@ -113,7 +113,7 @@ const Edit = ( { attributes, setAttributes } ) => {
 		<div { ...blockProps }>
 			<Placeholder
 				icon={ Cinemarathons }
-				label={ attributes.title ?? __( "Cinemarathons", "cinemarathons" ) }
+				label={ '' !== attributes.title ? attributes.title : __( "Cinemarathon", "cinemarathons" ) }
 				instructions={ __( "Use this block to display and manage a marathon. Add and sort movies, keep track of you current position, and have fun watching awesome movies!", "cinemarathons" ) }
 			>
 				<Settings
