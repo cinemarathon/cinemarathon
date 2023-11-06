@@ -4,7 +4,7 @@ import {
     ToggleControl,
 	Tooltip
 } from "@wordpress/components"
-import { useState } from "@wordpress/element"
+import { useEffect, useState } from "@wordpress/element"
 import { plus } from "@wordpress/icons"
 import { __, _n } from "@wordpress/i18n"
 
@@ -15,7 +15,12 @@ import ListEditor from "./ListEditor"
 
 const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 
-    const [advancedEditingMode, setAdvancedEditingMode] = useState( false )
+    const [ advancedEditingMode, setAdvancedEditingMode ] = useState( attributes.expertMode )
+
+    useEffect( () => {
+        setAttributes( { expertMode: advancedEditingMode } )
+        return () => {}
+    }, [ advancedEditingMode ] )
 
     return (
         <div className="editor">

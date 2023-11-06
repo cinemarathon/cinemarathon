@@ -37,6 +37,10 @@ registerBlockType("cinemarathon/marathon", {
         movies: {
             type: "array",
 			default: []
+        },
+        expertMode: {
+            type: "boolean",
+            default: false
         }
     },
     icon: Cinemarathon,

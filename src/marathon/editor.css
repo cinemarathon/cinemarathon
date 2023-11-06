@@ -289,7 +289,8 @@
 				padding: .625rem;
 
 				textarea {
-					line-height: 1.375rem;
+					line-height: 1.5rem;
+					min-height: 8rem;
 				}
 
 				.actions {
