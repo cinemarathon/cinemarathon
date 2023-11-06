@@ -9,23 +9,23 @@ import {
     TimePicker,
 } from "@wordpress/components"
 import { dispatch, useSelect } from "@wordpress/data"
-import { useState } from "@wordpress/element"
+import { useEffect, useState } from "@wordpress/element"
 
 import { __ } from "@wordpress/i18n"
 
 import TaxonomySelector from "./TaxonomySelector"
 
-const EntryEditor = ( { movie, closeModal } ) => {
-
-    const [ entry, setEntry ] = useState( {
-        title: movie.title,
-        content: `A vu <em>${ movie.title }</em>`,
-        date: "",
-        time: "",
-        format: "status",
-        categories: [ "Cinema" ],
-        tags: [ "Movie", "Foo" ],
+const showNotice = ( { message, type = 'success', actions = [] } ) =>
+    dispatch( "core/notices" ).createNotice( type, message, {
+        type: "snackbar",
+        isDismissible: true,
+        actions: actions,
     } )
+
+const EntryEditor = ( { entry, setEntry, closeModal } ) => {
+
+    const [ categories, setCategories ] = useState( [] )
+    const [ tags, setTags ] = useState( [] )
 
     /**
      * All formats sorted alphabetically by translated name.
@@ -55,28 +55,57 @@ const EntryEditor = ( { movie, closeModal } ) => {
     } )
 
     const posts = useSelect( select =>
-        select( 'core' ).getEntityRecords( 'postType', 'post', {
-            status: 'publish',
+        select( "core" ).getEntityRecords( "postType", "post", {
+            status: "publish",
         } )
     )
 
-    const publish = () => {
-        dispatch( "core/notices" ).createNotice(
-            "success",
-            "Journal Entry published successfully!",
-            {
-                type: "snackbar",
-                isDismissible: true,
-                actions: [
-                    {
-                        url: '#',
-                        label: 'View post',
-                    },
-                ],
-            }
-        )
-        closeModal()
+    const publish = async () => {
+        dispatch( "core" ).saveEntityRecord(
+                "postType",
+                "post",
+                {
+                    title: entry.title,
+                    content: entry.content,
+                    format: entry.format,
+                    status: "publish",
+                    categories: entry.categories,
+                    tags: entry.tags,
+                },
+                {
+                    throwOnError: true
+                }
+            )
+            .then( response => {
+                showNotice( {
+                    message: "Journal Entry published successfully. Don't forget to save your post!",
+                    actions: [
+                        {
+                            onClick: () => wp.data.dispatch( 'core/editor' ).savePost(),
+                            label: __( "Save Post" ),
+                        }
+                    ]
+                } )
+                setEntry( { ...entry, id: response.id } )
+                closeModal()
+            } )
+            .catch( error => {
+                showNotice( {
+                    message: `An error occurred: ${ error.message }`,
+                    type: "error"
+                } )
+            } )
     }
+
+    useEffect( () => {
+        setEntry( { ...entry, categories: categories.map( category => category.id ) } )
+        return () => {}
+    }, [ categories ] )
+
+    useEffect( () => {
+        setEntry( { ...entry, tags: tags.map( tag => tag.id ) } )
+        return () => {}
+    }, [ tags ] )
 
     return (
         <>
@@ -107,16 +136,16 @@ const EntryEditor = ( { movie, closeModal } ) => {
                         <TaxonomySelector
                             label={ __( "Categories" ) }
                             taxonomy="category"
-                            values={ entry.categories }
-                            onChange={ values => setEntry( { ...entry, categories: values } ) }
+                            values={ categories.map( category => category.name ) }
+                            onChange={ values => setCategories( values ) }
                         />
                     </PanelRow>
                     <PanelRow>
                         <TaxonomySelector
                             label={ __( "Tags" ) }
                             taxonomy="post_tag"
-                            values={ entry.tags }
-                            onChange={ values => setEntry( { ...entry, tags: values } ) }
+                            values={ tags.map( tag => tag.name ) }
+                            onChange={ values => setTags( values ) }
                         />
                     </PanelRow>
                     <PanelRow>

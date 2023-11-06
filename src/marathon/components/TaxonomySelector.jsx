@@ -15,23 +15,23 @@ import { __ } from "@wordpress/i18n"
 export default function TaxonomySelector( { taxonomy, label, values, onChange } ) {
 
 	const [ search, setSearch ] = useState( '' )
+	const [ suggestedTerms, setSuggestedTerms ] = useState( [] )
 
 	const debouncedSearch = useDebounce( setSearch, 500 )
 
 	const { searchResults } = useSelect(
 		( select ) => {
-			const { getEntityRecords } = select( coreStore )
-
-			return {
-				searchResults: !! search
-					? getEntityRecords( 'taxonomy', taxonomy, {
-							per_page: 20,
-							_fields: 'id,name',
-							context: 'view',
-							search,
-					  } )
-					: [],
+			let searchResults = []
+			if ( search ) {
+				searchResults = select( coreStore ).getEntityRecords( 'taxonomy', taxonomy, {
+					per_page: 20,
+					_fields: 'id,name',
+					context: 'view',
+					search,
+			  	} ) ?? []
+				setSuggestedTerms( [ ...suggestedTerms, ...searchResults ] )
 			}
+			return { searchResults }
 		},
 		[ search ]
 	)
@@ -43,16 +43,14 @@ export default function TaxonomySelector( { taxonomy, label, values, onChange } 
 
 	const handleChange = ( termNames ) => {
 		const uniqueTerms = termNames.reduce( ( terms, newTerm ) => {
-			if (
-				! terms.some(
-					( term ) => term.toLowerCase() === newTerm.toLowerCase()
-				)
-			) {
-				terms.push( newTerm )
+			if ( ! terms.some( term => term.name.toLowerCase() === newTerm.toLowerCase() ) ) {
+				let term = ( suggestedTerms ?? [] ).filter( term => newTerm === term.name ).pop()
+				if ( term ) {
+					terms.push( term )
+				}
 			}
 			return terms
 		}, [] )
-
 		onChange( uniqueTerms )
 	}
 

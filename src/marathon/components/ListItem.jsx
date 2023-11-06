@@ -8,7 +8,7 @@ import {
     MenuGroup,
     MenuItem
 } from "@wordpress/components"
-import { useState } from "@wordpress/element"
+import { useEffect, useState } from "@wordpress/element"
 import {
 	arrowUp,
 	arrowDown,
@@ -19,7 +19,9 @@ import {
     chevronUp,
     chevronDown,
     post,
-    customLink
+    customLink,
+    external,
+    linkOff
 } from "@wordpress/icons"
 
 import { __ } from "@wordpress/i18n"
@@ -55,7 +57,6 @@ const ListItem = ( { itemsHandler, movie } ) => {
         content: `A vu <em>${ movie.title }</em>`,
         date: "",
         time: "",
-        status: "publish",
         format: "status",
         categories: [],
         tags: [],
@@ -65,6 +66,13 @@ const ListItem = ( { itemsHandler, movie } ) => {
         transition,
         transform: CSS.Transform.toString(transform)
     }
+
+    useEffect( () => {
+        if ( entry.id ) {
+            itemsHandler.update( index, 'post_id', entry.id )
+        }
+        return () => {}
+    }, [ entry.id ] )
 
     return (
         <>
@@ -135,26 +143,48 @@ const ListItem = ( { itemsHandler, movie } ) => {
                                     />
                                 </MenuGroup>
                                 <MenuGroup>
-                                    <MenuItem
-                                        text={ __( "Publish journal entry", "cinemarathons" ) }
-                                        icon={ post }
-                                        iconPosition="right"
-                                        disabled={ !! movie.post_id }
-                                        title={ movie.post_id ? __( "An entry is already set for this movie. Remove it before publishing a new one.", "cinemarathons" ) : "" }
-                                        onClick={ () => {
-                                            openPublicationModal()
-                                            onClose()
-                                        } }
-                                    />
-                                    <MenuItem
-                                        text={ __( "Select existing entry", "cinemarathons" ) }
-                                        icon={ customLink }
-                                        iconPosition="right"
-                                        onClick={ () => {
-                                            openSelectionModal()
-                                            onClose()
-                                        } }
-                                    />
+                                    { movie.post_id ? (
+                                        <>
+                                            <MenuItem
+                                                text={ __( "View journal entry", "cinemarathons" ) }
+                                                icon={ external }
+                                                iconPosition="right"
+                                                href={ `/?p=${ movie.post_id }` }
+                                                target="_blank"
+                                                onClick={ onClose }
+                                            />
+                                            <MenuItem
+                                                text={ __( "Remove journal entry", "cinemarathons" ) }
+                                                icon={ linkOff }
+                                                iconPosition="right"
+                                                onClick={ () => {
+                                                    itemsHandler.update( index, 'post_id', null )
+                                                    onClose()
+                                                } }
+                                            />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <MenuItem
+                                                text={ __( "Publish journal entry", "cinemarathons" ) }
+                                                icon={ post }
+                                                iconPosition="right"
+                                                onClick={ () => {
+                                                    openPublicationModal()
+                                                    onClose()
+                                                } }
+                                            />
+                                            <MenuItem
+                                                text={ __( "Select existing entry", "cinemarathons" ) }
+                                                icon={ customLink }
+                                                iconPosition="right"
+                                                onClick={ () => {
+                                                    openSelectionModal()
+                                                    onClose()
+                                                } }
+                                            />
+                                        </>
+                                    )}
                                 </MenuGroup>
                                 <MenuGroup>
                                     <MenuItem
@@ -217,7 +247,8 @@ const ListItem = ( { itemsHandler, movie } ) => {
                     className="entry-publication-modal"
                 >
                     <EntryEditor
-                        movie={ movie }
+                        entry={ entry }
+                        setEntry={ setEntry }
                         closeModal={ closePublicationModal }
                     />
                 </Modal>
