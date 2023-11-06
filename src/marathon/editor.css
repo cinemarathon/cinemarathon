@@ -29,26 +29,29 @@
 
 .wp-block-cinemarathon-marathon {
 
-	.list-editor {
+	.editor {
 		border: 1px solid #c3c4c7;
   		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 		width: 100%;
 
-		.list-header {
+		.editor-header {
 			align-items: center;
 			border-bottom: 1px solid #c3c4c7;
 			display: flex;
 			height: 2.25rem;
+			padding-left: 2rem;
 
 			.header-column {
 				align-items: center;
 				display: flex;
+				flex-shrink: 0;
 				justify-content: start;
 				padding: 0 .625rem;
 
 				&.check-column {
 					justify-content: center;
-					width: 1rem;
+					padding: 0;
+					width: 2rem;
 				}
 
 				&.column-bonus {
@@ -58,10 +61,60 @@
 						width: 1rem;
 					}
 				}
+
+				&.column-title {
+					flex-shrink: 1;
+					padding: 0 .75rem;
+					width: 100%;
+				}
+
+				&.column-editing-mode {
+					margin-left: auto;
+
+					.components-flex.components-h-stack {
+						flex-direction: row-reverse;
+					}
+
+					.components-toggle-control {
+						font-size: 12px;
+						margin: 0;
+
+						.components-form-toggle {
+							align-items: center;
+							display: flex;
+
+							.components-form-toggle__track {
+								height: 14px;
+								width: 24px;
+							}
+	
+							.components-form-toggle__thumb {
+								height: 8px;
+								top: 2px;
+								width: 8px;
+							}
+
+							&.is-checked {
+								.components-form-toggle__track {
+									border-width: 6px;
+								}
+
+								.components-form-toggle__thumb {
+									top: 3px;
+									transform: translateX(10px);
+								}
+							}
+						}
+
+						label {
+							margin-top: -2px;
+						}
+					}
+				}
 			}
 		}
 
-		.list-content {
+		.editor-content {
 
 			.list-item {
 				align-items: center;
@@ -72,6 +125,7 @@
 				.list-item-column {
 					align-items: center;
 					display: flex;
+					flex-shrink: 0;
 					height: 100%;
 					justify-content: start;
 					padding: 0 .625rem;
@@ -81,6 +135,10 @@
 
 						.components-checkbox-control__input-container {
 							margin: 0;
+
+							input {
+								margin: 0;
+							}
 						}
 					}
 
@@ -91,9 +149,32 @@
 						width: 100%;
 					}
 
-					&.check-column {
+					&.column-title {
+						flex-shrink: 1;
+					}
+
+					&.check-column,
+					&.draghandle-column {
 						justify-content: center;
-						width: 1rem;
+						padding: 0;
+						width: 2rem;
+					}
+
+					&.draghandle-column {
+
+						button {
+							align-items: center;
+							cursor: move;
+							display: flex;
+							height: 2rem;
+							justify-content: center;
+							padding: 0;
+							width: 2rem;
+
+							svg {
+								margin-top: 1px;
+							}
+						}
 					}
 
 					&.column-actions {
@@ -104,8 +185,13 @@
 							display: flex;
 							justify-content: center;
 							margin: 0;
+							min-width: auto;
 							padding: 0;
-							width: 24px;
+							width: 1.5rem;
+
+							svg {
+								height: 1.25rem;
+							}
 						}
 
 						& > button {
@@ -174,7 +260,7 @@
 			}
 		}
 
-		.list-footer {
+		.editor-footer {
 			align-items: center;
 			border-top: 1px solid #c3c4c7;
 			display: flex;
@@ -207,111 +293,6 @@
 						}
 					}
 				}
-			}
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	table {
-		
-		.check-column {
-			padding: 8px 10px;
-			text-align: center;
-			vertical-align: middle;
-			width: 20px;
-			
-			.components-checkbox-control__input-container {
-				margin: 0;
-			}
-		}
-
-		td {
-			vertical-align: middle;
-		}
-
-		tbody {
-			
-			tr {
-				position: relative;
-
-				td {
-					
-					.components-base-control__field {
-						margin: 0;
-
-						.components-base-control__field {
-							margin: 0;
-						}
-					}
-
-					& > .components-text {
-
-						& + .components-button {
-							margin: 0 4px;
-							padding: 0;
-						}
-					}
-				}
-			}
-		}
-
-		tfoot {
-
-			tr {
-
-				td {
-
-					button {
-						margin: 0 !important;
-					}
-				}
-			}
-		}
-
-		.column-actions {
-			position: static;
-
-			button {
-				align-items: center;
-				display: flex;
-				justify-content: center;
-				margin: 0;
-				padding: 0;
-				width: 24px;
-			}
-
-			& > button {
-				position: relative;
-				z-index: 10;
-			}
-
-			.actions {
-				align-items: center;
-				background-color: rgba( 255, 255, 255, .85 );
-				bottom: 0;
-				display: none;
-				gap: 4px;
-				justify-content: flex-end;
-				left: 0;
-				padding-right: 40px;
-				position: absolute;
-				right: 0;
-				top: 0;
-			}
-
-			&.show-actions .actions {
-				display: flex;
 			}
 		}
 	}
