@@ -10,8 +10,7 @@ namespace Cinemarathon\Blocks;
 
 use Cinemarathon\Core\Block;
 
-use function Cinemarathon\match_block_recursive;
-use function Cinemarathon\parse_blocks_recursive;
+use function Cinemarathon\match_blocks_recursive;
 
 /**
  * Define the marathons block class.
@@ -62,7 +61,7 @@ class Marathons extends Block {
         }, $settings['supported_post_types'] ?? [ 'page' ] );
         $condition = implode( ' OR ', $supported_post_types );
 
-        $query = "SELECT ID, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s'";
+        $query = "SELECT ID, post_title, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s'";
         $posts = $wpdb->get_results( $wpdb->prepare( $query, '% wp:cinemarathon/marathon {%' ) );
 
         $items = [];
@@ -71,33 +70,49 @@ class Marathons extends Block {
             $blocks = parse_blocks( $post->post_content );
 
             // Retrieve marathon blocks.
-            $block = match_block_recursive( 'cinemarathon/marathon', $blocks );
-            if ( empty( $block ) || empty( $block['attrs'] ) ) {
-                continue;
+            $matches = match_blocks_recursive( 'cinemarathon/marathon', $blocks );
+
+            foreach ( $matches as $block ) {
+
+                if ( empty( $block['attrs'] ) ) {
+                    continue;
+                }
+
+                // Default data.
+                $item = [
+                    'id' => $post->ID,
+                    'title' => $post->post_title,
+                    'image' => CINEMARATHON_URL . 'assets/images/default-image.jpg',
+                    'url' => get_the_permalink( $post->ID ),
+                    'current' => 0,
+                    'total' => 0,
+                    'progress' => 0,
+                ];
+
+                // Use block's title if one is set.
+                if ( ! empty( $block['attrs']['title'] ) ) {
+                    $item['title'] = $block['attrs']['title'];
+                }
+
+                // Add block ID to the URL, if any.
+                if ( ! empty( $block['attrs']['id'] ) ) {
+                    $item['url'] .= '#' . $block['attrs']['id'];
+                }
+
+                // Use block's image if one is set.
+                if ( ! empty( $block['attrs']['image'] ) ) {
+                    $item['image'] = wp_get_attachment_image_url( (int) $block['attrs']['image'], 'large' );
+                }
+
+                // Calculate some data about the marathon.
+                if ( ! empty( $block['attrs']['movies'] ) ) {
+                    $item['current'] = count( wp_filter_object_list( $block['attrs']['movies'], [ 'watched' => 1 ] ) );
+                    $item['total'] = count( $block['attrs']['movies'] );
+                    $item['progress'] = round( ( $item['current'] / $item['total'] ) * 100 );
+                }
+
+                $items[] = $item;
             }
-
-            // Default data.
-            $item = [
-                'id' => $post->ID,
-                'image' => CINEMARATHON_URL . 'assets/images/default-image.jpg',
-                'current' => 0,
-                'total' => 0,
-                'progress' => 0,
-            ];
-
-            // Use block's image if one is set.
-            if ( ! empty( $block['attrs']['image'] ) ) {
-                $item['image'] = wp_get_attachment_image_url( (int) $block['attrs']['image'], 'large' );
-            }
-
-            // Calculate some data about the marathon.
-            if ( ! empty( $block['attrs']['movies'] ) ) {
-                $item['current'] = count( wp_filter_object_list( $block['attrs']['movies'], [ 'watched' => 1 ] ) );
-                $item['total'] = count( $block['attrs']['movies'] );
-                $item['progress'] = round( ( $item['current'] / $item['total'] ) * 100 );
-            }
-
-            $items[] = $item;
         }
 
         $this->data['items'] = $items;

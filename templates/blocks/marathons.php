@@ -10,7 +10,7 @@ if ( count( $block->data['items'] ) ) :
 ?>
         <div class="marathon"<?php echo 'grid' === $block->attributes['mode'] ? ' style="--marathon-featured-image:url(' . esc_url( $item['image'] ) . ')' : ''; ?>">
             <a href="<?php echo get_the_permalink( $item['id'] ); ?>">
-                <span class="title"><?php echo get_the_title( $item['id'] ); ?></span>
+                <span class="title"><?php echo esc_html( $item['title'] ); ?></span>
             </a>
         </div>
 <?php

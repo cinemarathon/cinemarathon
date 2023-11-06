@@ -105,6 +105,14 @@ const Edit = ( { attributes, setAttributes } ) => {
 		attributes.movies.map( ( movie, index ) =>
 			movies.push( { ...movie, hash: generateHash( '' !== movie.title ? `${movie.title}-${index}` : '' ) } ) )
 		setAttributes( { movies: [ ...movies ] } )
+		return () => {}
+	}, [] )
+
+	useEffect( () => {
+		if ( ! attributes.id ) {
+			setAttributes( { id: Date.now() } )
+		}
+		return () => {}
 	}, [] )
 
 	useEffect( () => {
@@ -115,6 +123,7 @@ const Edit = ( { attributes, setAttributes } ) => {
 		} else if ( 0 === attributes.image ) {
 			setImage( {} )
 		}
+		return () => {}
 	}, [ attributes.image ] )
 
 	return (

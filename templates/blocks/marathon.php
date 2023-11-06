@@ -1,5 +1,5 @@
 
-    <div class="wp-block-cinemarathon-marathon">
+    <div id="<?php echo esc_attr( $block->attributes['id'] ); ?>" class="wp-block-cinemarathon-marathon">
         <div class="marathon-header">
             <img src="<?php echo esc_url( $block->data['image'] ); ?>" alt="<?php echo esc_html( $block->attributes['title'] ); ?>">
             <h2><?php echo esc_html( $block->attributes['title'] ); ?></h2>

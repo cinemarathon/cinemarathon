@@ -50,7 +50,7 @@ class Marathon extends Block {
         }
 
         $this->data['bonuses'] = wp_filter_object_list( $this->attributes['movies'], [ 'bonus' => 1 ] );
-        $this->data['movies'] = array_values( array_diff_assoc( $this->attributes['movies'], $this->data['bonuses'] ) );
+        $this->data['movies'] = array_values( array_diff_assoc( $this->attributes['movies'] ?? [], $this->data['bonuses'] ) );
     }
 
 }
