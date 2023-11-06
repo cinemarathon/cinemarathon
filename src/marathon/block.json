@@ -10,6 +10,9 @@
         "id": {
             "type": "integer"
         },
+        "anchor": {
+            "type": "string"
+        },
         "title": {
             "type": "string",
 			"default": ""
@@ -40,6 +43,7 @@
         }
     },
     "supports": {
+        "anchor": true,
         "html": false
     },
     "textdomain": "cinemarathons",

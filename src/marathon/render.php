@@ -20,7 +20,7 @@ if ( ! empty( $attributes['movies'] ) ) {
 $data['bonuses'] = wp_filter_object_list( $attributes['movies'], [ 'bonus' => 1 ] );
 $data['movies'] = array_values( array_diff_assoc( $attributes['movies'] ?? [], $data['bonuses'] ) );
 ?>
-    <div <?php echo get_block_wrapper_attributes(); ?>>
+    <div <?php echo get_block_wrapper_attributes( [ 'id' => $attributes['anchor'] ?? $attributes['id'] ?? '' ] ); ?>>
         <div class="marathon-header">
             <img src="<?php echo esc_url( $data['image'] ); ?>" alt="<?php echo esc_html( $attributes['title'] ); ?>">
             <h2><?php echo esc_html( $attributes['title'] ); ?></h2>
