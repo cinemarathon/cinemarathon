@@ -1,14 +1,8 @@
-/*!******************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/marathons/editor.css ***!
-  \******************************************************************************************************************************************************************************/
 
 .wp-block-cinemarathon-marathons .components-placeholder__fieldset > div {
 			width: 100%;
 		}
 
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/marathon/editor.css ***!
-  \*****************************************************************************************************************************************************************************/
 
 .cinemarathon-marathon-block-inspector .media-uploader img {
 			aspect-ratio: 2;
@@ -94,5 +88,3 @@
 				display: flex;
 			}
 
-
-/*# sourceMappingURL=index.css.map*/
