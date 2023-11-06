@@ -43,7 +43,7 @@ function get_marathons( $args = [] ) {
     // Prepare supported post types for query.
     $supported_post_types = array_map( function( $supported_post_type ) use ($wpdb) {
         return $wpdb->prepare( "post_type = '%s'", $supported_post_type );
-    }, $settings['supported_post_types'] ?? [ 'page' ] );
+    }, $settings['general']['supported_post_types'] ?? [ 'page' ] );
     $condition = implode( ' OR ', $supported_post_types );
 
     $query = "SELECT ID, post_title, post_content FROM {$wpdb->posts} WHERE ( {$condition} ) AND post_status = 'publish' AND post_content LIKE '%s' LIMIT 0, %d";
@@ -80,8 +80,9 @@ function get_marathons( $args = [] ) {
             }
 
             // Add block ID to the URL, if any.
-            if ( ! empty( $block['attrs']['id'] ) ) {
-                $item['url'] .= '#' . $block['attrs']['id'];
+            $hash = $block['attrs']['anchor'] ?? $block['attrs']['id'] ?? '';
+            if ( ! empty( $hash ) ) {
+                $item['url'] .= '#' . $hash;
             }
 
             // Use block's image if one is set.
