@@ -5,7 +5,7 @@ import { __ } from "@wordpress/i18n"
 
 import hash from "object-hash"
 
-import { Cinemarathons } from "../icons"
+import { Cinemarathon } from "../icons"
 
 import Settings from "./components/Settings"
 import Editor from "./components/Editor"
@@ -112,7 +112,7 @@ const Edit = ( { attributes, setAttributes } ) => {
 	return (
 		<div { ...blockProps }>
 			<Placeholder
-				icon={ Cinemarathons }
+				icon={ Cinemarathon }
 				label={ '' !== attributes.title ? attributes.title : __( "Cinemarathon", "cinemarathons" ) }
 				instructions={ __( "Use this block to display and manage a marathon. Add and sort movies, keep track of you current position, and have fun watching awesome movies!", "cinemarathons" ) }
 			>

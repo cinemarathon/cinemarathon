@@ -1,6 +1,6 @@
 import { registerBlockType } from "@wordpress/blocks"
 
-import { Cinemarathons } from "../icons"
+import { Cinemarathon } from "../icons"
 import Edit from "./edit"
 
 import metadata from "./block.json"
@@ -8,6 +8,6 @@ import metadata from "./block.json"
 import "./style.scss"
 
 registerBlockType( metadata.name, {
-    icon: Cinemarathons,
+    icon: Cinemarathon,
     edit: Edit,
 } )
