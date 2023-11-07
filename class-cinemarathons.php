@@ -59,28 +59,10 @@ final class Cinemarathons {
 
         $this->version = CINEMARATHONS_VERSION;
 
-        $this->plugin_dir = plugin_dir_path( __FILE__ );
-        $this->plugin_url = plugin_dir_url( __FILE__ );
+        $this->plugin_dir = CINEMARATHONS_PATH;
+        $this->plugin_url = CINEMARATHONS_URL;
 
-        $this->default_settings = [
-            'general' => [
-                'supported_post_types' => [ 'page' ],
-                'disable_journal_mode' => false,
-                'hide_settings_page' => false,
-            ],
-            'journal' => [
-                'default_title' => '%title%',
-                'default_format' => 'status',
-                'default_date' => 'today',
-                'default_time' => '',
-                'default_categories' => [],
-                'default_tags' => [],
-                'default_content' => __( 'Been watching <em>%title%</em>', 'cinemarathons' ),
-            ],
-            'api' => [
-                'tmdb_api_key' => '',
-            ]
-        ];
+        $this->default_settings = require $this->plugin_dir . 'includes/core/config.php';
 
         $this->setup();
     }
@@ -573,7 +555,8 @@ final class Cinemarathons {
 
         $options = get_option( 'cinemarathons_options', [] );
         if ( empty( $options ) ) {
-            update_option( 'cinemarathons_options', $this->default_settings );
+            $default_settings = require CINEMARATHONS_PATH . 'includes/core/config.php';
+            update_option( 'cinemarathons_options', $default_settings );
         }
     }
 
