@@ -12,10 +12,11 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+		"start:hot": "wp-scripts start --hot"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^24.6.0",
+		"@wordpress/scripts": "^26.6.0",
 		"postcss": "^8.4.30",
 		"postcss-for": "^2.1.1",
 		"postcss-import": "^15.1.0",
