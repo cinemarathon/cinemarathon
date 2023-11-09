@@ -18,7 +18,7 @@ import { useDebounce } from "@wordpress/compose"
 import { useEffect, useState } from "@wordpress/element"
 import { __ } from "@wordpress/i18n"
 
-import { Movie, Person, TV } from "../../icons"
+import { Movie, Person, TV } from "../icons"
 
 const Settings = ( { attributes, setAttributes } ) => {
 

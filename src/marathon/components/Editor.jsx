@@ -8,7 +8,7 @@ import { useEffect, useState } from "@wordpress/element"
 import { plus } from "@wordpress/icons"
 import { __, _n } from "@wordpress/i18n"
 
-import { Available, Bonus, Check, DoubleCheck } from "../../icons"
+import { Available, Bonus, Check, DoubleCheck } from "../icons"
 
 import BatchEditor from "./BatchEditor"
 import ListEditor from "./ListEditor"

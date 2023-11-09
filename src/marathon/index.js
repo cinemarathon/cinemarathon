@@ -1,6 +1,6 @@
 import { registerBlockType } from "@wordpress/blocks"
 
-import { Cinemarathon } from "../icons"
+import { Cinemarathon } from "./icons"
 import Edit from "./edit"
 
 import metadata from "./block.json"

@@ -5,7 +5,7 @@ import { __ } from "@wordpress/i18n"
 
 import hash from "object-hash"
 
-import { Cinemarathon } from "../icons"
+import { Cinemarathon } from "./icons"
 
 import Settings from "./components/Settings"
 import Editor from "./components/Editor"
@@ -119,6 +119,7 @@ const Edit = ( { attributes, setAttributes } ) => {
 				<Settings
 					attributes={ attributes }
 					setAttributes={ setAttributes }
+					itemsHandler={ itemsHandler }
 				/>
 				<Editor
 					attributes={ attributes }
