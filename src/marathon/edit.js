@@ -28,15 +28,23 @@ const Edit = ( { attributes, setAttributes } ) => {
 		tmdb_id: ""
 	} )
 
-	const add = () =>
-		setAttributes( {
-				movies: [
-				...attributes.movies, {
-					...defaultItem(),
-					hash: generateHash()
-				}
-			]
-		} )
+	const add = ( items = [] ) => {
+		let movies = []
+		if ( items.length ) {
+			movies = items.map( item => {
+				return {
+				...defaultItem(),
+				...item,
+				hash: generateHash( item.title ?? "" )
+			} } )
+		} else {
+			movies.push( {
+				...defaultItem(),
+				hash: generateHash()
+			} )
+		}
+		setAttributes( { movies: [ ...attributes.movies, ...movies ] } )
+	}
 
 	const remove = index => {
 		let movies = [ ...attributes.movies ]

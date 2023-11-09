@@ -23,7 +23,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
     }, [ advancedEditingMode ] )
 
     return (
-        <div className="editor">
+        <div className="editor-table">
             <div className="editor-header">
                 <div className="header-column column-watched check-column">
                     <Tooltip
