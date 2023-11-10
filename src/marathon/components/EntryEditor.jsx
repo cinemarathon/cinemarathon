@@ -14,7 +14,7 @@ import { useEffect, useState } from '@wordpress/element';
 
 import { __ } from '@wordpress/i18n';
 
-import TaxonomySelector from './TaxonomySelector';
+import TermSelector from './TermSelector';
 
 const showNotice = ( { message, type = 'success', actions = [] } ) =>
 	dispatch( 'core/notices' ).createNotice( type, message, {
@@ -147,7 +147,7 @@ const EntryEditor = ( { entry, setEntry, closeModal } ) => {
 						/>
 					</PanelRow>
 					<PanelRow>
-						<TaxonomySelector
+						<TermSelector
 							label={ __( 'Categories' ) }
 							taxonomy="category"
 							values={ categories.map(
@@ -157,7 +157,7 @@ const EntryEditor = ( { entry, setEntry, closeModal } ) => {
 						/>
 					</PanelRow>
 					<PanelRow>
-						<TaxonomySelector
+						<TermSelector
 							label={ __( 'Tags' ) }
 							taxonomy="post_tag"
 							values={ tags.map( ( tag ) => tag.name ) }

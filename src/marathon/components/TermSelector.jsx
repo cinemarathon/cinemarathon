@@ -12,7 +12,7 @@ import { decodeEntities } from '@wordpress/html-entities';
 
 import { __ } from '@wordpress/i18n';
 
-export default function TaxonomySelector( {
+export default function TermSelector( {
 	taxonomy,
 	label,
 	values,
