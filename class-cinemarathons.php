@@ -78,14 +78,14 @@ final class Cinemarathons {
         // Let's get this party started.
         add_action( 'plugins_loaded', [ $this, 'run' ]) ;
 
-        // i18n
-        add_action( 'cinemarathons/run', [ $this, 'translate' ] );
-
         // Let's get to work.
         add_action( 'cinemarathons/run', [ $this, 'storyboard' ] );
         add_action( 'cinemarathons/run', [ $this, 'rehearsal' ] );
         add_action( 'cinemarathons/run', [ $this, 'background' ] );
         add_action( 'cinemarathons/run', [ $this, 'foreground' ] );
+
+        // i18n
+        add_action( 'cinemarathons/run', [ $this, 'translate' ] );
     }
 
     /**
@@ -94,7 +94,22 @@ final class Cinemarathons {
      * @since 1.0.0
      * @access public
      */
-    public function translate() {}
+    public function translate() {
+
+        add_action( 'init', function() {
+            load_plugin_textdomain( 'cinemarathons', false, CINEMARATHONS_PATH . '/languages' );
+            wp_set_script_translations( 'cinemarathons-marathon-editor-script', 'cinemarathons', CINEMARATHONS_PATH . '/languages' );
+            wp_set_script_translations( 'cinemarathons-marathons-editor-script', 'cinemarathons', CINEMARATHONS_PATH . '/languages' );
+        } );
+
+        add_filter( 'load_textdomain_mofile', function( $mofile, $domain ) {
+            if ( 'cinemarathons' === $domain && false !== strpos( $mofile, WP_LANG_DIR . '/plugins/' ) ) {
+                $locale = apply_filters( 'plugin_locale', determine_locale(), $domain );
+                $mofile = CINEMARATHONS_PATH . "/languages/{$domain}-{$locale}.mo";
+            }
+            return $mofile;
+        }, 10, 2 );
+    }
 
     /**
      * Prepare plugin.
@@ -268,7 +283,7 @@ final class Cinemarathons {
             'cinemarathons_options',
             __( 'General Settings', 'cinemarathons' ),
             function() {
-                _e( 'Basic settings ', 'cinemarathons' );
+                _e( 'Basic plugin settings.', 'cinemarathons' );
             },
             'cinemarathons'
         );

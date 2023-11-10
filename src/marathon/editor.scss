@@ -398,6 +398,10 @@
 			}
 		}
 	}
+
+	.components-checkbox-control__input + svg {
+		z-index: 1;
+	}
 }
 
 .components-toggle-control.is-reverse.is-small {
