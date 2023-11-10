@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cinemarathons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cinemarathons\n"
-"POT-Creation-Date: 2023-11-10 13:01+0100\n"
-"PO-Revision-Date: 2023-11-10 13:02+0100\n"
+"POT-Creation-Date: 2023-11-10T14:25:06+01:00\n"
+"PO-Revision-Date: 2023-11-10 14:26+0100\n"
 "Last-Translator: Charlie MERLAND <charlie@caercam.org>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -17,7 +17,8 @@ msgstr ""
 "X-Domain: cinemarathons\n"
 
 #. Plugin Name of the plugin
-#: build/marathons/index.js:1 src/marathons/edit.js:26
+#: build/marathons/index.js:44 src/marathons/edit.js:26
+#: build/marathons/index.js:26
 msgid "Cinemarathons"
 msgstr "Cinémarathons"
 
@@ -70,23 +71,24 @@ msgid "Bonus List"
 msgstr "Liste bonus"
 
 #: build/marathon/render.php:84 src/marathon/render.php:84
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:491
+#: build/marathon/index.js:6882 src/marathon/components/Settings.jsx:492
+#: build/marathon/index.js:6839
 msgid "Comments"
 msgstr "Commentaires"
 
-#: class-cinemarathons.php:282
+#: class-cinemarathons.php:285
 msgid "General Settings"
 msgstr "Réglages généraux"
 
-#: class-cinemarathons.php:284
+#: class-cinemarathons.php:287
 msgid "Basic plugin settings."
 msgstr "Réglages basiques du plugin."
 
-#: class-cinemarathons.php:323
+#: class-cinemarathons.php:326
 msgid "Journal Mode"
 msgstr "Mode Journal"
 
-#: class-cinemarathons.php:323
+#: class-cinemarathons.php:326
 msgid ""
 "The \"Journal\" Mode is a simple tool that allows you to publish a new post "
 "for each movie you watch, helping you keep track of things. You can set "
@@ -99,27 +101,27 @@ msgstr ""
 "articles, choisir de publier les articles automatiquement ou garder le "
 "contrôle manuel de la publication."
 
-#: class-cinemarathons.php:353
+#: class-cinemarathons.php:356
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: class-cinemarathons.php:354
+#: class-cinemarathons.php:357
 msgid "Yesterday"
 msgstr "Hier"
 
-#: class-cinemarathons.php:355
+#: class-cinemarathons.php:358
 msgid "Tomorrow"
 msgstr "Demain"
 
-#: class-cinemarathons.php:411 includes/core/config.php:16
+#: class-cinemarathons.php:414 includes/core/config.php:16
 msgid "Been watching <em>%title%</em>"
 msgstr "A vu <em>%title%</em>"
 
-#: class-cinemarathons.php:429
+#: class-cinemarathons.php:432
 msgid "API Integration"
 msgstr "Intégration API"
 
-#: class-cinemarathons.php:429
+#: class-cinemarathons.php:432
 msgid ""
 "You can set your own TMDb API key to retrieve TheMovieDB.org data. If you "
 "don't have a key, don't worry, the plugin will use its own. You can get your "
@@ -132,7 +134,7 @@ msgstr ""
 "obtenir votre clé gratuitement en vous inscrivant sur <a href=\"https://www."
 "themoviedb.org/\">TheMovieDB.org</a>."
 
-#: class-cinemarathons.php:486
+#: class-cinemarathons.php:489
 msgid "Settings"
 msgstr "Réglages"
 
@@ -256,91 +258,8 @@ msgstr "La clé d'API est valide !"
 msgid "The API key seems to be invalid!"
 msgstr "La clé d'API semble invalide !"
 
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:210
-msgid "Search on TheMovieDB"
-msgstr "Rechercher sur TheMovieDB"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:222
-msgid "Search a movie, an actor, a director…"
-msgstr "Rechercher un film, acteur, réalisateur…"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:239
-msgid "All"
-msgstr "Tout"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:244
-#: src/marathon/components/Settings.jsx:561
-msgid "Movie"
-msgstr "Film"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:249
-msgid "Person"
-msgstr "Personne"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:254
-#: src/marathon/components/Settings.jsx:581
-msgid "TV"
-msgstr "Série TV"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:392
-msgid "Title of the marathon"
-msgstr "Titre du marathon"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:402
-msgid "Featured image of the marathon"
-msgstr "Image d'aperçu du marathon"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:430
-msgid "Select Media"
-msgstr "Sélectionner un média"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:442
-msgid "Replace"
-msgstr "Remplacer"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:455
-msgid "Remove"
-msgstr "Supprimer"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:471
-msgid "Description of the marathon"
-msgstr "Description du marathon"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:481
-msgid "Objectives of the marathon"
-msgstr "Objectifs du marathon"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:503
-msgid "Select Movies/TV Shows from %s"
-msgstr "Sélectionner des films/séries TV pour %s"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:530
-msgid "Cast"
-msgstr "Casting"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:550
-msgid "Crew"
-msgstr "Équipe technique"
-
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:76
-#: src/marathon/components/Settings.jsx:667
-msgid "Movie Title"
-msgstr "Titre"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:809
-msgid "Nothing matches your selection. Maybe try some other filters?"
-msgstr ""
-"Aucun élément ne correspond à votre demande. Essayez d'autres filtres ?"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:831
-msgid "View Selection"
-msgstr "Voir la sélection"
-
-#: build/marathon/index.js:1 src/marathon/components/Settings.jsx:848
-msgid "Add Selection"
-msgstr "Ajouter la sélection"
-
-#: build/marathon/index.js:1 src/marathon/components/BatchEditor.jsx:80
+#: build/marathon/index.js:5722 src/marathon/components/BatchEditor.jsx:80
+#: build/marathon/index.js:5334
 msgid ""
 "Use the textarea below to input a list of movies to add to your marathon, "
 "one per line. <strong>Be careful!</strong> This will completely replace your "
@@ -357,169 +276,330 @@ msgstr ""
 "liste, saisissez simplement votre liste et prenez soin de cocher la case « "
 "Fusionner » à côté du bouton « Mettre à jour »."
 
-#: build/marathon/index.js:1 src/marathon/components/BatchEditor.jsx:89
+#: build/marathon/index.js:5727 src/marathon/components/BatchEditor.jsx:89
+#: build/marathon/index.js:5343
 msgid "Ex: [0,1,1,0] 1968 − The Good, the Bad and the Ugly"
 msgstr "Ex: [0,1,1,0] 1968 − Le Bon, la Brute et le Truand"
 
-#: build/marathon/index.js:1 src/marathon/components/BatchEditor.jsx:103
+#: build/marathon/index.js:5737 src/marathon/components/BatchEditor.jsx:103
+#: build/marathon/index.js:5357
 msgid "Merge"
 msgstr "Fusionner"
 
-#: build/marathon/index.js:1 src/marathon/components/BatchEditor.jsx:104
+#: build/marathon/index.js:5738 src/marathon/components/BatchEditor.jsx:104
+#: build/marathon/index.js:5358
 msgid "Merge the above list with the current list instead of replacing it"
 msgstr ""
 "Fusionner la liste ci-dessus à la liste courante au lieu de la remplacer"
 
-#: build/marathon/index.js:1 src/marathon/components/BatchEditor.jsx:115
+#: build/marathon/index.js:5745 src/marathon/components/BatchEditor.jsx:115
+#: build/marathon/index.js:5369
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: build/marathon/index.js:1 src/marathon/components/EntryEditor.jsx:119
-msgid "Entry Title"
-msgstr "Titre de la publication"
-
-#: build/marathon/index.js:1 src/marathon/components/EntryEditor.jsx:123
-#: src/marathon/components/EntryEditor.jsx:125
-msgid "Entry Content"
-msgstr "Contenu de la publication"
-
-#: build/marathon/index.js:1 src/marathon/components/EntryEditor.jsx:136
-msgid "Advanced Options"
-msgstr "Options avancées"
-
-#: build/marathon/index.js:1 src/marathon/components/EntryEditor.jsx:177
-msgid "Publish Entry"
-msgstr "Publier"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:112
-msgid "Search posts:"
-msgstr "Rechercher parmi les articles :"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:126
-msgid "Published %s"
-msgstr "Publié %s"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:139
-msgid "Current entry:"
-msgstr "Article sélectionné :"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:140
-msgid "New entry:"
-msgstr "Nouvelle publication :"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:163
-msgid "Published <strong>%s</strong> at %s"
-msgstr "Publié le <strong>%s</strong> à %s"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:176
-msgid "In %s"
-msgstr "Dans %s"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:199
-msgid "Preview"
-msgstr "Prévisualiser"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:205
-msgid "Edit"
-msgstr "Modifier"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:236
-msgid "Replace entry"
-msgstr "Remplacer la publication"
-
-#: build/marathon/index.js:1 src/marathon/components/EntrySelector.jsx:237
-msgid "Set as entry"
-msgstr "Définir comme publication"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:144
-msgid "Duplicate Item"
-msgstr "Dupliquer"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:160
-msgid "View journal entry"
-msgstr "Voir la publication"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:171
-msgid "Replace journal entry"
-msgstr "Remplacer la publication"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:186
-msgid "Publish journal entry"
-msgstr "Publier"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:198
-msgid "Select existing entry"
-msgstr "Sélectionner une publication"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:214
-msgid "Move Item to Top"
-msgstr "Déplacer au début"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:226
-msgid "Move Item Up"
-msgstr "Déplacer vers le haut"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:238
-msgid "Move Item Down"
-msgstr "Déplacer vers le bas"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:250
-msgid "Move Item to Bottom"
-msgstr "Déplacer à la fin"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:264
-msgid "Remove Item"
-msgstr "Supprimer"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:283
-msgid "Publish a new Journal Entry"
-msgstr "Publier une nouvelle entrée dans le journal"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:301
-msgid "Select a different Post as Journal Entry"
-msgstr "Sélectionner un article différent comme publication"
-
-#: build/marathon/index.js:1 src/marathon/components/ListItem.jsx:305
-msgid "Select a Post as Journal Entry"
-msgstr "Sélectionner un article comme publication"
-
-#: build/marathon/index.js:1 src/marathon/components/ListEditor.jsx:58
-msgid "This marathon does not have any movie yet."
-msgstr "Ce marathon ne contient aucun film pour le moment."
-
-#: build/marathon/index.js:1 src/marathon/components/ListEditor.jsx:64
-msgid "Start by adding one!"
-msgstr "Commencez par en ajouter un !"
-
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:28
+#: build/marathon/index.js:5808 src/marathon/components/Editor.jsx:28
+#: build/marathon/index.js:5410
 msgid "Just watched it!"
 msgstr "Je viens de le regarder !"
 
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:40
+#: build/marathon/index.js:5817 src/marathon/components/Editor.jsx:40
+#: build/marathon/index.js:5422
 msgid "Seen this one before"
 msgstr "Je l'ai déjà vu précédemment"
 
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:51
+#: build/marathon/index.js:5825 src/marathon/components/Editor.jsx:51
+#: build/marathon/index.js:5433
 msgid "I have this movie right here"
 msgstr "Je l'ai juste là sous la main"
 
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:65
+#: build/marathon/index.js:5833 src/marathon/components/Editor.jsx:65
+#: build/marathon/index.js:5447
 msgid "Bonus movie, not mandatory to watch"
 msgstr "Film bonus, visionnage non-obligatoire"
 
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:80
+#: build/marathon/index.js:5838 build/marathon/index.js:6967
+#: src/marathon/components/Editor.jsx:76
+#: src/marathon/components/Settings.jsx:668 build/marathon/index.js:5458
+#: build/marathon/index.js:7015
+msgid "Movie Title"
+msgstr "Titre"
+
+#: build/marathon/index.js:5841 src/marathon/components/Editor.jsx:80
+#: build/marathon/index.js:5462
 msgid "Expert Mode"
 msgstr "Mode expert"
 
-#: build/marathon/index.js:1 src/marathon/components/Editor.jsx:118
+#: build/marathon/index.js:5866 src/marathon/components/Editor.jsx:118
+#: build/marathon/index.js:5500
 msgid "Add new movie"
 msgstr "Ajouter un film"
 
-#: build/marathon/index.js:1 src/marathon/edit.js:140
+#: build/marathon/index.js:6019 src/marathon/components/EntryEditor.jsx:119
+#: build/marathon/index.js:5633
+msgid "Entry Title"
+msgstr "Titre de la publication"
+
+#: build/marathon/index.js:6026 build/marathon/index.js:6028
+#: src/marathon/components/EntryEditor.jsx:123
+#: src/marathon/components/EntryEditor.jsx:125 build/marathon/index.js:5637
+#: build/marathon/index.js:5639
+msgid "Entry Content"
+msgstr "Contenu de la publication"
+
+#: build/marathon/index.js:6037 src/marathon/components/EntryEditor.jsx:136
+#: build/marathon/index.js:5650
+msgid "Advanced Options"
+msgstr "Options avancées"
+
+#: build/marathon/index.js:6062 src/marathon/components/EntryEditor.jsx:177
+#: build/marathon/index.js:5691
+msgid "Publish Entry"
+msgstr "Publier"
+
+#: build/marathon/index.js:6184 src/marathon/components/EntrySelector.jsx:112
+#: build/marathon/index.js:5813
+msgid "Search posts:"
+msgstr "Rechercher parmi les articles :"
+
+#: build/marathon/index.js:6201 src/marathon/components/EntrySelector.jsx:126
+#: build/marathon/index.js:5827
+msgid "Published %s"
+msgstr "Publié %s"
+
+#: build/marathon/index.js:6204 src/marathon/components/EntrySelector.jsx:139
+#: build/marathon/index.js:5840
+msgid "Current entry:"
+msgstr "Article sélectionné :"
+
+#: build/marathon/index.js:6204 src/marathon/components/EntrySelector.jsx:140
+#: build/marathon/index.js:5841
+msgid "New entry:"
+msgstr "Nouvelle publication :"
+
+#: build/marathon/index.js:6217 src/marathon/components/EntrySelector.jsx:163
+#: build/marathon/index.js:5864
+msgid "Published <strong>%s</strong> at %s"
+msgstr "Publié le <strong>%s</strong> à %s"
+
+#: build/marathon/index.js:6222 src/marathon/components/EntrySelector.jsx:176
+#: build/marathon/index.js:5877
+msgid "In %s"
+msgstr "Dans %s"
+
+#: build/marathon/index.js:6233 src/marathon/components/EntrySelector.jsx:199
+#: build/marathon/index.js:5900
+msgid "Preview"
+msgstr "Prévisualiser"
+
+#: build/marathon/index.js:6238 src/marathon/components/EntrySelector.jsx:205
+#: build/marathon/index.js:5906
+msgid "Edit"
+msgstr "Modifier"
+
+#: build/marathon/index.js:6260 src/marathon/components/EntrySelector.jsx:236
+#: build/marathon/index.js:5937
+msgid "Replace entry"
+msgstr "Remplacer la publication"
+
+#: build/marathon/index.js:6260 src/marathon/components/EntrySelector.jsx:237
+#: build/marathon/index.js:5938
+msgid "Set as entry"
+msgstr "Définir comme publication"
+
+#: build/marathon/index.js:6329 src/marathon/components/ListEditor.jsx:58
+#: build/marathon/index.js:6007
+msgid "This marathon does not have any movie yet."
+msgstr "Ce marathon ne contient aucun film pour le moment."
+
+#: build/marathon/index.js:6332 src/marathon/components/ListEditor.jsx:64
+#: build/marathon/index.js:6013
+msgid "Start by adding one!"
+msgstr "Commencez par en ajouter un !"
+
+#: build/marathon/index.js:6470 src/marathon/components/ListItem.jsx:144
+#: build/marathon/index.js:6166
+msgid "Duplicate Item"
+msgstr "Dupliquer"
+
+#: build/marathon/index.js:6478 src/marathon/components/ListItem.jsx:160
+#: build/marathon/index.js:6182
+msgid "View journal entry"
+msgstr "Voir la publication"
+
+#: build/marathon/index.js:6485 src/marathon/components/ListItem.jsx:171
+#: build/marathon/index.js:6193
+msgid "Replace journal entry"
+msgstr "Remplacer la publication"
+
+#: build/marathon/index.js:6493 src/marathon/components/ListItem.jsx:186
+#: build/marathon/index.js:6208
+msgid "Publish journal entry"
+msgstr "Publier"
+
+#: build/marathon/index.js:6501 src/marathon/components/ListItem.jsx:198
+#: build/marathon/index.js:6220
+msgid "Select existing entry"
+msgstr "Sélectionner une publication"
+
+#: build/marathon/index.js:6509 src/marathon/components/ListItem.jsx:214
+#: build/marathon/index.js:6236
+msgid "Move Item to Top"
+msgstr "Déplacer au début"
+
+#: build/marathon/index.js:6517 src/marathon/components/ListItem.jsx:226
+#: build/marathon/index.js:6248
+msgid "Move Item Up"
+msgstr "Déplacer vers le haut"
+
+#: build/marathon/index.js:6525 src/marathon/components/ListItem.jsx:238
+#: build/marathon/index.js:6260
+msgid "Move Item Down"
+msgstr "Déplacer vers le bas"
+
+#: build/marathon/index.js:6533 src/marathon/components/ListItem.jsx:250
+#: build/marathon/index.js:6272
+msgid "Move Item to Bottom"
+msgstr "Déplacer à la fin"
+
+#: build/marathon/index.js:6541 src/marathon/components/ListItem.jsx:264
+#: build/marathon/index.js:6286
+msgid "Remove Item"
+msgstr "Supprimer"
+
+#: build/marathon/index.js:6550 src/marathon/components/ListItem.jsx:283
+#: build/marathon/index.js:6305
+msgid "Publish a new Journal Entry"
+msgstr "Publier une nouvelle entrée dans le journal"
+
+#: build/marathon/index.js:6558 src/marathon/components/ListItem.jsx:301
+#: build/marathon/index.js:6323
+msgid "Select a different Post as Journal Entry"
+msgstr "Sélectionner un article différent comme publication"
+
+#: build/marathon/index.js:6558 src/marathon/components/ListItem.jsx:305
+#: build/marathon/index.js:6327
+msgid "Select a Post as Journal Entry"
+msgstr "Sélectionner un article comme publication"
+
+#: build/marathon/index.js:6741 src/marathon/components/Settings.jsx:211
+#: build/marathon/index.js:6558
+msgid "Search on TheMovieDB"
+msgstr "Rechercher sur TheMovieDB"
+
+#: build/marathon/index.js:6745 src/marathon/components/Settings.jsx:223
+#: build/marathon/index.js:6570
+msgid "Search a movie, an actor, a director…"
+msgstr "Rechercher un film, acteur, réalisateur…"
+
+#: build/marathon/index.js:6755 src/marathon/components/Settings.jsx:240
+#: build/marathon/index.js:6587
+msgid "All"
+msgstr "Tout"
+
+#: build/marathon/index.js:6759 build/marathon/index.js:6912
+#: src/marathon/components/Settings.jsx:245
+#: src/marathon/components/Settings.jsx:562 build/marathon/index.js:6592
+#: build/marathon/index.js:6909
+msgid "Movie"
+msgstr "Film"
+
+#: build/marathon/index.js:6763 src/marathon/components/Settings.jsx:250
+#: build/marathon/index.js:6597
+msgid "Person"
+msgstr "Personne"
+
+#: build/marathon/index.js:6767 build/marathon/index.js:6921
+#: src/marathon/components/Settings.jsx:255
+#: src/marathon/components/Settings.jsx:582 build/marathon/index.js:6602
+#: build/marathon/index.js:6929
+msgid "TV"
+msgstr "Série TV"
+
+#: build/marathon/index.js:6790 src/marathon/components/Settings.jsx:285
+#: build/marathon/index.js:6632
+msgid "Known for <strong>%s</strong>, <em>%s</em>"
+msgstr "Connu pour <strong>%s</strong>, <em>%s</em>"
+
+#: build/marathon/index.js:6808 build/marathon/index.js:6826
+#: src/marathon/components/Settings.jsx:325
+#: src/marathon/components/Settings.jsx:366 build/marathon/index.js:6672
+#: build/marathon/index.js:6713
+msgid "<strong>%s</strong> – <em>%s</em>"
+msgstr "<strong>%s</strong> -- <em>%s</em>"
+
+#: build/marathon/index.js:6830 src/marathon/components/Settings.jsx:393
+#: build/marathon/index.js:6740
+msgid "Title of the marathon"
+msgstr "Titre du marathon"
+
+#: build/marathon/index.js:6836 src/marathon/components/Settings.jsx:403
+#: build/marathon/index.js:6750
+msgid "Featured image of the marathon"
+msgstr "Image d'aperçu du marathon"
+
+#: build/marathon/index.js:6854 src/marathon/components/Settings.jsx:431
+#: build/marathon/index.js:6778
+msgid "Select Media"
+msgstr "Sélectionner un média"
+
+#: build/marathon/index.js:6859 src/marathon/components/Settings.jsx:443
+#: build/marathon/index.js:6790
+msgid "Replace"
+msgstr "Remplacer"
+
+#: build/marathon/index.js:6866 src/marathon/components/Settings.jsx:456
+#: build/marathon/index.js:6803
+msgid "Remove"
+msgstr "Supprimer"
+
+#: build/marathon/index.js:6870 src/marathon/components/Settings.jsx:472
+#: build/marathon/index.js:6819
+msgid "Description of the marathon"
+msgstr "Description du marathon"
+
+#: build/marathon/index.js:6876 src/marathon/components/Settings.jsx:482
+#: build/marathon/index.js:6829
+msgid "Objectives of the marathon"
+msgstr "Objectifs du marathon"
+
+#: build/marathon/index.js:6888 src/marathon/components/Settings.jsx:504
+#: build/marathon/index.js:6851
+msgid "Select Movies/TV Shows from %s"
+msgstr "Sélectionner des films/séries TV pour %s"
+
+#: build/marathon/index.js:6900 src/marathon/components/Settings.jsx:531
+#: build/marathon/index.js:6878
+msgid "Cast"
+msgstr "Casting"
+
+#: build/marathon/index.js:6907 src/marathon/components/Settings.jsx:551
+#: build/marathon/index.js:6898
+msgid "Crew"
+msgstr "Équipe technique"
+
+#: build/marathon/index.js:7001 src/marathon/components/Settings.jsx:810
+#: build/marathon/index.js:7157
+msgid "Nothing matches your selection. Maybe try some other filters?"
+msgstr ""
+"Aucun élément ne correspond à votre demande. Essayez d'autres filtres ?"
+
+#: build/marathon/index.js:7008 src/marathon/components/Settings.jsx:832
+#: build/marathon/index.js:7179
+msgid "View Selection"
+msgstr "Voir la sélection"
+
+#: build/marathon/index.js:7015 src/marathon/components/Settings.jsx:849
+#: build/marathon/index.js:7196
+msgid "Add Selection"
+msgstr "Ajouter la sélection"
+
+#: build/marathon/index.js:7267 src/marathon/edit.js:140
+#: build/marathon/index.js:7439
 msgid "Cinemarathon"
 msgstr "Cinémarathon"
 
-#: build/marathon/index.js:1 src/marathon/edit.js:142
+#: build/marathon/index.js:7268 src/marathon/edit.js:142
+#: build/marathon/index.js:7441
 msgid ""
 "Use this block to display and manage a marathon. Add and sort movies, keep "
 "track of you current position, and have fun watching awesome movies!"
@@ -528,22 +608,26 @@ msgstr ""
 "films, gardez une trace de l'avancement de votre visionnage, et amusez-vous "
 "bien en découvrant des films sympas !"
 
-#: build/marathons/index.js:1 src/marathons/edit.js:27
+#: build/marathons/index.js:45 src/marathons/edit.js:27
+#: build/marathons/index.js:27
 msgid "Use this block to display a list of your marathons."
 msgstr "Utilisez ce bloc pour afficher une liste de vos marathons."
 
-#: build/marathons/index.js:1 src/marathons/edit.js:34
+#: build/marathons/index.js:47 src/marathons/edit.js:34
+#: build/marathons/index.js:34
 msgid "Number of marathons to display"
 msgstr "Nombre de marathons à afficher"
 
-#: build/marathons/index.js:1 src/marathons/edit.js:41
+#: build/marathons/index.js:48 src/marathons/edit.js:41
+#: build/marathons/index.js:41
 msgid ""
 "Note that this limit will be based on posts count, not marathons per se."
 msgstr ""
 "Note que cette limite se base sur le nombre de posts, non le nombre de "
 "marathons à proprement parler."
 
-#: build/marathons/index.js:1 src/marathons/edit.js:49
+#: build/marathons/index.js:48 src/marathons/edit.js:49
+#: build/marathons/index.js:49
 msgid ""
 "Cinemarathons is able to discover multiple marathons in a single post; As a "
 "result this block will query posts containing single 'Marathon' blocks, not "
@@ -557,19 +641,23 @@ msgstr ""
 "Marathon sont présents dans un même contenu, le nombre total de marathons "
 "affichés dans la liste pourra dépasser la limite définie ici."
 
-#: build/marathons/index.js:1 src/marathons/edit.js:75
+#: build/marathons/index.js:61 src/marathons/edit.js:75
+#: build/marathons/index.js:75
 msgid "Display mode"
 msgstr "Mode d'affichage"
 
-#: build/marathons/index.js:1 src/marathons/edit.js:78
+#: build/marathons/index.js:63 src/marathons/edit.js:78
+#: build/marathons/index.js:78
 msgid "List"
 msgstr "Liste"
 
-#: build/marathons/index.js:1 src/marathons/edit.js:82
+#: build/marathons/index.js:66 src/marathons/edit.js:82
+#: build/marathons/index.js:82
 msgid "Grid"
 msgstr "Grille"
 
-#: build/marathons/index.js:1 src/marathons/edit.js:93
+#: build/marathons/index.js:74 src/marathons/edit.js:93
+#: build/marathons/index.js:93
 msgid "Number of columns"
 msgstr "Nombre de colonnes"
 
@@ -592,12 +680,7 @@ msgctxt "block title"
 msgid "Cinemarathons"
 msgstr "Cinémarathons"
 
-#: build/marathons/block.json
-msgctxt "block description"
-msgid "src/marathon/block.json"
-msgstr ""
-
-#: src/marathons/block.json
+#: build/marathons/block.json src/marathons/block.json
 msgctxt "block description"
 msgid "Displays a list of marathons."
 msgstr "Utilisez ce bloc pour afficher une liste de vos marathons."

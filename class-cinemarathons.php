@@ -98,8 +98,6 @@ final class Cinemarathons {
 
         add_action( 'init', function() {
             load_plugin_textdomain( 'cinemarathons', false, CINEMARATHONS_PATH . '/languages' );
-            wp_set_script_translations( 'cinemarathons-marathon-editor-script', 'cinemarathons', CINEMARATHONS_PATH . '/languages' );
-            wp_set_script_translations( 'cinemarathons-marathons-editor-script', 'cinemarathons', CINEMARATHONS_PATH . '/languages' );
         } );
 
         add_filter( 'load_textdomain_mofile', function( $mofile, $domain ) {
@@ -227,9 +225,12 @@ final class Cinemarathons {
         wp_add_inline_script(
             'cinemarathons-marathon-editor-script',
             'const cinemarathons_options = ' . json_encode( $options + [
-                'locale' => get_option( 'locale', 'en_US' )
+                'locale' => get_bloginfo( 'language' )
             ] )
         );
+
+        wp_set_script_translations( 'cinemarathons-marathon-editor-script', 'cinemarathons', CINEMARATHONS_PATH . '/languages' );
+        wp_set_script_translations( 'cinemarathons-marathons-editor-script', 'cinemarathons', CINEMARATHONS_PATH . '/languages' );
     }
 
     /**

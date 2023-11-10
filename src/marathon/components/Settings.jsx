@@ -34,6 +34,7 @@ import { Movie, Person, TV } from '../icons';
 
 const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 	const APIKEY = cinemarathons_options?.api?.tmdb_api_key ?? '';
+	const LOCALE = cinemarathons_options?.locale ?? 'en-US';
 
 	const [ showModal, setShowModal ] = useState( false );
 
@@ -85,7 +86,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 	const loadCombinedCredits = () => {
 		if ( searchPerson.id ) {
 			fetch(
-				`https://api.themoviedb.org/3/person/${ searchPerson.id }/combined_credits?api_key=${ APIKEY }`
+				`https://api.themoviedb.org/3/person/${ searchPerson.id }/combined_credits?api_key=${ APIKEY }&language=${LOCALE}`
 			)
 				.then( ( response ) => response.json() )
 				.then( ( data ) => setCredits( data ) );
@@ -95,7 +96,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 	const searchOnTMDb = () => {
 		if ( '' !== searchQuery ) {
 			fetch(
-				`https://api.themoviedb.org/3/search/${ searchType }?api_key=${ APIKEY }&query=${ searchQuery }&include_adult=false&language=en-US&page=1`
+				`https://api.themoviedb.org/3/search/${ searchType }?api_key=${ APIKEY }&query=${ searchQuery }&include_adult=false&language=${LOCALE}&page=1`
 			).then( ( response ) =>
 				response
 					.json()
@@ -283,7 +284,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 														__html: sprintf(
 															__(
 																'Known for <strong>%s</strong>, <em>%s</em>',
-																''
+																'cinemarathons'
 															),
 															result.known_for_department,
 															_.pluck(
@@ -323,7 +324,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 														__html: sprintf(
 															__(
 																'<strong>%s</strong> – <em>%s</em>',
-																''
+																'cinemarathons'
 															),
 															new Date(
 																result.release_date
@@ -364,7 +365,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 														__html: sprintf(
 															__(
 																'<strong>%s</strong> – <em>%s</em>',
-																''
+																'cinemarathons'
 															),
 															new Date(
 																result.release_date
