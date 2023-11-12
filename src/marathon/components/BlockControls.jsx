@@ -1,15 +1,12 @@
 import apiFetch from '@wordpress/api-fetch';
-import {
-	MediaUpload,
-	MediaUploadCheck,
-} from '@wordpress/block-editor';
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import {
 	BaseControl,
 	Button,
+	ButtonGroup,
 	PanelBody,
 	TextareaControl,
 	TextControl,
-	__experimentalHStack as HStack,
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -38,14 +35,9 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 			</PanelBody>
 			<PanelBody>
 				<TextControl
-					label={ __(
-						'Title of the marathon',
-						'cinemarathons'
-					) }
+					label={ __( 'Title of the marathon', 'cinemarathons' ) }
 					value={ attributes.title }
-					onChange={ ( value ) =>
-						setAttributes( { title: value } )
-					}
+					onChange={ ( value ) => setAttributes( { title: value } ) }
 				/>
 				<BaseControl
 					id="marathon-featured-image"
@@ -64,14 +56,13 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 								<div className="marathon-featured-image">
 									<Button onClick={ open }>
 										{ attributes.image &&
-										image?.media_details?.sizes
-											?.large?.source_url ? (
+										image?.media_details?.sizes?.large
+											?.source_url ? (
 											<img
 												className="marathon-featured-image__image"
 												src={
-													image?.media_details
-														?.sizes?.large
-														?.source_url
+													image?.media_details?.sizes
+														?.large?.source_url
 												}
 												alt=""
 											/>
@@ -85,7 +76,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 										) }
 									</Button>
 									{ attributes.image ? (
-										<HStack className="marathon-featured-image__actions">
+										<ButtonGroup className="marathon-featured-image__actions">
 											<Button
 												onClick={ open }
 												variant="secondary"
@@ -108,7 +99,7 @@ const Settings = ( { attributes, setAttributes, itemsHandler } ) => {
 												) }
 												className="marathon-featured-image__button marathon-featured-image__remove"
 											/>
-										</HStack>
+										</ButtonGroup>
 									) : (
 										''
 									) }

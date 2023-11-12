@@ -104,8 +104,13 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 			<div className="editor-footer">
 				<div className="footer-content">
 					{ sprintf(
-						// translators: %s: Movies
-						_n( '%s Movie', '%s Movies', attributes.movies.length ),
+						// translators: %s: number of movies
+						_n(
+							'%s Movie',
+							'%s Movies',
+							attributes.movies.length,
+							'cinemarathons'
+						),
 						attributes.movies.length
 					) }
 				</div>

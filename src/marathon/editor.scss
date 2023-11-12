@@ -19,7 +19,7 @@
 		.search-type {
 			position: absolute;
 			right: 2px;
-			top: 30px;
+			top: 26px;
 			width: 42px;
 
 			.components-select-control__input {
@@ -127,6 +127,8 @@
 
 		.marathon-featured-image__actions {
 			bottom: 0;
+			display: flex;
+			gap: .5rem;
 			left: 0;
 			opacity: 0;
 			padding: 0.625rem;

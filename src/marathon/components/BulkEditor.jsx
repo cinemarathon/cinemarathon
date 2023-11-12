@@ -1,8 +1,9 @@
 import {
 	Button,
+	Flex,
+	FlexItem,
 	TextareaControl,
 	ToggleControl,
-	__experimentalHStack as HStack,
 } from '@wordpress/components';
 import { useEffect, useRef, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -29,7 +30,7 @@ const BulkEditor = ( {
 				item = {};
 			if ( matches[ 2 ] ) {
 				values = matches[ 2 ].split( ',' );
-				checks.map(
+				checks.forEach(
 					( check ) => ( item[ check ] = '1' === values.shift() )
 				);
 			}
@@ -58,7 +59,7 @@ const BulkEditor = ( {
 
 	useEffect( () => {
 		const list = [];
-		attributes.movies.each( ( movie ) => {
+		attributes.movies.forEach( ( movie ) => {
 			const checks = [ 'watched', 'rewatch', 'available', 'bonus' ],
 				values = [];
 			checks.map( ( check ) => values.push( movie[ check ] ? 1 : 0 ) );
@@ -98,27 +99,31 @@ const BulkEditor = ( {
 				/>
 			</div>
 			<div className="actions">
-				<HStack justify="flex-end">
-					<ToggleControl
-						label={ __( 'Merge', 'cinemarathons' ) }
-						help={ __(
-							'Merge the above list with the current list instead of replacing it',
-							'cinemarathons'
-						) }
-						checked={ mergeMode }
-						onChange={ () => setMergeMode( ! mergeMode ) }
-						className="is-reverse is-small"
-						__nextHasNoMarginBottom={ true }
-					/>
-					<Button
-						variant="primary"
-						text={ __( 'Update', 'cinemarathons' ) }
-						onClick={ () => {
-							update();
-							setAdvancedEditingMode( false );
-						} }
-					/>
-				</HStack>
+				<Flex justify="flex-end">
+					<FlexItem>
+						<ToggleControl
+							label={ __( 'Merge', 'cinemarathons' ) }
+							help={ __(
+								'Merge the above list with the current list instead of replacing it',
+								'cinemarathons'
+							) }
+							checked={ mergeMode }
+							onChange={ () => setMergeMode( ! mergeMode ) }
+							className="is-reverse is-small"
+							__nextHasNoMarginBottom={ true }
+						/>
+					</FlexItem>
+					<FlexItem>
+						<Button
+							variant="primary"
+							text={ __( 'Update', 'cinemarathons' ) }
+							onClick={ () => {
+								update();
+								setAdvancedEditingMode( false );
+							} }
+						/>
+					</FlexItem>
+				</Flex>
 			</div>
 		</div>
 	);

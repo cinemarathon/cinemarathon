@@ -4,7 +4,7 @@ import { Movie, Person } from '../../icons';
 
 import _ from 'underscore';
 
-const SearchResult = ( { result, genresList, handleClick } ) => {
+const SearchResult = ( { type, result, genresList, handleClick } ) => {
 	const icons = {
 		movie: <Movie />,
 		person: <Person />,
@@ -17,11 +17,13 @@ const SearchResult = ( { result, genresList, handleClick } ) => {
 	);
 
 	const details = () => {
-		if ( 'movie' === result.media_type ) {
+		if ( 'movie' === type || 'movie' === result.media_type ) {
 			return (
 				<span>
 					<strong>
-						{ new Date( result.release_date ).getFullYear() }
+						{ result.release_date
+							? new Date( result.release_date ).getFullYear()
+							: '?' }
 					</strong>
 					&nbsp;−&nbsp;
 					{ _.pluck( genres, 'name' ).map( ( genre, key ) => (
@@ -29,7 +31,7 @@ const SearchResult = ( { result, genresList, handleClick } ) => {
 					) ) }
 				</span>
 			);
-		} else if ( 'person' === result.media_type ) {
+		} else if ( 'person' === type || 'person' === result.media_type ) {
 			return (
 				<span>
 					{ __( 'Known for', 'cinemarathons' ) }{ ' ' }
@@ -45,7 +47,12 @@ const SearchResult = ( { result, genresList, handleClick } ) => {
 	};
 
 	return (
-		<Button onClick={ handleClick } icon={ icons[ result.media_type ] }>
+		<Button
+			onClick={ handleClick }
+			icon={
+				'multi' === type ? icons[ result.media_type ] : icons[ type ]
+			}
+		>
 			<span className="title">{ result.title ?? result.name ?? '' }</span>
 			<span className="details">{ details() }</span>
 		</Button>
@@ -63,7 +70,7 @@ const SearchResults = ( {
 	itemsHandler,
 } ) => {
 	const handleClick = ( result ) => {
-		if ( 'movie' === type ) {
+		if ( 'movie' === result.media_type ) {
 			itemsHandler.add( [
 				{
 					title: result.title,
@@ -72,7 +79,7 @@ const SearchResults = ( {
 			] );
 			setSearchQuery( '' );
 			setSearchResults( [] );
-		} else if ( 'person' === type ) {
+		} else if ( 'person' === result.media_type ) {
 			setSearchPerson( result );
 			openModal();
 		}

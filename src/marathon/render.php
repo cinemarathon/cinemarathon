@@ -37,11 +37,11 @@ $data['movies'] = array_values( array_diff_assoc( $attributes['movies'] ?? [], $
             <div class="marathon-legend">
                 <h4><?php _e( 'Legend', 'cinemarathons' ); ?></h4>
                 <ul>
-                    <li><?php printf( __( '%s: Seen this one before, to be watched again', 'cinemarathons' ), '🟠' ); ?></li>
-                    <li><?php printf( __( '%s: Not watched (yet)!', 'cinemarathons' ), '🔴' ); ?></li>
-                    <li><?php printf( __( '%s: Watched!', 'cinemarathons' ), '🟢' ); ?></li>
-                    <li><?php printf( __( '%s: Available for watching', 'cinemarathons' ), '📀' ); ?></li>
-                    <li><?php printf( __( '%s: Unavailable for watching', 'cinemarathons' ), '💸' ); ?></li>
+                    <li><?php /* translators: %s: emoji */ printf( __( '%s: Seen this one before, to be watched again', 'cinemarathons' ), '🟠' ); ?></li>
+                    <li><?php /* translators: %s: emoji */ printf( __( '%s: Not watched (yet)!', 'cinemarathons' ), '🔴' ); ?></li>
+                    <li><?php /* translators: %s: emoji */ printf( __( '%s: Watched!', 'cinemarathons' ), '🟢' ); ?></li>
+                    <li><?php /* translators: %s: emoji */ printf( __( '%s: Available for watching', 'cinemarathons' ), '📀' ); ?></li>
+                    <li><?php /* translators: %s: emoji */ printf( __( '%s: Unavailable for watching', 'cinemarathons' ), '💸' ); ?></li>
                 </ul>
             </div>
             <div class="marathon-items">

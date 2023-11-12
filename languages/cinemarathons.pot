@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-12T19:01:53+01:00\n"
+"POT-Creation-Date: 2023-11-12T21:43:20+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: cinemarathons\n"
@@ -43,26 +43,31 @@ msgstr ""
 msgid "Legend"
 msgstr ""
 
+#. translators: %s: emoji
 #: build/marathon/render.php:40
 #: src/marathon/render.php:40
 msgid "%s: Seen this one before, to be watched again"
 msgstr ""
 
+#. translators: %s: emoji
 #: build/marathon/render.php:41
 #: src/marathon/render.php:41
 msgid "%s: Not watched (yet)!"
 msgstr ""
 
+#. translators: %s: emoji
 #: build/marathon/render.php:42
 #: src/marathon/render.php:42
 msgid "%s: Watched!"
 msgstr ""
 
+#. translators: %s: emoji
 #: build/marathon/render.php:43
 #: src/marathon/render.php:43
 msgid "%s: Available for watching"
 msgstr ""
 
+#. translators: %s: emoji
 #: build/marathon/render.php:44
 #: src/marathon/render.php:44
 msgid "%s: Unavailable for watching"
@@ -81,7 +86,7 @@ msgstr ""
 #: build/marathon/render.php:84
 #: src/marathon/render.php:84
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:141
+#: src/marathon/components/BlockControls.jsx:132
 msgid "Comments"
 msgstr ""
 
@@ -105,10 +110,12 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#. translators: %s: test your key
 #: templates/dashboard/settings/fields/api/tmdb-api-key.php:2
 msgid "You can %s to make sure everything is ok."
 msgstr ""
 
+#. translators: %s: test your key
 #: templates/dashboard/settings/fields/api/tmdb-api-key.php:2
 msgid "test your key"
 msgstr ""
@@ -159,7 +166,7 @@ msgid "Person"
 msgstr ""
 
 #: build/marathon/index.js:1
-#: src/marathon/components/importer/SearchResults.jsx:35
+#: src/marathon/components/importer/SearchResults.jsx:37
 msgid "Known for"
 msgstr ""
 
@@ -210,62 +217,62 @@ msgid "Add Selection"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:41
+#: src/marathon/components/BlockControls.jsx:38
 msgid "Title of the marathon"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:52
+#: src/marathon/components/BlockControls.jsx:44
 msgid "Featured image of the marathon"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:80
+#: src/marathon/components/BlockControls.jsx:71
 msgid "Select Media"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:92
+#: src/marathon/components/BlockControls.jsx:83
 msgid "Replace"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:105
+#: src/marathon/components/BlockControls.jsx:96
 msgid "Remove"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:121
+#: src/marathon/components/BlockControls.jsx:112
 msgid "Description of the marathon"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BlockControls.jsx:131
+#: src/marathon/components/BlockControls.jsx:122
 msgid "Objectives of the marathon"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BulkEditor.jsx:80
+#: src/marathon/components/BulkEditor.jsx:81
 msgid "Use the textarea below to input a list of movies to add to your marathon, one per line. <strong>Be careful!</strong> This will completely replace your current list, <strong>all unsaved changes will be lost!</strong> If you're not sure what you are doing, or you change want to add some new movies to your list, just input the new movies and make sure to check the \"Merge\" toggle next to the \"Update\" button."
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BulkEditor.jsx:89
+#: src/marathon/components/BulkEditor.jsx:90
 msgid "Ex: [0,1,1,0] 1968 − The Good, the Bad and the Ugly"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BulkEditor.jsx:103
+#: src/marathon/components/BulkEditor.jsx:105
 msgid "Merge"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BulkEditor.jsx:104
+#: src/marathon/components/BulkEditor.jsx:106
 msgid "Merge the above list with the current list instead of replacing it"
 msgstr ""
 
 #: build/marathon/index.js:5
-#: src/marathon/components/BulkEditor.jsx:115
+#: src/marathon/components/BulkEditor.jsx:119
 msgid "Update"
 msgstr ""
 
@@ -334,19 +341,26 @@ msgstr ""
 msgid "Expert Mode"
 msgstr ""
 
-#. translators: %s: Movies
+#. translators: %s: number of movies
 #: build/marathon/index.js:7
-#: src/marathon/components/Editor.jsx:118
+#: src/marathon/components/Editor.jsx:108
+msgid "%s Movie"
+msgid_plural "%s Movies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/marathon/index.js:7
+#: src/marathon/components/Editor.jsx:123
 msgid "Add new movie"
 msgstr ""
 
 #: build/marathon/index.js:7
-#: src/marathon/edit.js:143
+#: src/marathon/edit.js:140
 msgid "Cinemarathon"
 msgstr ""
 
 #: build/marathon/index.js:7
-#: src/marathon/edit.js:145
+#: src/marathon/edit.js:142
 msgid "Use this block to display and manage a marathon. Add and sort movies, keep track of you current position, and have fun watching awesome movies!"
 msgstr ""
 

@@ -1,11 +1,9 @@
-# Copyright (C) 2023 Charlie Merland
-# This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Cinemarathons 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cinemarathons\n"
-"POT-Creation-Date: 2023-11-12T19:01:53+01:00\n"
-"PO-Revision-Date: 2023-11-12 19:04+0100\n"
+"POT-Creation-Date: 2023-11-12T21:43:20+01:00\n"
+"PO-Revision-Date: 2023-11-12 21:43+0100\n"
 "Last-Translator: Charlie MERLAND <charlie@caercam.org>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -41,22 +39,27 @@ msgstr "Objectifs"
 msgid "Legend"
 msgstr "Légende"
 
+#. translators: %s: emoji
 #: build/marathon/render.php:40 src/marathon/render.php:40
 msgid "%s: Seen this one before, to be watched again"
 msgstr "%s : déjà vu précédemment, à revoir"
 
+#. translators: %s: emoji
 #: build/marathon/render.php:41 src/marathon/render.php:41
 msgid "%s: Not watched (yet)!"
 msgstr "%s : pas (encore) regardé !"
 
+#. translators: %s: emoji
 #: build/marathon/render.php:42 src/marathon/render.php:42
 msgid "%s: Watched!"
 msgstr "%s : je l'ai vu !"
 
+#. translators: %s: emoji
 #: build/marathon/render.php:43 src/marathon/render.php:43
 msgid "%s: Available for watching"
 msgstr "%s : disponible pour le visionnage"
 
+#. translators: %s: emoji
 #: build/marathon/render.php:44 src/marathon/render.php:44
 msgid "%s: Unavailable for watching"
 msgstr "%s : non disponible pour le visionnage"
@@ -70,7 +73,7 @@ msgid "Bonus List"
 msgstr "Liste bonus"
 
 #: build/marathon/render.php:84 src/marathon/render.php:84
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:141
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:132
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -103,10 +106,12 @@ msgstr ""
 msgid "Settings"
 msgstr "Réglages"
 
+#. translators: %s: test your key
 #: templates/dashboard/settings/fields/api/tmdb-api-key.php:2
 msgid "You can %s to make sure everything is ok."
 msgstr "Vous pouvez %s pour vérifier que tout fonctionne correctement."
 
+#. translators: %s: test your key
 #: templates/dashboard/settings/fields/api/tmdb-api-key.php:2
 msgid "test your key"
 msgstr "tester votre clé"
@@ -168,7 +173,7 @@ msgid "Person"
 msgstr "Personne"
 
 #: build/marathon/index.js:1
-#: src/marathon/components/importer/SearchResults.jsx:35
+#: src/marathon/components/importer/SearchResults.jsx:37
 msgid "Known for"
 msgstr "Connu pour"
 
@@ -218,35 +223,35 @@ msgstr "Voir la sélection"
 msgid "Add Selection"
 msgstr "Ajouter la sélection"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:41
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:38
 msgid "Title of the marathon"
 msgstr "Titre du marathon"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:52
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:44
 msgid "Featured image of the marathon"
 msgstr "Image d'aperçu du marathon"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:80
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:71
 msgid "Select Media"
 msgstr "Sélectionner un média"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:92
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:83
 msgid "Replace"
 msgstr "Remplacer"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:105
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:96
 msgid "Remove"
 msgstr "Supprimer"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:121
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:112
 msgid "Description of the marathon"
 msgstr "Description du marathon"
 
-#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:131
+#: build/marathon/index.js:5 src/marathon/components/BlockControls.jsx:122
 msgid "Objectives of the marathon"
 msgstr "Objectifs du marathon"
 
-#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:80
+#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:81
 msgid ""
 "Use the textarea below to input a list of movies to add to your marathon, "
 "one per line. <strong>Be careful!</strong> This will completely replace your "
@@ -263,20 +268,20 @@ msgstr ""
 "liste, saisissez simplement votre liste et prenez soin de cocher la case « "
 "Fusionner » à côté du bouton « Mettre à jour »."
 
-#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:89
+#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:90
 msgid "Ex: [0,1,1,0] 1968 − The Good, the Bad and the Ugly"
 msgstr "Ex: [0,1,1,0] 1968 − Le Bon, la Brute et le Truand"
 
-#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:103
+#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:105
 msgid "Merge"
 msgstr "Fusionner"
 
-#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:104
+#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:106
 msgid "Merge the above list with the current list instead of replacing it"
 msgstr ""
 "Fusionner la liste ci-dessus à la liste courante au lieu de la remplacer"
 
-#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:115
+#: build/marathon/index.js:5 src/marathon/components/BulkEditor.jsx:119
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -332,16 +337,22 @@ msgstr "Film bonus, visionnage non-obligatoire"
 msgid "Expert Mode"
 msgstr "Mode expert"
 
-#. translators: %s: Movies
-#: build/marathon/index.js:7 src/marathon/components/Editor.jsx:118
+#. translators: %s: number of movies
+#: build/marathon/index.js:7 src/marathon/components/Editor.jsx:108
+msgid "%s Movie"
+msgid_plural "%s Movies"
+msgstr[0] "%s film"
+msgstr[1] "%s films"
+
+#: build/marathon/index.js:7 src/marathon/components/Editor.jsx:123
 msgid "Add new movie"
 msgstr "Ajouter un film"
 
-#: build/marathon/index.js:7 src/marathon/edit.js:143
+#: build/marathon/index.js:7 src/marathon/edit.js:140
 msgid "Cinemarathon"
 msgstr "Cinémarathon"
 
-#: build/marathon/index.js:7 src/marathon/edit.js:145
+#: build/marathon/index.js:7 src/marathon/edit.js:142
 msgid ""
 "Use this block to display and manage a marathon. Add and sort movies, keep "
 "track of you current position, and have fun watching awesome movies!"
@@ -362,7 +373,7 @@ msgstr "Nombre de marathons à afficher"
 msgid ""
 "Note that this limit will be based on posts count, not marathons per se."
 msgstr ""
-"Note que cette limite se base sur le nombre de posts, non le nombre de "
+"Notez que cette limite se base sur le nombre de posts, non le nombre de "
 "marathons à proprement parler."
 
 #: build/marathons/index.js:1 src/marathons/edit.js:48

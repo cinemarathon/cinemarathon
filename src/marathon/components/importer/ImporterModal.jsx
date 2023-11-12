@@ -48,9 +48,9 @@ const ImporterModal = ( {
 		itemsHandler.add(
 			selection.map( ( creditId ) => {
 				const credit = _.findWhere( credits[ creditsType ] ?? [], {
-					creditId,
+					credit_id: creditId,
 				} );
-				return credit.length
+				return credit
 					? {
 							title: credit.title,
 							tmdb_id: credit.id,
@@ -69,7 +69,7 @@ const ImporterModal = ( {
 			setFilteredCredits(
 				selection.map( ( creditId ) =>
 					_.findWhere( credits[ creditsType ] ?? [], {
-						creditId,
+						credit_id: creditId,
 					} )
 				)
 			);

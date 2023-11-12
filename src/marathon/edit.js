@@ -1,7 +1,4 @@
-import {
-	InspectorControls,
-	useBlockProps,
-} from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { Placeholder } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
