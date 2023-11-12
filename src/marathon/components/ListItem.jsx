@@ -2,13 +2,12 @@ import {
 	Button,
 	CheckboxControl,
 	Icon,
-	Modal,
 	TextControl,
 	DropdownMenu,
 	MenuGroup,
 	MenuItem,
 } from '@wordpress/components';
-import { useEffect, useState } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import {
 	arrowUp,
 	arrowDown,
@@ -18,18 +17,12 @@ import {
 	dragHandle,
 	chevronUp,
 	chevronDown,
-	post,
-	customLink,
-	external,
 } from '@wordpress/icons';
 
 import { __ } from '@wordpress/i18n';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-
-import EntryEditor from './EntryEditor';
-import EntrySelector from './EntrySelector';
 
 const ListItem = ( { itemsHandler, movie } ) => {
 	const {
@@ -42,34 +35,7 @@ const ListItem = ( { itemsHandler, movie } ) => {
 		transition,
 	} = useSortable( { id: movie.hash } );
 
-	const [ showEntrySelectionModal, setShowEntrySelectionModal ] =
-		useState( false );
-	const [ showEntryPublicationModal, setShowEntryPublicationModal ] =
-		useState( false );
-
-	const closePublicationModal = () => setShowEntryPublicationModal( false );
-	const openPublicationModal = () => setShowEntryPublicationModal( true );
-
-	const closeSelectionModal = () => setShowEntrySelectionModal( false );
-	const openSelectionModal = () => setShowEntrySelectionModal( true );
-
-	const [ entry, setEntry ] = useState( {
-		id: movie.post_id ?? 0,
-		title: movie.title ?? '',
-		content: `A vu <em>${ movie.title }</em>`,
-		date: '',
-		time: '',
-		format: 'status',
-		categories: [],
-		tags: [],
-	} );
-
 	const [ title, setTitle ] = useState( movie.title );
-
-	useEffect( () => {
-		itemsHandler.update( index, 'post_id', entry.id );
-		return () => {};
-	}, [ entry.id ] );
 
 	return (
 		<>
@@ -142,76 +108,6 @@ const ListItem = ( { itemsHandler, movie } ) => {
 								<MenuGroup>
 									<MenuItem
 										text={ __(
-											'Duplicate Item',
-											'cinemarathons'
-										) }
-										icon={ copy }
-										iconPosition="right"
-										onClick={ () => {
-											itemsHandler.duplicate( index );
-											onClose();
-										} }
-									/>
-								</MenuGroup>
-								<MenuGroup>
-									{ movie.post_id ? (
-										<>
-											<MenuItem
-												text={ __(
-													'View journal entry',
-													'cinemarathons'
-												) }
-												icon={ external }
-												iconPosition="right"
-												href={ `/?p=${ movie.post_id }` }
-												target="_blank"
-												onClick={ onClose }
-											/>
-											<MenuItem
-												text={ __(
-													'Replace journal entry',
-													'cinemarathons'
-												) }
-												icon={ post }
-												iconPosition="right"
-												onClick={ () => {
-													openSelectionModal();
-													onClose();
-												} }
-											/>
-										</>
-									) : (
-										<>
-											<MenuItem
-												text={ __(
-													'Publish journal entry',
-													'cinemarathons'
-												) }
-												icon={ post }
-												iconPosition="right"
-												onClick={ () => {
-													openPublicationModal();
-													onClose();
-												} }
-											/>
-											<MenuItem
-												text={ __(
-													'Select existing entry',
-													'cinemarathons'
-												) }
-												icon={ customLink }
-												iconPosition="right"
-												onClick={ () => {
-													openSelectionModal();
-													onClose();
-												} }
-											/>
-										</>
-									) }
-								</MenuGroup>
-								<MenuGroup>
-									<MenuItem
-										text={ __(
 											'Move Item to Top',
 											'cinemarathons'
 										) }
@@ -262,6 +158,18 @@ const ListItem = ( { itemsHandler, movie } ) => {
 								<MenuGroup>
 									<MenuItem
 										text={ __(
+											'Duplicate Item',
+											'cinemarathons'
+										) }
+										icon={ copy }
+										iconPosition="right"
+										onClick={ () => {
+											itemsHandler.duplicate( index );
+											onClose();
+										} }
+									/>
+									<MenuItem
+										text={ __(
 											'Remove Item',
 											'cinemarathons'
 										) }
@@ -278,45 +186,6 @@ const ListItem = ( { itemsHandler, movie } ) => {
 					/>
 				</div>
 			</div>
-			{ showEntryPublicationModal && (
-				<Modal
-					title={ __(
-						'Publish a new Journal Entry',
-						'cinemarathons'
-					) }
-					onRequestClose={ closePublicationModal }
-					className="entry-publication-modal"
-				>
-					<EntryEditor
-						entry={ entry }
-						setEntry={ setEntry }
-						closeModal={ closePublicationModal }
-					/>
-				</Modal>
-			) }
-			{ showEntrySelectionModal && (
-				<Modal
-					title={
-						movie.post_id
-							? __(
-									'Select a different Post as Journal Entry',
-									'cinemarathons'
-							  )
-							: __(
-									'Select a Post as Journal Entry',
-									'cinemarathons'
-							  )
-					}
-					onRequestClose={ closeSelectionModal }
-					className="entry-selection-modal"
-				>
-					<EntrySelector
-						entry={ entry }
-						setEntry={ setEntry }
-						closeModal={ closeSelectionModal }
-					/>
-				</Modal>
-			) }
 		</>
 	);
 };

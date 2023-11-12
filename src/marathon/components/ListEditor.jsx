@@ -1,4 +1,4 @@
-import { Button, __experimentalText as Text } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -54,12 +54,12 @@ const ListEditor = ( { attributes, setAttributes, itemsHandler } ) => {
 				</DndContext>
 			) : (
 				<div className="placeholder">
-					<Text>
+					<p>
 						{ __(
 							'This marathon does not have any movie yet.',
 							'cinemarathons'
 						) }
-					</Text>
+					</p>
 					<Button variant="link" onClick={ itemsHandler.add }>
 						{ __( 'Start by adding one!', 'cinemarathons' ) }
 					</Button>

@@ -4,7 +4,6 @@ import {
 	Placeholder,
 	SelectControl,
 	TextControl,
-	__experimentalText as Text,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
@@ -37,20 +36,20 @@ const Edit = ( { attributes, setAttributes } ) => {
 						) }
 						help={
 							<>
-								<Text>
+								<p>
 									{ __(
 										'Note that this limit will be based on posts count, not marathons per se.',
 										'cinemarathons'
 									) }
-								</Text>
+								</p>
 								{ showHelp ? (
-									<Text>
+									<p>
 										{ ' ' }
 										{ __(
 											"Cinemarathons is able to discover multiple marathons in a single post; As a result this block will query posts containing single 'Marathon' blocks, not the individual 'Marathon' blocks themselves; It means that, if multiple 'Marathon' blocks are present in a single post, the total number of displayed blocks may exceed the specified number.",
 											'cinemarathons'
 										) }
-									</Text>
+									</p>
 								) : (
 									''
 								) }

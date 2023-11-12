@@ -10,15 +10,21 @@ document
 		if ( key ) {
 			fetch(
 				`https://api.themoviedb.org/3/configuration?api_key=${ key }`
-			).then( ( response ) =>
-				alert(
-					200 === response.status
-						? __( 'The API Key is valid!', 'cinemarathons' )
-						: __(
-								'The API key seems to be invalid!',
-								'cinemarathons'
-						  )
-				)
-			);
+			).then( ( response ) => {
+				const result = document.querySelector( '#tmdb-api-key-test' );
+				if ( 200 === response.status ) {
+					result.innerText = __(
+						'The API Key is valid!',
+						'cinemarathons'
+					);
+					result.style.color = 'green';
+				} else {
+					result.innerText = __(
+						'The API key seems to be invalid!',
+						'cinemarathons'
+					);
+					result.style.color = 'red';
+				}
+			} );
 		}
 	} );

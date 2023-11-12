@@ -21,7 +21,8 @@
 		"postcss-for": "^2.1.1",
 		"postcss-import": "^15.1.0",
 		"postcss-nested": "^6.0.1",
-		"postcss-nested-ancestors": "^3.0.0"
+		"postcss-nested-ancestors": "^3.0.0",
+		"underscore": "1.13.6"
 	},
 	"dependencies": {
 		"@dnd-kit/core": "^6.0.8",

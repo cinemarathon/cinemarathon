@@ -1,11 +1,11 @@
 import { Button, Icon, ToggleControl, Tooltip } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { plus } from '@wordpress/icons';
-import { __, _n } from '@wordpress/i18n';
+import { __, _n, sprintf } from '@wordpress/i18n';
 
 import { Available, Bonus, Check, DoubleCheck } from '../icons';
 
-import BatchEditor from './BatchEditor';
+import BulkEditor from './BulkEditor';
 import ListEditor from './ListEditor';
 
 const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
@@ -26,7 +26,6 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 						delay={ 0 }
 						placement="left"
 						text={ __( 'Just watched it!', 'cinemarathons' ) }
-						onClick={ () => alert( ':)' ) }
 					>
 						<div>
 							<Icon icon={ Check } />
@@ -88,7 +87,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 			</div>
 			<div className="editor-content">
 				{ advancedEditingMode ? (
-					<BatchEditor
+					<BulkEditor
 						attributes={ attributes }
 						setAttributes={ setAttributes }
 						itemsHandler={ itemsHandler }
@@ -105,6 +104,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 			<div className="editor-footer">
 				<div className="footer-content">
 					{ sprintf(
+						// translators: %s: Movies
 						_n( '%s Movie', '%s Movies', attributes.movies.length ),
 						attributes.movies.length
 					) }

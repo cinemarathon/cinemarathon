@@ -224,7 +224,7 @@ final class Cinemarathons {
         $options = get_option( 'cinemarathons_options', $this->default_settings );
         wp_add_inline_script(
             'cinemarathons-marathon-editor-script',
-            'const cinemarathons_options = ' . json_encode( $options + [
+            'window.cinemarathonsOptions = ' . json_encode( $options + [
                 'locale' => get_bloginfo( 'language' )
             ] )
         );
@@ -302,17 +302,6 @@ final class Cinemarathons {
         );
 
         add_settings_field(
-            'disable_journal_mode',
-            'Disable "Journal" Mode',
-            function() use ($options) {
-                $disable_journal_mode = $options['general']['disable_journal_mode'] ?? false;
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/general/disable-journal-mode.php';
-            },
-            'cinemarathons',
-            'cinemarathons_options'
-        );
-
-        add_settings_field(
             'hide_settings_page',
             'Hide Settings Page',
             function() use ($options) {
@@ -321,112 +310,6 @@ final class Cinemarathons {
             },
             'cinemarathons',
             'cinemarathons_options'
-        );
-
-        add_settings_section( 'cinemarathons_journal', __( 'Journal Mode', 'cinemarathons' ), fn () => _e( 'The "Journal" Mode is a simple tool that allows you to publish a new post for each movie you watch, helping you keep track of things. You can set default settings for your posts, chose to publish posts automatically or keep full control.', 'cinemarathons' ), 'cinemarathons' );
-
-        add_settings_field(
-            'default_title',
-            'Default Title',
-            function() use ($options) {
-                $default_title = $options['journal']['default_title'] ?? '%title%';
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-title.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_format',
-            'Default Format',
-            function() use ($options) {
-                $post_formats = [ 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ];
-                $default_format = $options['journal']['default_format'] ?? 'status';
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-format.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_date',
-            'Default Date',
-            function() use ($options) {
-                $dates = [
-                    'today' => __( 'Today', 'cinemarathons' ),
-                    'yesterday' => __( 'Yesterday', 'cinemarathons' ),
-                    'tomorrow' => __( 'Tomorrow', 'cinemarathons' ),
-                ];
-                $default_date = $options['journal']['default_date'] ?? 'today';
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-date.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_time',
-            'Default Time',
-            function() use ($options) {
-                $default_time = $options['journal']['default_time'] ?? [];
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-time.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_categories',
-            'Default Categories',
-            function() use ($options) {
-                $categories = get_terms( [
-                    'taxonomy'   => 'category',
-                    'hide_empty' => false,
-                    'fields' => 'id=>name',
-                ] );
-                $default_categories = array_map( 'absint', $options['journal']['default_categories'] ?? [] );
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-categories.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_tags',
-            'Default Tags',
-            function() use ($options) {
-                $tags = get_terms( [
-                    'taxonomy'   => 'post_tag',
-                    'hide_empty' => false,
-                    'fields' => 'id=>name',
-                ] );
-                $default_tags = array_map( 'absint', $options['journal']['default_tags'] ?? [] );
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-tags.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_content',
-            'Default Content',
-            function() use ($options) {
-                $default_content = ! empty( $options['journal']['default_content'] ) ? $options['journal']['default_content'] : __( 'Been watching <em>%title%</em>', 'cinemarathons' );
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-content.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
-        );
-
-        add_settings_field(
-            'default_featured_image',
-            'Default Featured Image',
-            function() use ($options) {
-                $default_featured_image = $options['journal']['default_featured_image'] ?? [];
-                require_once CINEMARATHONS_PATH . 'templates/dashboard/settings/fields/journal/default-featured-image.php';
-            },
-            'cinemarathons',
-            'cinemarathons_journal'
         );
 
         add_settings_section( 'cinemarathons_integration', __( 'API Integration', 'cinemarathons' ), fn () => _e( 'You can set your own TMDb API key to retrieve TheMovieDB.org data. If you don\'t have a key, don\'t worry, the plugin will use its own. You can get your personal API key freely by registering on <a href="https://www.themoviedb.org/">TheMovieDB.org</a>.', 'cinemarathons' ), 'cinemarathons' );

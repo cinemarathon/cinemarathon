@@ -7,7 +7,7 @@ import {
 import { useEffect, useRef, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-const BatchEditor = ( {
+const BulkEditor = ( {
 	attributes,
 	setAttributes,
 	itemsHandler,
@@ -20,12 +20,12 @@ const BatchEditor = ( {
 
 	const parseList = () =>
 		batchList.split( '\n' ).map( ( line ) => {
-			let matches = [
+			const matches = [
 					...line.matchAll( /^(\[([01,]+)\])?\ ?(.*?)$/gm ),
 				].pop(),
 				title = matches.pop(),
-				checks = [ 'watched', 'rewatch', 'available', 'bonus' ],
-				values = [],
+				checks = [ 'watched', 'rewatch', 'available', 'bonus' ];
+			let values = [],
 				item = {};
 			if ( matches[ 2 ] ) {
 				values = matches[ 2 ].split( ',' );
@@ -58,7 +58,7 @@ const BatchEditor = ( {
 
 	useEffect( () => {
 		const list = [];
-		attributes.movies.map( ( movie ) => {
+		attributes.movies.each( ( movie ) => {
 			const checks = [ 'watched', 'rewatch', 'available', 'bonus' ],
 				values = [];
 			checks.map( ( check ) => values.push( movie[ check ] ? 1 : 0 ) );
@@ -124,4 +124,4 @@ const BatchEditor = ( {
 	);
 };
 
-export default BatchEditor;
+export default BulkEditor;

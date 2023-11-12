@@ -1,2 +1,0 @@
-    <input type="text" name="cinemarathons_options[journal][default_title]" value="<?php echo esc_attr( $default_title ); ?>" />
-    <p class="description"><small><?php _e( 'You can define a default title for new "journal" entries. If no default title is set the plugin will use the title from the list. This is useful if you want to add something before or after the movie\'s title. Ex: "Today I watched %title%". Check the documentation to learn more about the supported tags.', 'cinemarathons' ) ?></small></p>

@@ -1,2 +1,0 @@
-    <label><input type="checkbox" name="cinemarathons_options[general][disable_journal_mode]" value="1" <?php checked( $disable_journal_mode, '1' ); ?>/> <?php _e( 'Disable the "Journal" mode', 'cinemarathons' ) ?></label>
-    <p class="description"><small><?php _e( 'Cinemarathons gives you a way to track your viewing session by providing a simple tool to publish a new post for each movie you set as watched. See below for more details about the "Journal" mode. <em>Default is false</em>.', 'cinemarathons' ) ?></small></p>

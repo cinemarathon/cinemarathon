@@ -1,2 +1,2 @@
     <input type="text" name="cinemarathons_options[api][tmdb_api_key]" value="<?php echo esc_attr( $tmdb_api_key ); ?>" />
-    <p class="description"><small><?php printf( __( 'You can %s to make sure everything is ok.', 'cinemarathons' ), sprintf( '<a href="#" data-action="test-tmdb-api-key">%s</a>', __( 'test your key', 'cinemarathons' ) ) ) ?></small></p>
+    <p class="description"><small><?php printf( __( 'You can %s to make sure everything is ok.', 'cinemarathons' ), sprintf( '<a href="#" data-action="test-tmdb-api-key">%s</a>', __( 'test your key', 'cinemarathons' ) ) ) ?>&nbsp;<span id="tmdb-api-key-test"></span></small></p>

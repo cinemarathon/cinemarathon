@@ -1,4 +1,7 @@
-import { useBlockProps } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	useBlockProps,
+} from '@wordpress/block-editor';
 import { Placeholder } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -7,7 +10,7 @@ import hash from 'object-hash';
 
 import { Cinemarathon } from './icons';
 
-import Settings from './components/Settings';
+import BlockControls from './components/BlockControls';
 import Editor from './components/Editor';
 
 import './editor.scss';
@@ -144,17 +147,19 @@ const Edit = ( { attributes, setAttributes } ) => {
 					'cinemarathons'
 				) }
 			>
-				<Settings
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					itemsHandler={ itemsHandler }
-				/>
 				<Editor
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 					itemsHandler={ itemsHandler }
 				/>
 			</Placeholder>
+			<InspectorControls key="setting">
+				<BlockControls
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					itemsHandler={ itemsHandler }
+				/>
+			</InspectorControls>
 		</div>
 	);
 };

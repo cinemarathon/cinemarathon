@@ -1,5 +1,5 @@
-import "./marathons/index.js"
-import "./marathon/index.js"
+import './marathons/index.js';
+import './marathon/index.js';
 
-import "./marathons/style.css"
-import "./marathon/style.css"
+import './marathons/style.scss';
+import './marathon/style.scss';
