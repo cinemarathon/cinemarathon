@@ -85,7 +85,7 @@
 				width: 100%;
 
 				em:not(:first-of-type)::before {
-					content: ', ';
+					content: ", ";
 				}
 			}
 		}
