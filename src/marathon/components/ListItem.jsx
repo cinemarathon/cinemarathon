@@ -20,7 +20,7 @@ import {
 	chevronDown,
 } from '@wordpress/icons';
 
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -118,15 +118,11 @@ const ListItem = ( { itemsHandler, movie } ) => {
 				</div>
 				<div className="list-item-column column-post-id check-column">
 					{ movie.post_id ? (
-						<Button
-							onClick={ () => openModal() }
-						>
+						<Button onClick={ () => openModal() }>
 							<Icon icon={ BlogPostCheck } />
 						</Button>
 					) : (
-						<Button
-							onClick={ () => openModal() }
-						>
+						<Button onClick={ () => openModal() }>
 							<Icon icon={ BlogPostEmpty } />
 						</Button>
 					) }

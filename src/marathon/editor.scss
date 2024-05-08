@@ -128,7 +128,7 @@
 		.marathon-featured-image__actions {
 			bottom: 0;
 			display: flex;
-			gap: .5rem;
+			gap: 0.5rem;
 			left: 0;
 			opacity: 0;
 			padding: 0.625rem;
@@ -252,6 +252,7 @@
 				}
 
 				&.column-post-id {
+
 					button {
 						align-items: center;
 						display: flex;

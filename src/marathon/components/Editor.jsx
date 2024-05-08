@@ -75,10 +75,7 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 					<Tooltip
 						delay={ 0 }
 						placement="top"
-						text={ __(
-							'Related blog post',
-							'cinemarathons'
-						) }
+						text={ __( 'Related blog post', 'cinemarathons' ) }
 					>
 						<div>
 							<Icon icon={ BlogPost } />

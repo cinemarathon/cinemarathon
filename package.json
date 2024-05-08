@@ -29,6 +29,7 @@
 		"@dnd-kit/sortable": "^7.0.2",
 		"@dnd-kit/utilities": "^3.2.1",
 		"@wordpress/icons": "^9.32.0",
+		"lodash": "^4.17.21",
 		"object-hash": "^3.0.0"
 	}
 }

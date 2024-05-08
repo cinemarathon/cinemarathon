@@ -73,7 +73,7 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 	const post = useSelect(
 		( select ) => {
 			if ( postID ) {
-				const post =
+				const selectedPost =
 					select( coreStore ).getEntityRecord(
 						'postType',
 						'post',
@@ -84,18 +84,18 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 						}
 					) ?? {};
 				return {
-					id: post.id,
-					date: post.date,
-					link: post.link,
-					title: post.title?.rendered ?? '',
-					excerpt: post.excerpt?.rendered ?? '',
+					id: selectedPost.id,
+					date: selectedPost.date,
+					link: selectedPost.link,
+					title: selectedPost.title?.rendered ?? '',
+					excerpt: selectedPost.excerpt?.rendered ?? '',
 					image:
-						( ( post._embedded || {} )[ 'wp:featuredmedia' ] ||
+						( ( selectedPost._embedded || {} )[ 'wp:featuredmedia' ] ||
 							[] )[ 0 ] ?? {},
 					categories:
 						filter(
 							flatten(
-								( post._embedded || {} )[ 'wp:term' ] || []
+								( selectedPost._embedded || {} )[ 'wp:term' ] || []
 							) ?? [],
 							{ taxonomy: 'category' }
 						) ?? [],
@@ -115,7 +115,7 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 				options={ suggestions }
 				onFilterValueChange={ debouncedSearch }
 				__experimentalRenderItem={ ( { item } ) => {
-					const { label, date, categories } = item;
+					const { label, date: publicationDate } = item;
 					return (
 						<div>
 							<div style={ { marginBottom: '0.2rem' } }>
@@ -123,8 +123,9 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 							</div>
 							<small>
 								{ sprintf(
+									// translators: %s: publication date
 									__( 'Published %s', 'cinemarathons' ),
-									date
+									publicationDate
 								) }
 							</small>
 						</div>
@@ -134,6 +135,7 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 			{ post.id && (
 				<>
 					<BaseControl
+						id={ `post-preview-${ post.id }` }
 						label={
 							post.id === entry.id
 								? __( 'Current entry:', 'cinemarathons' )
@@ -160,8 +162,9 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 										className="date"
 										dangerouslySetInnerHTML={ {
 											__html: sprintf(
+												// translators: %1$s: date, %2$s: time
 												__(
-													'Published <strong>%s</strong> at %s',
+													'Published <strong>%1$s</strong> at %2$s',
 													'cinemarathons'
 												),
 												dateI18n( 'F j, Y', post.date ),
@@ -173,6 +176,7 @@ const EntrySelector = ( { entry, setEntry, closeModal } ) => {
 										className="categories"
 										dangerouslySetInnerHTML={ {
 											__html: sprintf(
+												// translators: %s: list of categories
 												__( 'In %s', 'cinemarathons' ),
 												post.categories
 													.map(
