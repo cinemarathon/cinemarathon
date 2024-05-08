@@ -11,14 +11,14 @@ if ( ! empty( $attributes['image'] ) ) {
 }
 
 if ( ! empty( $attributes['movies'] ) ) {
-    $data['current'] = count( wp_filter_object_list( $attributes['movies'], [ 'watched' => 1 ] ) );
-    $data['rewatch'] = count( wp_filter_object_list( $attributes['movies'], [ 'rewatch' => 1 ] ) );
+    $data['current'] = count( wp_filter_object_list( $attributes['movies'] ?? [], [ 'watched' => 1 ] ) );
+    $data['rewatch'] = count( wp_filter_object_list( $attributes['movies'] ?? [], [ 'rewatch' => 1 ] ) );
     $data['total'] = count( $attributes['movies'] );
     $data['progress'] = round( ( $data['current'] / $data['total'] ) * 100 );
 }
 
-$data['bonuses'] = wp_filter_object_list( $attributes['movies'], [ 'bonus' => 1 ] );
-$data['movies'] = array_values( array_diff_assoc( $attributes['movies'] ?? [], $data['bonuses'] ) );
+$data['bonuses'] = wp_filter_object_list( $attributes['movies'] ?? [], [ 'bonus' => 1 ] );
+$data['movies'] = wp_filter_object_list( $attributes['movies'] ?? [], [ 'bonus' => 0 ] );
 ?>
     <div <?php echo get_block_wrapper_attributes( [ 'id' => $attributes['anchor'] ?? $attributes['id'] ?? '' ] ); ?>>
         <div class="marathon-header">
