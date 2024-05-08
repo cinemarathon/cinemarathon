@@ -3,7 +3,7 @@ import { useEffect, useState } from '@wordpress/element';
 import { plus } from '@wordpress/icons';
 import { __, _n, sprintf } from '@wordpress/i18n';
 
-import { Available, Bonus, Check, DoubleCheck } from '../icons';
+import { Available, BlogPost, Bonus, Check, DoubleCheck } from '../icons';
 
 import BulkEditor from './BulkEditor';
 import ListEditor from './ListEditor';
@@ -68,6 +68,20 @@ const Editor = ( { attributes, setAttributes, itemsHandler } ) => {
 					>
 						<div>
 							<Icon icon={ Bonus } />
+						</div>
+					</Tooltip>
+				</div>
+				<div className="header-column column-post-id check-column">
+					<Tooltip
+						delay={ 0 }
+						placement="top"
+						text={ __(
+							'Related blog post',
+							'cinemarathons'
+						) }
+					>
+						<div>
+							<Icon icon={ BlogPost } />
 						</div>
 					</Tooltip>
 				</div>

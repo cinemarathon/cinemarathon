@@ -6,8 +6,9 @@ import {
 	DropdownMenu,
 	MenuGroup,
 	MenuItem,
+	Modal,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import {
 	arrowUp,
 	arrowDown,
@@ -24,6 +25,10 @@ import { __ } from '@wordpress/i18n';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
+import { BlogPostCheck, BlogPostEmpty } from '../icons';
+
+import EntrySelector from './EntrySelector';
+
 const ListItem = ( { itemsHandler, movie } ) => {
 	const {
 		index,
@@ -36,6 +41,27 @@ const ListItem = ( { itemsHandler, movie } ) => {
 	} = useSortable( { id: movie.hash } );
 
 	const [ title, setTitle ] = useState( movie.title );
+
+	const [ showModal, setShowModal ] = useState( false );
+
+	const closeModal = () => setShowModal( false );
+	const openModal = () => setShowModal( true );
+
+	const [ entry, setEntry ] = useState( {
+		id: movie.post_id ?? 0,
+		title: movie.title ?? '',
+		content: `A vu <em>${ movie.title }</em>`,
+		date: '',
+		time: '',
+		format: 'status',
+		categories: [],
+		tags: [],
+	} );
+
+	useEffect( () => {
+		itemsHandler.update( index, 'post_id', entry.id );
+		return () => {};
+	}, [ entry.id ] );
 
 	return (
 		<>
@@ -89,6 +115,21 @@ const ListItem = ( { itemsHandler, movie } ) => {
 							itemsHandler.update( index, 'bonus', value )
 						}
 					/>
+				</div>
+				<div className="list-item-column column-post-id check-column">
+					{ movie.post_id ? (
+						<Button
+							onClick={ () => openModal() }
+						>
+							<Icon icon={ BlogPostCheck } />
+						</Button>
+					) : (
+						<Button
+							onClick={ () => openModal() }
+						>
+							<Icon icon={ BlogPostEmpty } />
+						</Button>
+					) }
 				</div>
 				<div className="list-item-column column-title text-column">
 					<TextControl
@@ -186,6 +227,23 @@ const ListItem = ( { itemsHandler, movie } ) => {
 					/>
 				</div>
 			</div>
+			{ showModal && (
+				<Modal
+					title={ sprintf(
+						// translators: %s: Person name
+						__( 'Select an entry for %s', 'cinemarathons' ),
+						movie.title
+					) }
+					onRequestClose={ closeModal }
+					className="entry-selection-modal"
+				>
+					<EntrySelector
+						entry={ entry }
+						setEntry={ setEntry }
+						closeModal={ closeModal }
+					/>
+				</Modal>
+			) }
 		</>
 	);
 };
